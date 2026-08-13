@@ -22,6 +22,74 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        slug: "vaccari-padaria",
+        title: "Panificadora Vaccari",
+        category: "dev",
+        tags: ["Next.js", "TypeScript", "UI/UX", "Art Direction"],
+        year: "2026",
+        status: "live",
+        externalUrl: "https://vaccari-padaria.vercel.app/",
+        description: {
+            pt: "Case autoral de prospecção para uma padaria tradicional, com direção visual editorial, interação responsiva e publicação em Next.js.",
+            en: "A self-initiated prospecting case for a traditional bakery, with editorial visual direction, responsive interaction and a published Next.js build.",
+        },
+        longDescription: {
+            pt: "A proposta transforma a presença de uma padaria tradicional em uma experiência digital de marca, combinando história, cardápio, produtos, ambiente e caminhos de contato. É um case autoral publicado para prospecção e não o site oficial da Panificadora Vaccari.",
+            en: "The concept turns a traditional bakery's presence into a branded digital experience, combining history, menu, products, atmosphere and contact paths. It is a published self-initiated prospecting case, not Panificadora Vaccari's official website.",
+        },
+        highlights: {
+            pt: [
+                "Hero editorial com presença forte de produto e marca",
+                "Navegação por sabores e cardápio responsivo",
+                "Narrativa de história, ambiente e localização",
+                "Publicação em produção com performance e responsividade",
+            ],
+            en: [
+                "Editorial hero with a strong product and brand presence",
+                "Responsive flavor and menu navigation",
+                "Story, atmosphere and location narrative",
+                "Production release with performance and responsiveness",
+            ],
+        },
+        context: {
+            pt: "Case criado como abordagem de prospecção para demonstrar como uma marca tradicional poderia ganhar uma experiência digital mais editorial e memorável.",
+            en: "A prospecting case created to show how a traditional brand could gain a more editorial and memorable digital experience.",
+        },
+        problem: {
+            pt: "Transformar um acervo extenso de marca, produtos e espaço físico em uma jornada clara, responsiva e reconhecível em poucos segundos.",
+            en: "Turn a broad collection of brand, product and venue assets into a clear, responsive journey that reads in seconds.",
+        },
+        role: {
+            pt: "Direção visual, arquitetura de conteúdo, UI/UX, implementação front-end em Next.js, responsividade e publicação. Os ativos oficiais da marca foram fornecidos; a identidade original não é apresentada como criação autoral.",
+            en: "Visual direction, content architecture, UI/UX, Next.js front-end implementation, responsive behavior and publishing. Official brand assets were supplied; the original identity is not claimed as original work.",
+        },
+        solution: {
+            pt: [
+                "Composição de hero baseada em produto real, marca e espaço negativo.",
+                "Estrutura editorial que conecta história, sabores, ambiente e visita.",
+                "Interações progressivas sem comprometer leitura ou navegação mobile.",
+                "Assets otimizados e componentes responsivos para publicação real.",
+            ],
+            en: [
+                "Hero composition built around real product imagery, brand and negative space.",
+                "Editorial structure connecting history, flavors, atmosphere and the visit.",
+                "Progressive interactions without compromising mobile reading or navigation.",
+                "Optimized assets and responsive components for a real deployment.",
+            ],
+        },
+        result: {
+            pt: "Case publicado e navegável que demonstra direção de arte, experiência responsiva e capacidade de levar uma proposta visual até produção.",
+            en: "A published, navigable case demonstrating art direction, responsive experience and the ability to take a visual concept into production.",
+        },
+        caseCtaLabel: { pt: "Ver case publicado", en: "View published case" },
+        coverImage: "/proofs/vaccari-home.webp",
+        images: [
+            "/proofs/vaccari-home.webp",
+            "/proofs/vaccari-interior.webp",
+            "/proofs/vaccari-product.webp",
+        ],
+    },
+    {
         slug: "riffmaker",
         title: "Riff Maker",
         category: "dev",

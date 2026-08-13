@@ -11,7 +11,7 @@ const content = {
     pt: {
         eyebrow: "Oi! Eu sou",
         scroll: "scroll",
-        microProofs: ["+1M de views em vídeos editados", "Foco em retenção", "Resposta rápida", "Sem compromisso"],
+        microProofs: ["Edição long-form e social", "Foco em retenção", "Resposta rápida", "Sem compromisso"],
         dev: {
             role: "Desenvolvedor Front-End",
             cta: "Falar sobre meu projeto",
@@ -26,7 +26,7 @@ const content = {
     en: {
         eyebrow: "Hey! I'm",
         scroll: "scroll",
-        microProofs: ["+1M views on edited videos", "Retention focus", "Fast reply", "No commitment"],
+        microProofs: ["Long-form and social editing", "Retention focus", "Fast reply", "No commitment"],
         dev: {
             role: "Front-End Developer",
             cta: "Talk about my project",

@@ -94,6 +94,10 @@ export async function ProjectCasePage({ params, lang = "pt" }: Props & { lang?: 
     }[lang];
 
     const imageAltBySlug: Record<string, { pt: string; en: string }> = {
+        "vaccari-padaria": {
+            pt: "Case autoral publicado para a Panificadora Vaccari",
+            en: "Published self-initiated concept case for Vaccari Bakery",
+        },
         riffmaker: {
             pt: "Screenshot do app Riff Maker na tela de ideias",
             en: "Screenshot of the Riff Maker app ideas screen",

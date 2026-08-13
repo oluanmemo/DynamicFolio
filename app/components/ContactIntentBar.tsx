@@ -71,7 +71,7 @@ export default function ContactIntentBar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [dismissed, isPortfolioRoute, isRiffmaker, lang, mode, normalizedPathname]);
 
-    if (isRiffmaker || isPortfolioRoute || dismissed !== false || !visible) {
+    if (isRiffmaker || isPortfolioRoute || normalizedPathname === "/" || dismissed !== false || !visible) {
         return null;
     }
 

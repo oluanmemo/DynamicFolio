@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Bebas_Neue, DM_Mono, DM_Sans, Syne } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -43,12 +43,12 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://oluanmedrado.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Luan Medrado | Sites, Interfaces e Edição de Vídeo",
+    default: "Luan Medrado | Creative Developer & Video Editor",
     template: "%s | Luan Medrado",
   },
   description:
-    "Sites que convertem. Vídeos que prendem atenção. Edição e páginas pensadas para transformar atenção em cliente.",
-  keywords: ["sites que convertem", "edição de vídeo", "landing page", "React", "Next.js", "TypeScript", "portfólio", "UI/UX", "front-end developer"],
+    "Creative Developer e Video Editor baseado no Brasil. Eu crio experiências digitais — do código ao conteúdo. Desenvolvimento frontend, interfaces, produtos digitais e edição de vídeo.",
+  keywords: ["creative developer", "video editor", "front-end developer", "React", "React Native", "Next.js", "TypeScript", "portfólio", "UI/UX", "edição de vídeo", "produtos digitais"],
   alternates: {
     canonical: BASE_URL,
     languages: {

@@ -30,6 +30,7 @@ export default function ModeSwitch() {
     const { mode, setMode } = useMode();
     const switchRef = useRef<HTMLDivElement | null>(null);
     const normalizedPathname = stripLocalePrefix(pathname ?? "/");
+    const isHomeRoute = normalizedPathname === "/";
     const isRiffmakerRoute = normalizedPathname.startsWith("/riffmaker");
     const isDevPortfolioRoute = normalizedPathname === "/dev";
 
@@ -48,7 +49,7 @@ export default function ModeSwitch() {
     };
 
     useEffect(() => {
-        if (isRiffmakerRoute) {
+        if (isRiffmakerRoute || isHomeRoute) {
             return;
         }
 
@@ -83,9 +84,9 @@ export default function ModeSwitch() {
             window.removeEventListener("scroll", updateSwitchState);
             window.removeEventListener("resize", updateSwitchState);
         };
-    }, [isDevPortfolioRoute, isRiffmakerRoute]);
+    }, [isDevPortfolioRoute, isHomeRoute, isRiffmakerRoute]);
 
-    if (isRiffmakerRoute) {
+    if (isRiffmakerRoute || isHomeRoute) {
         return null;
     }
 

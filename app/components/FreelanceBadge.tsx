@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
@@ -101,7 +101,7 @@ export default function FreelanceBadge({ variant = "floating" }: FreelanceBadgeP
         };
     }, [isDevPortfolioRoute, isEditingPortfolioRoute, isFloating, isRiffmakerRoute, pathname]);
 
-    if (isRiffmakerRoute) {
+    if (isRiffmakerRoute || (isHome && isFloating)) {
         return null;
     }
 

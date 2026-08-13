@@ -78,14 +78,14 @@ export default function YouTubeGrid() {
   const copy =
     lang === "en"
       ? {
-        totalViews: "views on edited videos",
-        likes: "Reels and social",
-        partners: "retention-first edit",
+        totalViews: "long-form editing",
+        likes: "short-form editing",
+        partners: "pacing and delivery",
       }
       : {
-        totalViews: "de views em vídeos editados",
-        likes: "Reels e social",
-        partners: "edição focada em retenção",
+        totalViews: "edição long-form",
+        likes: "edição short-form",
+        partners: "ritmo e entrega",
       };
 
   useEffect(() => {
@@ -150,10 +150,6 @@ export default function YouTubeGrid() {
                   </svg>
                 </div>
               </div>
-              <span className={styles.viewsBadge} aria-label={channel.viewsFull}>
-                <strong className={styles.viewsValue}>{channel.views}</strong>
-                <span className={styles.viewsLabel}>views</span>
-              </span>
               <span className={styles.channelName}>{channel.name}</span>
               <span className={styles.channelMeta}>{channel.type}</span>
               <span className={styles.channelRole}>{lang === "en" ? channel.roleEn : channel.role}</span>
@@ -165,13 +161,13 @@ export default function YouTubeGrid() {
 
       <div className={styles.totals}>
         <div className={styles.totalItem}>
-          <span className={styles.totalNumber}>+1M</span>
+          <span className={styles.totalNumber}>YouTube</span>
           <span className={styles.totalLabel}>{copy.totalViews}</span>
         </div>
         <div className={styles.totalSep} aria-hidden="true"></div>
 
         <div className={styles.totalItem}>
-          <span className={styles.totalNumber}>YouTube</span>
+          <span className={styles.totalNumber}>Reels + Social</span>
           <span className={styles.totalLabel}>{copy.likes}</span>
         </div>
         <div className={styles.totalSep} aria-hidden="true"></div>
