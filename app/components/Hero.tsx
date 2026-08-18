@@ -14,13 +14,13 @@ const content = {
         microProofs: ["Edição long-form e social", "Foco em retenção", "Resposta rápida", "Sem compromisso"],
         dev: {
             role: "Desenvolvedor Front-End",
-            cta: "Falar sobre meu projeto",
+            cta: "Tirar meu projeto do papel",
             desc: <>Crio sites e interfaces focadas em <strong>performance</strong>, clareza e conversão.</>,
         },
         editor: {
             role: "Editor de Vídeo",
             cta: "Quero editar meus vídeos",
-            desc: <>Edição focada em retenção, ritmo e vídeos prontos para postar.</>,
+            desc: <>Transformo material bruto em vídeos com <strong>ritmo</strong>, clareza e acabamento.</>,
         },
     },
     en: {
@@ -29,13 +29,13 @@ const content = {
         microProofs: ["Long-form and social editing", "Retention focus", "Fast reply", "No commitment"],
         dev: {
             role: "Front-End Developer",
-            cta: "Talk about my project",
+            cta: "Bring my project to life",
             desc: <>I build websites and interfaces focused on <strong>performance</strong>, clarity and conversion.</>,
         },
         editor: {
             role: "Video Editor",
             cta: "Edit my videos",
-            desc: <>Retention-focused editing with stronger pacing and videos ready to publish.</>,
+            desc: <>I transform raw footage into videos with <strong>pacing</strong>, clarity and polish.</>,
         },
     },
 };

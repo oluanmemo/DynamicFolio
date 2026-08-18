@@ -110,13 +110,13 @@ export default function FreelanceBadge({ variant = "floating" }: FreelanceBadgeP
             ? isHome
                 ? "I want my videos edited"
                 : mode === "editor"
-                    ? "Talk about my video"
-                    : "Talk about my project"
+                    ? "Edit my videos"
+                    : "Bring my project to life"
             : isHome
                 ? "Quero editar meus vídeos"
                 : mode === "editor"
-                    ? "Falar sobre meu vídeo"
-                    : "Falar sobre meu projeto";
+                    ? "Quero editar meus vídeos"
+                    : "Tirar meu projeto do papel";
 
     return (
         <a

@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Maximize2, Play, VolumeX } from "lucide-react";
+import { ArrowUpRight, Play, VolumeX, Maximize2 } from "lucide-react";
 import { useState } from "react";
 import type { CSSProperties } from "react";
 import { trackEvent } from "../lib/analytics";
@@ -13,6 +13,8 @@ import styles from "./EditingShowcase.module.css";
 interface EditingShowcaseProps {
   lang: Language;
 }
+
+/* ── Poster / Player ───────────────────────────────────── */
 
 interface PosterPlayerProps {
   playerKey: string;
@@ -28,7 +30,9 @@ interface PosterPlayerProps {
   portrait?: boolean;
 }
 
-function PosterPlayer({ playerKey, title, duration, poster, accent, kind, src, playingKey, onPlay, lang, portrait = false }: PosterPlayerProps) {
+function PosterPlayer({
+  playerKey, title, duration, poster, accent, kind, src, playingKey, onPlay, lang, portrait = false,
+}: PosterPlayerProps) {
   const isPlaying = playingKey === playerKey;
 
   if (isPlaying) {
@@ -43,10 +47,9 @@ function PosterPlayer({ playerKey, title, duration, poster, accent, kind, src, p
         />
       );
     }
-
     return (
       <video
-        className={`${styles.playerMedia} ${portrait ? styles.portraitVideo : ""}`}
+        className={styles.playerMedia}
         controls
         playsInline
         muted
@@ -68,59 +71,93 @@ function PosterPlayer({ playerKey, title, duration, poster, accent, kind, src, p
       onClick={() => onPlay(playerKey, kind)}
       aria-label={`${lang === "pt" ? "Reproduzir" : "Play"} ${title}`}
     >
-      <Image src={poster} alt="" fill sizes={portrait ? "(min-width: 900px) 28vw, 78vw" : "(min-width: 900px) 60vw, 100vw"} className={`${styles.posterImage} ${portrait ? styles.portraitPoster : ""}`} />
+      <Image
+        src={poster}
+        alt=""
+        fill
+        sizes={portrait ? "(min-width: 960px) 26vw, 70vw" : "(min-width: 960px) 58vw, 100vw"}
+        className={`${styles.posterImage} ${portrait ? styles.portraitPoster : ""}`}
+      />
       <span className={styles.posterShade} />
-      <span className={styles.playControl} aria-hidden="true"><Play size={28} fill="currentColor" /></span>
+      <span className={styles.playControl} aria-hidden="true"><Play size={26} fill="currentColor" /></span>
       <span className={styles.playLabel}>{lang === "pt" ? "Reproduzir" : "Play"}</span>
       <span className={styles.playerDuration}>{duration}</span>
       <span className={styles.controlPreview} aria-hidden="true">
         <i><b /></i>
-        <VolumeX size={15} />
-        <Maximize2 size={15} />
+        <VolumeX size={14} />
+        <Maximize2 size={14} />
       </span>
     </button>
   );
 }
 
-function ProofDetails({ proof, lang }: { proof: EditingProof; lang: Language }) {
+/* ── Gameplay thumb ─────────────────────────────────────── */
+
+function GameplayThumb({
+  gameplay, selected, lang, onSelect,
+}: { gameplay: GameplayProof; selected: boolean; lang: Language; onSelect: () => void }) {
   return (
-    <div className={styles.details}>
-      <div className={styles.detailHeading}>
-        <span>{proof.label[lang]} · {proof.duration} · {proof.format}</span>
-        <h3>{proof.title[lang]}</h3>
+    <button
+      type="button"
+      className={selected ? styles.gameThumbActive : ""}
+      aria-pressed={selected}
+      onClick={onSelect}
+    >
+      <span className={styles.gameThumbImage}>
+        <Image src={gameplay.poster} alt="" fill sizes="(min-width: 960px) 14vw, 40vw" />
+      </span>
+      <span className={styles.gameThumbCopy}>
+        <strong>{gameplay.title}</strong>
+        <small>{gameplay.duration}</small>
+      </span>
+      <span className={styles.srOnly}>{lang === "pt" ? "Selecionar gameplay" : "Select gameplay"}</span>
+    </button>
+  );
+}
+
+/* ── Meta strip ────────────────────────────────────────── */
+
+function MetaStrip({ proof, lang }: { proof: EditingProof; lang: Language }) {
+  const tags = proof.contribution[lang].split(" · ");
+  return (
+    <div className={styles.metaStrip}>
+      <p className={styles.metaEyebrow}>
+        {proof.label[lang]} · {proof.duration} · {proof.format}
+      </p>
+      <h3 className={styles.metaTitle}>{proof.title[lang]}</h3>
+      <p className={styles.metaDesc}>{proof.description[lang]}</p>
+      <div className={styles.tags} aria-label={lang === "pt" ? "Técnicas" : "Techniques"}>
+        {tags.map((tag) => (
+          <span key={tag} className={styles.tag}>{tag}</span>
+        ))}
       </div>
-      <p>{proof.description[lang]}</p>
-      <dl>
-        <div><dt>{lang === "pt" ? "Minha participação" : "My contribution"}</dt><dd>{proof.contribution[lang]}</dd></div>
-      </dl>
       {proof.href ? (
-        <Link href={proof.href} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("proof_link_click", { lane: "editing", proof: proof.id, destination: "external", lang })}>
-          {lang === "pt" ? "Ver projeto completo" : "View full project"}<ArrowUpRight size={16} />
+        <Link
+          href={proof.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.proofLink}
+          onClick={() => trackEvent("proof_link_click", { lane: "editing", proof: proof.id, destination: "external", lang })}
+        >
+          {lang === "pt" ? "Ver projeto completo" : "View full project"}
+          <ArrowUpRight size={14} />
         </Link>
       ) : null}
     </div>
   );
 }
 
-function GameplayThumb({ gameplay, selected, lang, onSelect }: { gameplay: GameplayProof; selected: boolean; lang: Language; onSelect: () => void }) {
-  return (
-    <button type="button" className={selected ? styles.gameThumbActive : ""} aria-pressed={selected} onClick={onSelect}>
-      <span className={styles.gameThumbImage}><Image src={gameplay.poster} alt="" fill sizes="(min-width: 900px) 13vw, 38vw" /></span>
-      <span className={styles.gameThumbCopy}><strong>{gameplay.title}</strong><small>{gameplay.duration}</small></span>
-      <Play size={14} fill="currentColor" aria-hidden="true" />
-      <span className={styles.srOnly}>{lang === "pt" ? "Selecionar gameplay" : "Select gameplay"}</span>
-    </button>
-  );
-}
+/* ── Main component ─────────────────────────────────────── */
 
 export default function EditingShowcase({ lang }: EditingShowcaseProps) {
   const [activeId, setActiveId] = useState<EditingFormat>("reel");
   const [gameplayId, setGameplayId] = useState("arena");
   const [playingKey, setPlayingKey] = useState<string | null>(null);
-  const active = editingProofs.find((proof) => proof.id === activeId) ?? editingProofs[0];
-  const gameplayProof = editingProofs.find((proof) => proof.id === "gameplay");
+
+  const active = editingProofs.find((p) => p.id === activeId) ?? editingProofs[0];
+  const gameplayProof = editingProofs.find((p) => p.id === "gameplay");
   const gameplays = gameplayProof?.related ?? [];
-  const activeGameplay = gameplays.find((item) => item.id === gameplayId) ?? gameplays[0];
+  const activeGameplay = gameplays.find((g) => g.id === gameplayId) ?? gameplays[0];
 
   const selectProof = (proof: EditingProof) => {
     setPlayingKey(null);
@@ -139,58 +176,112 @@ export default function EditingShowcase({ lang }: EditingShowcaseProps) {
     trackEvent("proof_media_play", { lane: "editing", proof: key, provider, lang });
   };
 
-  const renderPanel = () => {
-    if (active.id === "reel") {
-      return (
-        <div className={`${styles.formatPanel} ${styles.reelPanel}`}>
-          <ProofDetails proof={active} lang={lang} />
-          <div className={`${styles.playerShell} ${styles.reelPlayer}`}>
-            <PosterPlayer playerKey="reel" title={active.title[lang]} duration={active.duration} poster={active.poster!} accent={active.accent} kind="local" src={active.src!} playingKey={playingKey} onPlay={play} lang={lang} portrait />
-          </div>
-        </div>
-      );
-    }
+  /* determine aspect for current active proof */
+  const isPortrait = active.format === "9:16";
+  const aspect = isPortrait ? "9/16" : "16/9";
 
-    if (active.id === "gameplay" && activeGameplay) {
-      return (
-        <div className={`${styles.formatPanel} ${styles.gameplayPanel}`}>
-          <div className={styles.gameplayMain}>
-            <div className={styles.playerShell}>
-              <PosterPlayer playerKey={`gameplay-${activeGameplay.id}`} title={activeGameplay.title} duration={activeGameplay.duration} poster={activeGameplay.poster} accent={active.accent} kind="youtube" src={activeGameplay.videoId} playingKey={playingKey} onPlay={play} lang={lang} />
-            </div>
-            <div className={styles.gameTitleRow}><strong>{activeGameplay.title}</strong><span>{activeGameplay.duration} · 16:9</span></div>
-          </div>
-          <div className={styles.gameplayThumbs} aria-label={lang === "pt" ? "Selecionar gameplay" : "Select gameplay"}>
-            {gameplays.map((gameplay) => <GameplayThumb key={gameplay.id} gameplay={gameplay} selected={gameplay.id === activeGameplay.id} lang={lang} onSelect={() => selectGameplay(gameplay)} />)}
-          </div>
-          <ProofDetails proof={active} lang={lang} />
-        </div>
-      );
-    }
+  /* player key & props vary by panel type */
+  const playerKey = active.id === "gameplay" && activeGameplay
+    ? `gameplay-${activeGameplay.id}`
+    : active.id;
 
-    return (
-      <div className={`${styles.formatPanel} ${styles.tutorialPanel}`}>
-        <div className={styles.playerShell}>
-          <PosterPlayer playerKey="tutorial" title={active.title[lang]} duration={active.duration} poster={active.poster!} accent={active.accent} kind="local" src={active.src!} playingKey={playingKey} onPlay={play} lang={lang} />
-        </div>
-        <ProofDetails proof={active} lang={lang} />
-      </div>
-    );
-  };
+  const playerSrc = active.id === "gameplay" && activeGameplay
+    ? activeGameplay.videoId
+    : (active.src ?? "");
+
+  const playerPoster = active.id === "gameplay" && activeGameplay
+    ? activeGameplay.poster
+    : (active.poster ?? "");
+
+  const playerKind: "local" | "youtube" = active.id === "gameplay" ? "youtube" : "local";
+
+  const playerTitle = active.id === "gameplay" && activeGameplay
+    ? activeGameplay.title
+    : active.title[lang];
+
+  const playerDuration = active.id === "gameplay" && activeGameplay
+    ? activeGameplay.duration
+    : active.duration;
 
   return (
-    <div className={styles.showcase} style={{ "--editing-proof": active.accent } as CSSProperties}>
-      <div className={styles.selector} role="tablist" aria-label={lang === "pt" ? "Formatos de edição" : "Editing formats"}>
+    <div
+      className={styles.showcase}
+      style={{ "--editing-proof": active.accent } as CSSProperties}
+    >
+      {/* LEFT: selector */}
+      <div
+        className={styles.selector}
+        role="tablist"
+        aria-label={lang === "pt" ? "Formatos de edição" : "Editing formats"}
+      >
         {editingProofs.map((proof) => (
-          <button key={proof.id} type="button" role="tab" aria-selected={proof.id === active.id} aria-controls="editing-proof-panel" className={proof.id === active.id ? styles.selectorActive : ""} onClick={() => selectProof(proof)}>
+          <button
+            key={proof.id}
+            type="button"
+            role="tab"
+            aria-selected={proof.id === active.id}
+            aria-controls="editing-canvas"
+            className={proof.id === active.id ? styles.selectorActive : ""}
+            onClick={() => selectProof(proof)}
+          >
             <span>{proof.label[lang]}</span>
             <strong>{proof.title[lang]}</strong>
-            <Play size={15} fill="currentColor" aria-hidden="true" />
+            <Play size={14} fill="currentColor" aria-hidden="true" />
           </button>
         ))}
       </div>
 
-      <div className={styles.panel} id="editing-proof-panel" role="tabpanel" key={active.id}>{renderPanel()}</div>
+      {/* RIGHT: sticky canvas */}
+      <div
+        id="editing-canvas"
+        role="tabpanel"
+        className={styles.stickyColumn}
+        key={active.id}
+      >
+        {/* Player */}
+        <div className={styles.playerShell} data-aspect={aspect}>
+          <PosterPlayer
+            playerKey={playerKey}
+            title={playerTitle}
+            duration={playerDuration}
+            poster={playerPoster}
+            accent={active.accent}
+            kind={playerKind}
+            src={playerSrc}
+            playingKey={playingKey}
+            onPlay={play}
+            lang={lang}
+            portrait={isPortrait}
+          />
+        </div>
+
+        {/* Gameplay: active title row + thumbnails */}
+        {active.id === "gameplay" && activeGameplay && (
+          <>
+            <div className={styles.gameTitleRow}>
+              <strong>{activeGameplay.title}</strong>
+              <span>{activeGameplay.duration} · 16:9</span>
+            </div>
+            <div
+              className={styles.gameplayThumbs}
+              aria-label={lang === "pt" ? "Selecionar gameplay" : "Select gameplay"}
+            >
+              {gameplays.map((gameplay) => (
+                <GameplayThumb
+                  key={gameplay.id}
+                  gameplay={gameplay}
+                  selected={gameplay.id === activeGameplay.id}
+                  lang={lang}
+                  onSelect={() => selectGameplay(gameplay)}
+                />
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* Meta strip — always below player/thumbs */}
+        <MetaStrip proof={active} lang={lang} />
+      </div>
     </div>
   );
 }

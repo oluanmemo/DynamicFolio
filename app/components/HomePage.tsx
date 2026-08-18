@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, Github, Linkedin, Mail, Menu, MessageCircle, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Github, Linkedin, Mail, Menu, MessageCircle, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ChangeEvent, FormEvent, PointerEvent as ReactPointerEvent } from "react";
 import DevShowcase from "./DevShowcase";
@@ -17,85 +17,91 @@ const WHATSAPP_NUMBER = "5511945764672";
 
 const copy = {
   pt: {
-    nav: { dev: "DEV", editing: "EDIÇÃO", about: "SOBRE", contact: "CONTATO" },
-    role: "Desenvolvimento · Edição",
+    nav: { dev: "DEV", editing: "EDIÇÃO", about: "SOBRE", contact: "FALAR COMIGO" },
     available: "Disponível para projetos",
     heroTop: "Código, produto e edição",
     heroAccent: "no mesmo ritmo.",
-    heroBody: "Crio experiências digitais que podem ser usadas, assistidas e publicadas — com direção visual, implementação e acabamento.",
+    heroBody: "Crio sites e produtos digitais, desenvolvo interfaces e transformo ideias em vídeo, do conceito à entrega final.",
     devCta: "Explorar DEV",
     editingCta: "Explorar Edição",
-    scroll: "Provas reais, logo abaixo",
-    authority: ["Google Play", "Sites no ar", "Conteúdo em inglês", "Freelance"],
-    devEyebrow: "Desenvolvimento / trabalhos selecionados",
+    devEyebrow: "DESENVOLVIMENTO · TRABALHOS SELECIONADOS",
     devTitle: "Produto real. Interface com intenção.",
-    devBody: "Três provas, três contextos: direção visual, produto próprio e operação corporativa.",
+    devBody: "Três projetos que mostram diferentes lados do meu trabalho — direção visual, produto próprio e experiência corporativa.",
     devAll: "Ver todos em DEV",
-    editingEyebrow: "Edição / trabalhos selecionados",
+    editingEyebrow: "EDIÇÃO · TRABALHOS SELECIONADOS",
     editingTitle: "A edição aparece no resultado.",
-    editingBody: "Três formatos escolhidos pela força da prova — sem preencher categorias por obrigação.",
+    editingBody: "Uma seleção de trabalhos em que ritmo, narrativa e acabamento fazem a diferença.",
     editingAll: "Ver todos em Edição",
     aboutEyebrow: "Sobre",
     aboutTitle: "Eu gosto de construir coisas que chegam ao mundo.",
     aboutBody: "Algumas começam no Figma, outras no VS Code e outras em uma timeline. Meu trabalho acontece no encontro entre produto, desenvolvimento e audiovisual.",
-    aboutDetail: "Do primeiro freelance de identidade a produtos publicados, eu assumo contexto, escolhas e entrega — sem esconder o que foi feito em equipe.",
-    logoCase: "Primeiro projeto freelance — identidade J&F",
+    aboutDetail: "Do primeiro freelance de identidade a produtos publicados, gosto de entender o contexto, tomar decisões e acompanhar a entrega. Deixando claro meu papel em cada projeto.",
+    logoCase: "Primeiro projeto freelance: identidade J&F",
     contactEyebrow: "Contato",
-    contactTitle: "Qual é o próximo trabalho?",
-    contactBody: "Escolha a frente mais próxima do que você precisa ou me conte a ideia diretamente.",
+    contactTitle: "Qual é o próximo projeto?",
+    contactBody: "Se você precisa tirar uma ideia do papel, melhorar um produto ou contar uma história em vídeo, me conta o que está construindo.",
     contactDev: "Desenvolvimento",
     contactEditing: "Edição",
     contactGeneral: "Falar comigo",
-    footer: "© 2026 Luan Medrado · Feito no Brasil",
+    footer: "© 2026 Luan Medrado",
   },
   en: {
-    nav: { dev: "DEV", editing: "EDITING", about: "ABOUT", contact: "CONTACT" },
-    role: "Development · Editing",
+    nav: { dev: "DEV", editing: "EDITING", about: "ABOUT", contact: "TALK TO ME" },
     available: "Available for projects",
     heroTop: "Code, product and editing",
     heroAccent: "moving in sync.",
-    heroBody: "I create digital experiences people can use, watch and publish — with visual direction, implementation and polish.",
+    heroBody: "I build websites and digital products, develop interfaces and turn ideas into video, from concept to final delivery.",
     devCta: "Explore DEV",
     editingCta: "Explore Editing",
-    scroll: "Real work, right below",
-    authority: ["Google Play", "Live websites", "English content", "Freelance"],
-    devEyebrow: "Development / selected work",
+    devEyebrow: "DEVELOPMENT · SELECTED WORK",
     devTitle: "Real products. Intentional interfaces.",
-    devBody: "Three proofs, three contexts: visual direction, an original product and corporate operations.",
+    devBody: "Three projects showing different sides of my work: visual direction, own product and corporate experience.",
     devAll: "View all DEV work",
-    editingEyebrow: "Editing / selected work",
+    editingEyebrow: "EDITING · SELECTED WORK",
     editingTitle: "The edit shows in the result.",
-    editingBody: "Three formats selected for the strength of the work — without filling categories by obligation.",
+    editingBody: "A curated selection of work where pacing, narrative and finish make the difference.",
     editingAll: "View all Editing work",
     aboutEyebrow: "About",
     aboutTitle: "I like building things that make it into the world.",
     aboutBody: "Some start in Figma, others in VS Code and others in a timeline. My work happens where product, development and audiovisual meet.",
-    aboutDetail: "From my first freelance identity project to published products, I own the context, choices and delivery — without hiding what was collaborative.",
-    logoCase: "First freelance project — J&F identity",
+    aboutDetail: "From my first freelance identity project to published products, I like to understand the context, make decisions and see delivery through, keeping my role in each project transparent.",
+    logoCase: "First freelance project: J&F identity",
     contactEyebrow: "Contact",
-    contactTitle: "What should we make next?",
-    contactBody: "Choose the path closest to what you need or tell me about the idea directly.",
+    contactTitle: "What is the next project?",
+    contactBody: "If you need to get an idea off the ground, improve a product or tell a story through video, tell me what you are building.",
     contactDev: "Development",
     contactEditing: "Editing",
     contactGeneral: "Talk to me",
-    footer: "© 2026 Luan Medrado · Made in Brazil",
+    footer: "© 2026 Luan Medrado",
   },
 } as const;
 
 const contactCopy = {
   pt: {
     eyebrow: "Contato direto",
-    title: "Me conte o que você precisa",
-    body: "Objetivo, prazo e uma referência já são um ótimo começo.",
-    name: "Nome",
-    email: "Email",
-    type: "Tipo de projeto",
-    types: ["Edição de vídeo", "Site / landing page", "Interface web", "App / produto", "Outro"],
-    message: "Mensagem",
-    messagePlaceholder: "Qual é a ideia e onde você quer chegar?",
+    titleLine1: "Me conta",
+    titleLine2: "o que você",
+    titleLine3: "quer criar.",
+    subtitle: "Site, produto ou vídeo. Me passa o contexto e eu te respondo.",
+    available: "Disponível para projetos",
+    directTitle: "Ou me chama direto:",
+    whatsapp: "WhatsApp",
+    email: "E-mail",
+    nameLabel: "Nome",
+    namePlaceholder: "Como posso te chamar?",
+    emailLabel: "Email",
+    emailPlaceholder: "seu@email.com",
+    typeLabel: "O que você precisa?",
+    types: [
+      { id: "dev", label: "DEV" },
+      { id: "editing", label: "EDIÇÃO" },
+      { id: "outro", label: "OUTRO" },
+    ],
+    messageLabel: "Mensagem",
+    messagePlaceholder: "Me conta a ideia, o objetivo e qualquer referência que você já tenha.",
     submit: "Enviar mensagem",
     sending: "Enviando...",
-    success: "Mensagem recebida.",
+    successTitle: "Mensagem recebida!",
     successBody: "Vou ler com atenção e responder com o próximo passo.",
     again: "Enviar outra",
     error: "Não foi possível enviar. Tente novamente.",
@@ -103,18 +109,30 @@ const contactCopy = {
   },
   en: {
     eyebrow: "Direct contact",
-    title: "Tell me what you need",
-    body: "A goal, deadline and one reference are already a great start.",
-    name: "Name",
-    email: "Email",
-    type: "Project type",
-    types: ["Video editing", "Website / landing page", "Web interface", "App / product", "Other"],
-    message: "Message",
-    messagePlaceholder: "What is the idea and where do you want to take it?",
+    titleLine1: "Tell me",
+    titleLine2: "what you want",
+    titleLine3: "to create.",
+    subtitle: "Website, product or video. Share the context and I'll get back to you.",
+    available: "Available for projects",
+    directTitle: "Or reach out directly:",
+    whatsapp: "WhatsApp",
+    email: "E-mail",
+    nameLabel: "Name",
+    namePlaceholder: "What should I call you?",
+    emailLabel: "Email",
+    emailPlaceholder: "your@email.com",
+    typeLabel: "What do you need?",
+    types: [
+      { id: "dev", label: "DEV" },
+      { id: "editing", label: "EDITING" },
+      { id: "outro", label: "OTHER" },
+    ],
+    messageLabel: "Message",
+    messagePlaceholder: "Tell me the idea, goal and any references you already have.",
     submit: "Send message",
     sending: "Sending...",
-    success: "Message received.",
-    successBody: "I’ll read it carefully and reply with the next step.",
+    successTitle: "Message received!",
+    successBody: "I'll read it carefully and reply with the next step.",
     again: "Send another",
     error: "Could not send the message. Please try again.",
     close: "Close contact",
@@ -131,6 +149,8 @@ export default function HomePage() {
   const editingHref = localizePath("/editing", lang);
   const [menuOpen, setMenuOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
+  const [heroHover, setHeroHover] = useState<"dev" | "editing" | null>(null);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const [contactStatus, setContactStatus] = useState<ContactStatus>("idle");
   const [contactError, setContactError] = useState("");
   const [contactForm, setContactForm] = useState({ name: "", email: "", projectType: "", message: "" });
@@ -178,6 +198,29 @@ export default function HomePage() {
     }, { threshold: 0.12 });
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + window.innerHeight * 0.35;
+      const sobreEl = document.getElementById("sobre");
+      const editingEl = document.getElementById("editing");
+      const devEl = document.getElementById("dev");
+
+      if (sobreEl && scrollPos >= sobreEl.offsetTop) {
+        setActiveSection("sobre");
+      } else if (editingEl && scrollPos >= editingEl.offsetTop) {
+        setActiveSection("editing");
+      } else if (devEl && scrollPos >= devEl.offsetTop) {
+        setActiveSection("dev");
+      } else {
+        setActiveSection(null);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleContactChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -232,18 +275,52 @@ export default function HomePage() {
     <main className={styles.home}>
       <header className={styles.topbar}>
         <Link href={localizePath("/", lang)} className={styles.brand} aria-label="Luan Medrado — Home">
-          <strong>LUAN MEDRADO</strong>
-          <span>{lang === "pt" ? "DESENVOLVIMENTO · EDIÇÃO" : "DEVELOPMENT · EDITING"}</span>
+          <Image
+            src="/favicon.png"
+            alt="Luan Medrado"
+            width={26}
+            height={26}
+            className={styles.brandLogo}
+          />
+          <div className={styles.brandText}>
+            <strong>LUAN MEDRADO</strong>
+            <span>{lang === "pt" ? "DESENVOLVIMENTO · EDIÇÃO" : "DEVELOPMENT · EDITING"}</span>
+          </div>
         </Link>
 
         <nav className={styles.desktopNav} aria-label={lang === "en" ? "Main navigation" : "Navegação principal"}>
-          <a href="#dev">{c.nav.dev}</a>
-          <a href="#editing">{c.nav.editing}</a>
-          <a href="#sobre">{c.nav.about}</a>
-          <button type="button" onClick={() => openContact("home_nav")}>{c.nav.contact}</button>
+          <a
+            href="#dev"
+            className={`${styles.navLink} ${styles.navLinkDev} ${activeSection === "dev" ? styles.navLinkActive : ""}`}
+          >
+            <span className={styles.navDot} aria-hidden="true" />
+            {c.nav.dev}
+          </a>
+          <a
+            href="#editing"
+            className={`${styles.navLink} ${styles.navLinkEditing} ${activeSection === "editing" ? styles.navLinkActive : ""}`}
+          >
+            <span className={styles.navDot} aria-hidden="true" />
+            {c.nav.editing}
+          </a>
+          <a
+            href="#sobre"
+            className={`${styles.navLink} ${styles.navLinkAbout} ${activeSection === "sobre" ? styles.navLinkActive : ""}`}
+          >
+            <span className={styles.navDot} aria-hidden="true" />
+            {c.nav.about}
+          </a>
         </nav>
 
         <div className={styles.topbarTools}>
+          <button
+            type="button"
+            className={styles.contactPill}
+            onClick={() => openContact("home_nav")}
+          >
+            <span>{c.nav.contact}</span>
+            <ArrowUpRight size={13} className={styles.contactPillArrow} />
+          </button>
           <LanguageSwitch />
           <button
             type="button"
@@ -260,28 +337,43 @@ export default function HomePage() {
 
       <div id="home-mobile-menu" className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`} aria-hidden={!menuOpen}>
         <nav aria-label={lang === "en" ? "Mobile navigation" : "Navegação mobile"}>
-          <a href="#dev" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>01 — {c.nav.dev}</a>
-          <a href="#editing" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>02 — {c.nav.editing}</a>
-          <a href="#sobre" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>03 — {c.nav.about}</a>
-          <button type="button" onClick={() => openContact("home_mobile_nav")} tabIndex={menuOpen ? 0 : -1}>04 — {c.nav.contact}</button>
+          <a href="#dev" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.dev}</a>
+          <a href="#editing" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.editing}</a>
+          <a href="#sobre" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.about}</a>
+          <button type="button" onClick={() => openContact("home_mobile_nav")} tabIndex={menuOpen ? 0 : -1}>{c.nav.contact} ↗</button>
         </nav>
       </div>
 
-      <section className={styles.hero} id="hero">
+      <section className={styles.hero} id="hero" data-hero-hover={heroHover || "none"}>
         <div className={styles.heroGlow} aria-hidden="true" />
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
             <div className={styles.availability}><span />{c.available}</div>
-            <p className={styles.role}>{c.role}</p>
             <h1><span>{c.heroTop}</span><em>{c.heroAccent}</em></h1>
             <p className={styles.heroBody}>{c.heroBody}</p>
             <div className={styles.heroActions}>
-              <a href="#dev" className={styles.devButton} onClick={() => navigateTo("dev")}>
-                <span>01</span>{c.devCta}<ArrowRight size={18} />
-              </a>
-              <a href="#editing" className={styles.editingButton} onClick={() => navigateTo("editing")}>
-                <span>02</span>{c.editingCta}<ArrowRight size={18} />
-              </a>
+              <Link
+                href={devHref}
+                className={styles.devButton}
+                onClick={() => navigateTo("dev")}
+                onMouseEnter={() => setHeroHover("dev")}
+                onMouseLeave={() => setHeroHover(null)}
+                onFocus={() => setHeroHover("dev")}
+                onBlur={() => setHeroHover(null)}
+              >
+                {c.devCta}<ArrowRight size={18} />
+              </Link>
+              <Link
+                href={editingHref}
+                className={styles.editingButton}
+                onClick={() => navigateTo("editing")}
+                onMouseEnter={() => setHeroHover("editing")}
+                onMouseLeave={() => setHeroHover(null)}
+                onFocus={() => setHeroHover("editing")}
+                onBlur={() => setHeroHover(null)}
+              >
+                {c.editingCta}<ArrowRight size={18} />
+              </Link>
             </div>
           </div>
 
@@ -292,39 +384,43 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <a className={styles.scrollCue} href="#authority"><ArrowDown size={15} />{c.scroll}</a>
       </section>
-
-      <div className={styles.authority} id="authority" aria-label={lang === "en" ? "Selected credentials" : "Credenciais selecionadas"}>
-        {c.authority.map((item, index) => <span key={item}>{item}{index < c.authority.length - 1 ? <b>·</b> : null}</span>)}
-      </div>
 
       <section className={`${styles.proofSection} ${styles.devSection}`} id="dev" data-home-reveal>
         <div className={styles.sectionHeader}>
-          <div>
-            <p>{c.devEyebrow}</p>
-            <h2>{c.devTitle}</h2>
+          <div className={styles.sectionTopBar}>
+            <p className={styles.sectionEyebrow}>{c.devEyebrow}</p>
+            <Link href={devHref} className={styles.sectionTopLink} onClick={() => navigateTo("dev")}>
+              <span>{c.devAll}</span>
+              <ArrowUpRight size={13} />
+            </Link>
           </div>
-          <div className={styles.sectionIntro}>
-            <span>{c.devBody}</span>
-            <Link href={devHref} onClick={() => navigateTo("dev")}>{c.devAll}<ArrowUpRight size={16} /></Link>
-          </div>
+          <h2>{c.devTitle}</h2>
         </div>
         <DevShowcase lang={lang} />
+        <div className={styles.showcaseFooter}>
+          <span>{lang === "pt" ? "Quer ver outros projetos de desenvolvimento?" : "Want to explore more dev projects?"}</span>
+          <Link href={devHref} className={styles.showcaseAllLink} onClick={() => navigateTo("dev")}>
+            <span>{c.devAll}</span>
+            <ArrowRight size={15} />
+          </Link>
+        </div>
       </section>
 
       <section className={`${styles.proofSection} ${styles.editingSection}`} id="editing" data-home-reveal>
         <div className={styles.sectionHeader}>
-          <div>
-            <p>{c.editingEyebrow}</p>
-            <h2>{c.editingTitle}</h2>
+          <div className={styles.sectionTopBar}>
+            <p className={styles.sectionEyebrow}>{c.editingEyebrow}</p>
           </div>
-          <div className={styles.sectionIntro}>
-            <span>{c.editingBody}</span>
-            <Link href={editingHref} onClick={() => navigateTo("editing")}>{c.editingAll}<ArrowUpRight size={16} /></Link>
-          </div>
+          <h2>{c.editingTitle}</h2>
         </div>
         <EditingShowcase lang={lang} />
+        <div className={`${styles.showcaseFooter} ${styles.showcaseFooterEnd}`}>
+          <Link href={editingHref} className={styles.showcaseAllLink} onClick={() => navigateTo("editing")}>
+            <span>{c.editingAll}</span>
+            <ArrowUpRight size={15} />
+          </Link>
+        </div>
       </section>
 
       <section className={styles.about} id="sobre" data-home-reveal>
@@ -370,41 +466,151 @@ export default function HomePage() {
       </footer>
 
       {contactOpen ? (
-        <div className={styles.modal} role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" onMouseDown={(event) => { if (event.target === event.currentTarget) closeContact(); }}>
-          <div className={styles.modalPanel}>
-            <button ref={closeButtonRef} type="button" className={styles.modalClose} onClick={closeContact} aria-label={contact.close}><X size={20} /></button>
-            <div className={styles.modalHeader}>
-              <span>{contact.eyebrow}</span>
-              <h2 id="contact-modal-title">{contact.title}</h2>
-              <p>{contact.body}</p>
-            </div>
+        <div
+          className={styles.modal}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="contact-modal-title"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) closeContact();
+          }}
+        >
+          <div
+            className={styles.modalPanel}
+            data-theme={contactForm.projectType || "none"}
+          >
+            <button
+              ref={closeButtonRef}
+              type="button"
+              className={styles.modalClose}
+              onClick={closeContact}
+              aria-label={contact.close}
+            >
+              <X size={18} />
+            </button>
+
             {contactStatus === "success" ? (
               <div className={styles.modalSuccess}>
-                <strong>{contact.success}</strong>
+                <span className={styles.modalSuccessBadge}>✓</span>
+                <strong>{contact.successTitle}</strong>
                 <p>{contact.successBody}</p>
                 <button type="button" onClick={resetContact}>{contact.again}</button>
               </div>
             ) : (
-              <form className={styles.modalForm} onSubmit={handleContactSubmit}>
-                <div className={styles.formRow}>
-                  <label><span>{contact.name}</span><input name="name" value={contactForm.name} onChange={handleContactChange} required autoComplete="name" /></label>
-                  <label><span>{contact.email}</span><input type="email" name="email" value={contactForm.email} onChange={handleContactChange} required autoComplete="email" /></label>
-                </div>
-                <fieldset>
-                  <legend>{contact.type}</legend>
-                  <div className={styles.projectTypes}>
-                    {contact.types.map((type) => (
-                      <label key={type}>
-                        <input type="radio" name="projectType" value={type} checked={contactForm.projectType === type} onChange={handleContactChange} required />
-                        <span>{type}</span>
-                      </label>
-                    ))}
+              <div className={styles.modalGrid}>
+                <div className={styles.modalInfo}>
+                  <span className={styles.modalEyebrow}>{contact.eyebrow}</span>
+                  <h2 id="contact-modal-title" className={styles.modalTitle}>
+                    <span>{contact.titleLine1}</span>
+                    <span>{contact.titleLine2}</span>
+                    <span>{contact.titleLine3}</span>
+                  </h2>
+                  <p className={styles.modalSubtitle}>{contact.subtitle}</p>
+
+                  <div className={styles.modalAvailability}>
+                    <span className={styles.modalAvailDot} aria-hidden="true" />
+                    <span>{contact.available}</span>
                   </div>
-                </fieldset>
-                <label><span>{contact.message}</span><textarea name="message" value={contactForm.message} onChange={handleContactChange} required placeholder={contact.messagePlaceholder} /></label>
-                {contactStatus === "error" ? <p className={styles.formError} role="alert">{contactError}</p> : null}
-                <button type="submit" className={styles.formSubmit} disabled={contactStatus === "loading"}>{contactStatus === "loading" ? contact.sending : contact.submit}<ArrowRight size={17} /></button>
-              </form>
+
+                  <div className={styles.modalDirect}>
+                    <span className={styles.modalDirectTitle}>{contact.directTitle}</span>
+                    <div className={styles.modalDirectLinks}>
+                      <a
+                        href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.modalDirectLink}
+                        onClick={() => trackEvent("social_click", { destination: "whatsapp", source: "contact_modal", lang })}
+                      >
+                        <MessageCircle size={14} />
+                        <span>{contact.whatsapp}</span>
+                        <ArrowUpRight size={12} />
+                      </a>
+                      <a
+                        href="mailto:luanmedradooliveira@gmail.com"
+                        className={styles.modalDirectLink}
+                        onClick={() => trackEvent("social_click", { destination: "email", source: "contact_modal", lang })}
+                      >
+                        <Mail size={14} />
+                        <span>{contact.email}</span>
+                        <ArrowUpRight size={12} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <form className={styles.modalForm} onSubmit={handleContactSubmit}>
+                  <div className={styles.formRow}>
+                    <label>
+                      <span>{contact.nameLabel}</span>
+                      <input
+                        name="name"
+                        value={contactForm.name}
+                        onChange={handleContactChange}
+                        required
+                        autoComplete="name"
+                        placeholder={contact.namePlaceholder}
+                      />
+                    </label>
+                    <label>
+                      <span>{contact.emailLabel}</span>
+                      <input
+                        type="email"
+                        name="email"
+                        value={contactForm.email}
+                        onChange={handleContactChange}
+                        required
+                        autoComplete="email"
+                        placeholder={contact.emailPlaceholder}
+                      />
+                    </label>
+                  </div>
+
+                  <fieldset className={styles.projectTypeFieldset}>
+                    <legend>{contact.typeLabel}</legend>
+                    <div className={styles.projectTypes}>
+                      {contact.types.map((t) => (
+                        <label key={t.id} className={`${styles.typeChip} ${styles[`typeChip_${t.id}`]}`}>
+                          <input
+                            type="radio"
+                            name="projectType"
+                            value={t.id}
+                            checked={contactForm.projectType === t.id}
+                            onChange={handleContactChange}
+                            required
+                          />
+                          <span>
+                            <i className={styles.chipDot} aria-hidden="true" />
+                            {t.label}
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
+
+                  <label className={styles.messageLabel}>
+                    <span>{contact.messageLabel}</span>
+                    <textarea
+                      name="message"
+                      value={contactForm.message}
+                      onChange={handleContactChange}
+                      required
+                      placeholder={contact.messagePlaceholder}
+                    />
+                  </label>
+
+                  {contactStatus === "error" ? <p className={styles.formError} role="alert">{contactError}</p> : null}
+
+                  <button
+                    type="submit"
+                    className={styles.formSubmit}
+                    disabled={contactStatus === "loading"}
+                  >
+                    <span>{contactStatus === "loading" ? contact.sending : contact.submit}</span>
+                    <ArrowUpRight size={16} className={styles.submitArrow} />
+                  </button>
+                </form>
+              </div>
             )}
           </div>
         </div>

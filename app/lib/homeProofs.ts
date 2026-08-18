@@ -44,8 +44,8 @@ export const devProofs: DevProof[] = [
       en: "Self-initiated concept · prospecting · unofficial",
     },
     description: {
-      pt: "Uma experiência editorial para uma padaria tradicional, levada do conceito à publicação.",
-      en: "An editorial experience for a traditional bakery, taken from concept through publishing.",
+      pt: "Redesenhei a presença digital de uma padaria tradicional, transformando identidade, produtos e informações essenciais em uma experiência responsiva.",
+      en: "Redesigned the digital presence of a traditional bakery, turning identity, products and essential information into a responsive experience.",
     },
     role: {
       pt: "Direção visual, UI/UX e desenvolvimento front-end",
@@ -188,8 +188,8 @@ export const editingProofs: EditingProof[] = [
     label: { pt: "Reel", en: "Reel" },
     title: { pt: "Reel EN / Nanogram", en: "English Reel / Nanogram" },
     description: {
-      pt: "Games, apps, tipografia cinética e composição em uma prova vertical de 30 segundos.",
-      en: "Games, apps, kinetic typography and compositing in a 30-second vertical proof.",
+      pt: "Um reel de 30 segundos combinando games, apps, tipografia cinética, motion e composição.",
+      en: "A 30-second reel combining games, apps, kinetic typography, motion and compositing.",
     },
     contribution: { pt: "Edição · motion · composição", en: "Editing · motion · compositing" },
     duration: "00:30",
