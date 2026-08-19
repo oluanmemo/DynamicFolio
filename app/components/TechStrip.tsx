@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
@@ -113,8 +113,6 @@ export default function TechStrip() {
     ];
 
     const techs = mode === "editor" ? editorTechs : devTechs;
-
-    const track = [...techs, ...techs];
 
     return (
         <div className="tech-strip" aria-label={lang === "en" ? "Technologies" : "Tecnologias"}>

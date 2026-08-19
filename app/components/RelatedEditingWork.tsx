@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
 import { trackEvent } from "../lib/analytics";
 import styles from "./RelatedEditingWork.module.css";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 
 const BLUR_PLACEHOLDER = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IGZpbGw9IiMxYTFhMWEiLz48L3N2Zz4=";
 

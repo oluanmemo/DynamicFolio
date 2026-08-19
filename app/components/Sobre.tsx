@@ -107,26 +107,6 @@ const CapCutLogo = () => (
     </svg>
 );
 
-const WaveformIcon = () => (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-        <line x1="1" y1="9" x2="1" y2="9" stroke="#888" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="4" y1="6" x2="4" y2="12" stroke="#888" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="7" y1="3" x2="7" y2="15" stroke="#888" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="10" y1="5" x2="10" y2="13" stroke="#888" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="13" y1="7" x2="13" y2="11" stroke="#888" strokeWidth="2" strokeLinecap="round"/>
-        <line x1="16" y1="8" x2="16" y2="10" stroke="#888" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-);
-
-const MotionIcon = () => (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-        <path d="M9 2L16 9L9 16L2 9Z" fill="#777" opacity="0.9"/>
-        <line x1="2" y1="9" x2="16" y2="9" stroke="#555" strokeWidth="1.5"/>
-        <circle cx="2" cy="9" r="1.5" fill="#aaa"/>
-        <circle cx="16" cy="9" r="1.5" fill="#aaa"/>
-    </svg>
-);
-
 const devSkills = [
     { icon: <ReactLogo />, name: "React / Next.js" },
     { icon: <TypeScriptLogo />, name: "TypeScript" },
@@ -134,15 +114,6 @@ const devSkills = [
     { icon: <FigmaLogo />, name: "Figma / UI Design" },
     { icon: <NodeLogo />, name: "Node.js / APIs" },
     { icon: <ReactLogo />, name: "React Native" },
-];
-
-const editorSkills = [
-    { icon: <PremiereLogo />, name: "Premiere Pro" },
-    { icon: <AfterEffectsLogo />, name: "After Effects" },
-    { icon: <DaVinciLogo />, name: "DaVinci Resolve" },
-    { icon: <WaveformIcon />, name: "Sound Design" },
-    { icon: <ElevenLabsLogo />, name: "Eleven Labs" },
-    { icon: <MotionIcon />, name: "Motion Design" },
 ];
 
 const devProof = {
