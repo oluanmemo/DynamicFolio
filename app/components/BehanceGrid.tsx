@@ -11,36 +11,35 @@ const BLUR_PLACEHOLDER = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 const behanceProjects = [
   {
     title: "Guitarra Gospel",
+    type: "Edição",
     thumbnail: "/guitarragospel.jpg",
     background: "#0a0a0a",
     url: "https://www.behance.net/gallery/245289239/Aulas-de-Guitarra",
   },
   {
-    title: "Apresentação E-Multitech",
-    thumbnail: "/emultitech.webp",
-    background: "#0d1520",
-    url: "https://www.behance.net/gallery/243412563/Apresentacao-E-Multitech",
-  },
-  {
     title: "Testes Criativos",
+    type: "Motion / IA",
     thumbnail: "/testes.webp",
     background: "#180520",
     url: "https://www.behance.net/gallery/208794979/Testes",
   },
   {
-    title: "Novato - YouTube",
+    title: "Novato",
+    type: "Gameplay / Edição",
     thumbnail: "/novato.webp",
     background: "#3d0a08",
     url: "https://www.behance.net/gallery/207809217/Gameplays",
   },
   {
     title: "Smart Fit",
+    type: "Comunicação visual",
     thumbnail: "/smartfit.webp",
     background: "#0f1622",
     url: "https://www.behance.net/gallery/200154929/Apresentacao-de-colaboradores",
   },
   {
-    title: "Logo - Loja de Suplementos",
+    title: "J&F",
+    type: "Identidade visual",
     thumbnail: "/jef.webp",
     background: "#171117",
     url: "https://www.behance.net/gallery/210403079/Logo-Loja-de-Suplementos-J-F",
@@ -54,14 +53,14 @@ export default function BehanceGrid() {
   const copy =
     lang === "en"
       ? {
-        selectedWorks: "Selected Works",
-        title: "Edits and Design",
+        selectedWorks: "Complementary works",
+        title: "Other work",
         cta: "View on Behance",
         openLabel: "Open",
       }
       : {
-        selectedWorks: "Trabalhos Selecionados",
-        title: "Edições e Designs",
+        selectedWorks: "Trabalhos complementares",
+        title: "Outros trabalhos",
         cta: "Ver no Behance",
         openLabel: "Abrir",
       };
@@ -118,6 +117,7 @@ export default function BehanceGrid() {
             </div>
             <div className={styles.overlay}>
               <span className={styles.itemLabel}>{project.title}</span>
+              <span className={styles.itemType}>· {project.type}</span>
             </div>
           </a>
         ))}

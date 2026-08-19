@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import BehanceGrid from "./BehanceGrid";
 import Link from "next/link";
@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "../context/LanguageContext";
-import YouTubeGrid from "./YouTubeGrid";
 import RelatedEditingWork from "./RelatedEditingWork";
 import { useMode } from "../context/ModeContext";
 import { localizePath } from "../lib/locale";
@@ -431,9 +430,6 @@ function EditorProjects({ lang }: { lang: "pt" | "en" }) {
                     ))}
                 </div>
             </section>
-            <div className="editor-projects-block">
-                <YouTubeGrid />
-            </div>
             <div className="editor-projects-block">
                 <BehanceGrid />
             </div>

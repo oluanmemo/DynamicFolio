@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import PortfolioPage from "../../components/PortfolioPage";
+import EditingPortfolio from "../../components/EditingPortfolio";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://oluanmedrado.com";
 
 export const metadata: Metadata = {
-    title: "Video Editing for YouTube and Reels",
-    description:
-        "I transform raw footage into videos with pacing, clarity and polish.",
+    title: "Luan Medrado | Video Editor and Audiovisual Producer",
+    description: "Luan Medrado's Portfolio. Video editing, audiovisual production, motion and content for YouTube, brands and digital projects.",
     alternates: {
         canonical: `${BASE_URL}/en/editing`,
         languages: {
@@ -19,17 +18,17 @@ export const metadata: Metadata = {
         locale: "en_US",
         url: `${BASE_URL}/en/editing`,
         siteName: "Luan Medrado",
-        title: "Video Editing for YouTube and Reels",
-        description: "I transform raw footage into videos with pacing, clarity and polish.",
+        title: "Luan Medrado | Video Editor and Audiovisual Producer",
+        description: "Luan Medrado's Portfolio. Video editing, audiovisual production, motion and content for YouTube, brands and digital projects.",
         images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Luan Medrado" }],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Video Editing for YouTube and Reels",
-        description: "I transform raw footage into videos with pacing, clarity and polish.",
+        title: "Luan Medrado | Video Editor and Audiovisual Producer",
+        description: "Luan Medrado's Portfolio. Video editing, audiovisual production, motion and content for YouTube, brands and digital projects.",
     },
 };
 
 export default function EnglishEditingPage() {
-    return <PortfolioPage />;
+    return <EditingPortfolio />;
 }

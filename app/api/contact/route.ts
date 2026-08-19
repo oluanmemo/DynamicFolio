@@ -14,7 +14,7 @@ const ERR = {
 // onboarding@resend.dev is used ONLY as a local/dev fallback —
 // it cannot deliver to arbitrary inboxes and must never be used in production.
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL ?? "Portfolio <onboarding@resend.dev>";
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "oluanmedrado@gmail.com";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "luanmedradooliveira@gmail.com";
 
 const MAX_MESSAGE_LENGTH = 3000;
 const MAX_URL_COUNT = 4;

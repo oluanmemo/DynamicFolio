@@ -11,31 +11,31 @@ const content = {
     pt: {
         eyebrow: "Oi! Eu sou",
         scroll: "scroll",
-        microProofs: ["Edição long-form e social", "Foco em retenção", "Resposta rápida", "Sem compromisso"],
+        microProofs: ["+2 anos de produção recorrente", "Brasil + Internacional", "Premiere · After Effects · DaVinci"],
         dev: {
             role: "Desenvolvedor Front-End",
             cta: "Tirar meu projeto do papel",
             desc: <>Crio sites e interfaces focadas em <strong>performance</strong>, clareza e conversão.</>,
         },
         editor: {
-            role: "Editor de Vídeo",
-            cta: "Quero editar meus vídeos",
-            desc: <>Transformo material bruto em vídeos com <strong>ritmo</strong>, clareza e acabamento.</>,
+            role: "Editor de Vídeo & Produtor Audiovisual",
+            cta: "",
+            desc: <>Conteúdo com ritmo, narrativa e acabamento - para YouTube, marcas e plataformas digitais.</>,
         },
     },
     en: {
         eyebrow: "Hey! I'm",
         scroll: "scroll",
-        microProofs: ["Long-form and social editing", "Retention focus", "Fast reply", "No commitment"],
+        microProofs: ["+2 years recurring production", "Brazil + International", "Premiere · After Effects · DaVinci"],
         dev: {
             role: "Front-End Developer",
             cta: "Bring my project to life",
             desc: <>I build websites and interfaces focused on <strong>performance</strong>, clarity and conversion.</>,
         },
         editor: {
-            role: "Video Editor",
-            cta: "Edit my videos",
-            desc: <>I transform raw footage into videos with <strong>pacing</strong>, clarity and polish.</>,
+            role: "Video Editor & Audiovisual Producer",
+            cta: "",
+            desc: <>Content with pacing, narrative and polish - for YouTube, brands and digital platforms.</>,
         },
     },
 };
@@ -49,18 +49,30 @@ const devCodeSnippets = [
     "state -> interface -> conversion",
 ];
 
-function HeroWorkPreview({ mode }: { mode: "dev" | "editor" }) {
+function HeroWorkPreview({ mode, lang }: { mode: "dev" | "editor"; lang: "pt" | "en" }) {
     if (mode === "editor") {
         return (
             <div className="hero-work-preview hero-work-preview-editor" aria-hidden="true">
                 <div className="hero-preview-card hero-preview-card-large">
-                    <Image src="/guitarragospel.jpg" alt="" fill sizes="260px" className="hero-preview-image" priority />
+                    <Image src="/VanLifeInsider.jpg" alt="Van Life Insider" fill sizes="260px" className="hero-preview-image" priority />
+                    <div className="hero-card-caption">
+                        <strong>Van Life Insider</strong>
+                        <span>{lang === "en" ? "Full production" : "Produção completa"}</span>
+                    </div>
                 </div>
                 <div className="hero-preview-card hero-preview-card-small">
-                    <Image src="/Switch Game List.jpg" alt="" fill sizes="150px" className="hero-preview-image" />
+                    <Image src="/Switch Game List.jpg" alt="Switch Game List" fill sizes="150px" className="hero-preview-image" />
+                    <div className="hero-card-caption">
+                        <strong>Switch Game List</strong>
+                        <span>Editor · EN/ES/FR</span>
+                    </div>
                 </div>
                 <div className="hero-preview-card hero-preview-card-tall">
-                    <Image src="/True Sailing Life.jpg" alt="" fill sizes="170px" className="hero-preview-image" />
+                    <Image src="/True Sailing Life.jpg" alt="True Sailing Life" fill sizes="170px" className="hero-preview-image" />
+                    <div className="hero-card-caption">
+                        <strong>True Sailing Life</strong>
+                        <span>{lang === "en" ? "Recurring editor" : "Editor recorrente"}</span>
+                    </div>
                 </div>
             </div>
         );
@@ -100,7 +112,7 @@ export default function Hero({ overrides }: HeroProps) {
             <div className="hero-glow"></div>
             <div className="hero-ring"></div>
             <div className="hero-ring hero-ring-2"></div>
-            <HeroWorkPreview mode={mode} />
+            <HeroWorkPreview mode={mode} lang={lang} />
 
             <div className="hero-copy">
             <p className="hero-eyebrow">{content[lang].eyebrow}</p>
@@ -120,37 +132,56 @@ export default function Hero({ overrides }: HeroProps) {
             </p>
 
             <div className="hero-actions">
-                <Link
-                    href="#contato"
-                    className="btn-primary"
-                    onClick={() => trackEvent("contact_cta_click", { source: "hero", lang, mode })}
-                >
-                    <span
-                        className="btn-primary-dot"
-                        aria-hidden="true"
-                        style={{
-                            position: "relative",
-                            width: 8,
-                            height: 8,
-                            flexShrink: 0,
-                            borderRadius: "50%",
-                            background: "#4ade80",
-                            boxShadow: "0 0 10px rgba(74,222,128,0.68)",
-                        }}
+                {mode === "editor" ? (
+                    <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
+                        <Link
+                            href="#cases"
+                            className="btn-primary"
+                            onClick={() => trackEvent("contact_cta_click", { source: "hero", destination: "cases", lang, mode })}
+                        >
+                            {lang === "en" ? "View work" : "Ver trabalhos"}
+                        </Link>
+                        <Link
+                            href="#contato"
+                            className="btn-primary"
+                            style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.15)", color: "var(--white)" }}
+                            onClick={() => trackEvent("contact_cta_click", { source: "hero", destination: "contact", lang, mode })}
+                        >
+                            {lang === "en" ? "Get in touch" : "Entrar em contato"}
+                        </Link>
+                    </div>
+                ) : (
+                    <Link
+                        href="#contato"
+                        className="btn-primary"
+                        onClick={() => trackEvent("contact_cta_click", { source: "hero", lang, mode })}
                     >
                         <span
+                            className="btn-primary-dot"
+                            aria-hidden="true"
                             style={{
-                                position: "absolute",
-                                inset: -4,
-                                borderRadius: "inherit",
-                                background: "rgba(74,222,128,0.28)",
-                                animation: "freelancePing 2s ease-out infinite",
+                                position: "relative",
+                                width: 8,
+                                height: 8,
+                                flexShrink: 0,
+                                borderRadius: "50%",
+                                background: "#4ade80",
+                                boxShadow: "0 0 10px rgba(74,222,128,0.68)",
                             }}
-                        />
-                    </span>
-                    {c.cta}
-                    <span className="arrow">↗</span>
-                </Link>
+                        >
+                            <span
+                                style={{
+                                    position: "absolute",
+                                    inset: -4,
+                                    borderRadius: "inherit",
+                                    background: "rgba(74,222,128,0.28)",
+                                    animation: "freelancePing 2s ease-out infinite",
+                                }}
+                            />
+                        </span>
+                        {c.cta}
+                    </Link>
+                )}
                 {mode === "editor" && (
                     <div className="hero-microproofs" aria-label={lang === "en" ? "Video editing proof" : "Provas de edição"}>
                         {content[lang].microProofs.map((item) => (
@@ -159,26 +190,28 @@ export default function Hero({ overrides }: HeroProps) {
                     </div>
                 )}
                 <div className="social-icons">
-                    <Link
-                        href="https://github.com/oluanmemo"
-                        target="_blank"
-                        className="social-icon"
-                        title="GitHub"
-                        aria-label={lang === "en" ? "GitHub profile" : "Perfil no GitHub"}
-                        onClick={() =>
-                            trackEvent("github_click", {
-                                eventCategory: "social",
-                                destination: "github",
-                                source: "hero",
-                                lang,
-                                mode,
-                            })
-                        }
-                    >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 1.5C6.201 1.5 1.5 6.201 1.5 12c0 4.64 3.01 8.577 7.188 9.965.526.098.72-.228.72-.507 0-.25-.01-1.08-.014-1.958-2.923.636-3.54-1.24-3.54-1.24-.478-1.214-1.168-1.537-1.168-1.537-.955-.654.072-.64.072-.64 1.056.075 1.611 1.085 1.611 1.085.938 1.607 2.46 1.143 3.06.874.094-.68.367-1.143.667-1.406-2.334-.266-4.786-1.167-4.786-5.194 0-1.147.41-2.086 1.082-2.822-.109-.266-.469-1.337.102-2.787 0 0 .883-.282 2.893 1.078a10.06 10.06 0 0 1 5.268 0c2.01-1.36 2.892-1.078 2.892-1.078.571 1.45.211 2.521.103 2.787.673.736 1.081 1.675 1.081 2.822 0 4.037-2.456 4.925-4.797 5.186.377.325.713.964.713 1.944 0 1.404-.012 2.536-.012 2.882 0 .281.19.61.726.506A10.504 10.504 0 0 0 22.5 12c0-5.799-4.701-10.5-10.5-10.5Z" />
-                        </svg>
-                    </Link>
+                    {mode !== "editor" && (
+                        <Link
+                            href="https://github.com/oluanmemo"
+                            target="_blank"
+                            className="social-icon"
+                            title="GitHub"
+                            aria-label={lang === "en" ? "GitHub profile" : "Perfil no GitHub"}
+                            onClick={() =>
+                                trackEvent("github_click", {
+                                    eventCategory: "social",
+                                    destination: "github",
+                                    source: "hero",
+                                    lang,
+                                    mode,
+                                })
+                            }
+                        >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 1.5C6.201 1.5 1.5 6.201 1.5 12c0 4.64 3.01 8.577 7.188 9.965.526.098.72-.228.72-.507 0-.25-.01-1.08-.014-1.958-2.923.636-3.54-1.24-3.54-1.24-.478-1.214-1.168-1.537-1.168-1.537-.955-.654.072-.64.072-.64 1.056.075 1.611 1.085 1.611 1.085.938 1.607 2.46 1.143 3.06.874.094-.68.367-1.143.667-1.406-2.334-.266-4.786-1.167-4.786-5.194 0-1.147.41-2.086 1.082-2.822-.109-.266-.469-1.337.102-2.787 0 0 .883-.282 2.893 1.078a10.06 10.06 0 0 1 5.268 0c2.01-1.36 2.892-1.078 2.892-1.078.571 1.45.211 2.521.103 2.787.673.736 1.081 1.675 1.081 2.822 0 4.037-2.456 4.925-4.797 5.186.377.325.713.964.713 1.944 0 1.404-.012 2.536-.012 2.882 0 .281.19.61.726.506A10.504 10.504 0 0 0 22.5 12c0-5.799-4.701-10.5-10.5-10.5Z" />
+                            </svg>
+                        </Link>
+                    )}
                     <Link
                         href="https://www.linkedin.com/in/oluanmedrado/"
                         target="_blank"
@@ -200,10 +233,10 @@ export default function Hero({ overrides }: HeroProps) {
                         </svg>
                     </Link>
                     <a
-                        href="mailto:oluanmedrado@gmail.com"
+                        href="mailto:luanmedradooliveira@gmail.com"
                         className="social-icon"
-                        title="Email: oluanmedrado@gmail.com"
-                        aria-label="Email: oluanmedrado@gmail.com"
+                        title="Email: luanmedradooliveira@gmail.com"
+                        aria-label="Email: luanmedradooliveira@gmail.com"
                         onClick={() =>
                             trackEvent("email_click", {
                                 eventCategory: "contact",

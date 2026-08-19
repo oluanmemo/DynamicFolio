@@ -108,14 +108,14 @@ export default function FreelanceBadge({ variant = "floating" }: FreelanceBadgeP
     const text =
         lang === "en"
             ? isHome
-                ? "I want my videos edited"
+                ? "Contact me"
                 : mode === "editor"
-                    ? "Edit my videos"
+                    ? "Contact me"
                     : "Bring my project to life"
             : isHome
-                ? "Quero editar meus vídeos"
+                ? "Falar comigo"
                 : mode === "editor"
-                    ? "Quero editar meus vídeos"
+                    ? "Falar comigo"
                     : "Tirar meu projeto do papel";
 
     return (
@@ -135,7 +135,6 @@ export default function FreelanceBadge({ variant = "floating" }: FreelanceBadgeP
         >
             <span className="freelance-dot"></span>
             <span className="freelance-text">{text}</span>
-            <span className="freelance-arrow">↗</span>
         </a>
     );
 }

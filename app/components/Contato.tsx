@@ -5,7 +5,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
 import { trackEvent, getPortfolioRef } from "../lib/analytics";
 
-const CONTACT_EMAIL = "oluanmedrado@gmail.com";
+const CONTACT_EMAIL = "luanmedradooliveira@gmail.com";
 const COPIED_RESET_DELAY = 2200;
 const CLIPBOARD_WRITE_TIMEOUT = 600;
 
@@ -17,9 +17,9 @@ const modeContent = {
             sub: "Posso ajudar com sites, interfaces e apps mobile com acabamento profissional. Respondo com disponibilidade, próximos passos e uma estimativa inicial.",
         },
         editor: {
-            titleLine: "Me manda",
-            titleEm: "seu vídeo",
-            sub: "Envie link do canal, tipo de vídeo e prazo. Te respondo com ideia + orçamento. Pode mandar mesmo sem ideia clara, eu te ajudo a definir o melhor formato. Se fizer sentido, já te passo próximos passos.",
+            titleLine: "Vamos",
+            titleEm: "conversar?",
+            sub: "Estou aberto a oportunidades em audiovisual, conteúdo e edição. Se você está formando uma equipe, contratando ou quer conversar sobre um projeto, pode me chamar.",
         },
     },
     en: {
@@ -29,9 +29,9 @@ const modeContent = {
             sub: "Send the role, project or scope. I reply with availability, fit, next steps and the clearest way to evaluate the work.",
         },
         editor: {
-            titleLine: "Send me",
-            titleEm: "your video",
-            sub: "Send the channel link, video type and deadline. I reply with an idea + quote. You can reach out even without a clear plan, and I help you define the best format. If it makes sense, I send the next steps.",
+            titleLine: "Let's",
+            titleEm: "talk?",
+            sub: "I am open to opportunities in audiovisual, content and editing. If you are building a team, hiring, or want to chat about a project, reach out.",
         },
     },
 };
@@ -42,12 +42,12 @@ const formCopy = {
         namePlaceholder: "Seu nome",
         email: "Email",
         emailPlaceholder: "seu@email.com",
-        projectType: "Tipo de projeto",
+        projectType: "Motivo do contato",
         projectTypePlaceholder: "Selecione...",
-        projectTypes: ["YouTube", "Reels / Shorts", "Vídeo social", "Pacote recorrente", "Outro"],
+        projectTypes: ["Oportunidade de trabalho", "Projeto audiovisual", "Edição de vídeo", "Colaboração", "Outro"],
         message: "Mensagem",
-        messagePlaceholder: "Link do canal, tipo de vídeo, prazo e qualquer referência.",
-        submit: "Enviar briefing",
+        messagePlaceholder: "Conte sobre a vaga, projeto ou ideia.",
+        submit: "Enviar mensagem",
         sending: "Enviando...",
         successTitle: "Mensagem enviada.",
         successText: "Obrigado — vou te responder o quanto antes.",
@@ -58,23 +58,23 @@ const formCopy = {
         copiedEmail: "E-mail copiado",
         openEmail: "Abrir e-mail",
         errorFallback: "Erro ao enviar. Tente novamente.",
-        hint: "Resposta rápida · Foco em retenção · Sem compromisso",
+        hint: "",
         copyAria: "Copiar endereço de e-mail",
         fallbackPrefix: "Se o botão não abrir, copie:",
         gmailCta: "Abrir no Gmail →",
-        trust: ["Resposta em até 24h", "Ideia + orçamento", "Sem compromisso"],
+        trust: ["São Paulo", "Híbrido / Remoto", "Aberto a oportunidades"],
     },
     en: {
         name: "Name",
         namePlaceholder: "Your name",
         email: "Email",
         emailPlaceholder: "you@email.com",
-        projectType: "Project type",
+        projectType: "Reason for contact",
         projectTypePlaceholder: "Select...",
-        projectTypes: ["YouTube video", "Reels / Shorts", "Social video", "Recurring package", "Other"],
+        projectTypes: ["Job opportunity", "Audiovisual project", "Video editing", "Collaboration", "Other"],
         message: "Message",
-        messagePlaceholder: "Channel link, video type, deadline and any reference.",
-        submit: "Send brief",
+        messagePlaceholder: "Tell me about the role, project or idea.",
+        submit: "Send message",
         sending: "Sending...",
         successTitle: "Message sent.",
         successText: "Thank you — I'll get back to you as soon as possible.",
@@ -85,11 +85,11 @@ const formCopy = {
         copiedEmail: "Email copied",
         openEmail: "Open email",
         errorFallback: "Error sending. Please try again.",
-        hint: "Fast reply · Retention focus · No commitment",
+        hint: "",
         copyAria: "Copy email address",
         fallbackPrefix: "If the button does not open, copy:",
         gmailCta: "Open in Gmail →",
-        trust: ["Reply within 24h", "Idea + quote", "No commitment"],
+        trust: ["São Paulo", "Hybrid / Remote", "Open to opportunities"],
     },
 };
 
@@ -468,34 +468,36 @@ export default function Contato() {
                                 ) : (
                                     <>
                                         {f.submit}
-                                        <span className="contact-arrow">→</span>
                                     </>
                                 )}
                             </button>
-                            <p className="contact-submit-hint">{f.hint}</p>
+                            {f.hint && <p className="contact-submit-hint">{f.hint}</p>}
                         </form>
                     )}
 
                     <div className="contact-email-options" aria-label={lang === "en" ? "Email fallback options" : "Opções alternativas de e-mail"}>
-                        <button
-                            type="button"
-                            className="contact-copy-btn"
-                            aria-label={f.copyAria}
-                            onClick={handleCopyEmail}
-                        >
-                            {copied ? f.copiedEmail : f.copyEmail}
-                        </button>
-                        <a
-                            href={`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent("Portfolio Contact")}`}
-                            className="contact-gmail-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => trackEvent("gmail_link_click", { source: "contact_section", lang, mode })}
-                        >
-                            {f.gmailCta}
-                        </a>
+                        <div className="contact-email-actions">
+                            <button
+                                type="button"
+                                className="contact-copy-btn"
+                                aria-label={f.copyAria}
+                                onClick={handleCopyEmail}
+                            >
+                                {copied ? f.copiedEmail : f.copyEmail}
+                            </button>
+                            <span className="contact-dot-divider">·</span>
+                            <a
+                                href="https://www.linkedin.com/in/oluanmedrado/"
+                                className="contact-linkedin-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => trackEvent("social_click", { destination: "linkedin", source: "contact_section", lang, mode })}
+                            >
+                                LinkedIn
+                            </a>
+                        </div>
                         <p className="contact-email-fallback">
-                            {f.fallbackPrefix} <span>{CONTACT_EMAIL}</span>
+                            <span>{CONTACT_EMAIL}</span>
                         </p>
                     </div>
                 </div>

@@ -87,7 +87,20 @@ export default function Navbar() {
             <nav id="topnav" className={`${scrolled ? "scrolled" : ""}${showHomeButton ? " nav-return-route" : ""}`} style={editingReturnStyle}>
                 <div className="nav-left">
                     <ul className="nav-links">
-                        {showHomeButton ? (
+                        {isEditingRoute ? (
+                            <>
+                                <li>
+                                    <Link href={localizePath("/", lang)} className="nav-home-link" aria-label={labels.backHome}>
+                                        <span aria-hidden>{"←"}</span>
+                                        <span>{labels.backHome}</span>
+                                    </Link>
+                                </li>
+                                <li><Link href="#hero" onClick={handleSectionClick("hero")}>{lang === "en" ? "HOME" : "INÍCIO"}</Link></li>
+                                <li><Link href="#cases" onClick={handleSectionClick("cases")}>CASES</Link></li>
+                                <li><Link href="#trabalhos" onClick={handleSectionClick("trabalhos")}>{lang === "en" ? "WORK" : "TRABALHOS"}</Link></li>
+                                <li><Link href="#contato" onClick={handleSectionClick("contato")}>{lang === "en" ? "CONTACT" : "CONTATO"}</Link></li>
+                            </>
+                        ) : showHomeButton ? (
                             <li>
                                 <Link href={localizePath("/", lang)} className="nav-home-link" aria-label={labels.backHome}>
                                     <span aria-hidden>{"←"}</span>
@@ -95,12 +108,16 @@ export default function Navbar() {
                                 </Link>
                             </li>
                         ) : null}
-                        <li>
-                            <Link href={`#${primarySectionId}`} onClick={handleSectionClick(primarySectionId)}>{primaryLabel}</Link>
-                        </li>
-                        <li>
-                            <Link href="#projetos" onClick={handleSectionClick("projetos")}>{labels.projects}</Link>
-                        </li>
+                        {!isEditingRoute && (
+                            <>
+                                <li>
+                                    <Link href={`#${primarySectionId}`} onClick={handleSectionClick(primarySectionId)}>{primaryLabel}</Link>
+                                </li>
+                                <li>
+                                    <Link href="#projetos" onClick={handleSectionClick("projetos")}>{labels.projects}</Link>
+                                </li>
+                            </>
+                        )}
                     </ul>
                     <Link href="/riffmaker" className="nav-cta">
                         <Image src="/riff-maker/icon.png" alt="" width={24} height={24} className="nav-cta-icon" />
@@ -150,12 +167,23 @@ export default function Navbar() {
                     </button>
 
                     <nav className="mobile-nav-links" aria-label={lang === "en" ? "Main navigation" : "Navegação principal"}>
-                        <Link href={`#${primarySectionId}`} onClick={handleSectionClick(primarySectionId)} tabIndex={menuOpen ? 0 : -1}>
-                            {primaryLabel}
-                        </Link>
-                        <Link href="#projetos" onClick={handleSectionClick("projetos")} tabIndex={menuOpen ? 0 : -1}>
-                            {labels.projects}
-                        </Link>
+                        {isEditingRoute ? (
+                            <>
+                                <Link href="#hero" onClick={handleSectionClick("hero")} tabIndex={menuOpen ? 0 : -1}>{lang === "en" ? "HOME" : "INÍCIO"}</Link>
+                                <Link href="#cases" onClick={handleSectionClick("cases")} tabIndex={menuOpen ? 0 : -1}>CASES</Link>
+                                <Link href="#trabalhos" onClick={handleSectionClick("trabalhos")} tabIndex={menuOpen ? 0 : -1}>{lang === "en" ? "WORK" : "TRABALHOS"}</Link>
+                                <Link href="#contato" onClick={handleSectionClick("contato")} tabIndex={menuOpen ? 0 : -1}>{lang === "en" ? "CONTACT" : "CONTATO"}</Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link href={`#${primarySectionId}`} onClick={handleSectionClick(primarySectionId)} tabIndex={menuOpen ? 0 : -1}>
+                                    {primaryLabel}
+                                </Link>
+                                <Link href="#projetos" onClick={handleSectionClick("projetos")} tabIndex={menuOpen ? 0 : -1}>
+                                    {labels.projects}
+                                </Link>
+                            </>
+                        )}
                         <Link href="/riffmaker" onClick={closeMenu} tabIndex={menuOpen ? 0 : -1} className="mobile-nav-riff">
                             {labels.riffmaker}
                         </Link>

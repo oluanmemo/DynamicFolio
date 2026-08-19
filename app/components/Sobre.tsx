@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
@@ -92,6 +92,21 @@ const ElevenLabsLogo = () => (
     </svg>
 );
 
+const PhotoshopLogo = () => (
+    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+        <rect width="18" height="18" rx="3" fill="#001E36"/>
+        <text x="2" y="13.5" fontFamily="system-ui,sans-serif" fontWeight="800" fontSize="9.5" fill="#31A8FF">Ps</text>
+    </svg>
+);
+
+const CapCutLogo = () => (
+    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+        <rect width="18" height="18" rx="4" fill="#000000"/>
+        <path d="M4 9 L9 4 L14 9 L9 14 Z" fill="none" stroke="#FFF" strokeWidth="2.2" strokeLinejoin="round"/>
+        <path d="M7 9 L9 7 L11 9 L9 11 Z" fill="#FFF"/>
+    </svg>
+);
+
 const WaveformIcon = () => (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
         <line x1="1" y1="9" x2="1" y2="9" stroke="#888" strokeWidth="2" strokeLinecap="round"/>
@@ -156,19 +171,16 @@ const modeContent = {
             ],
         },
         editor: {
-            title: (<>Edição com <em>ritmo</em>, retenção e acabamento</>),
+            title: (<>O que eu <strong>faço</strong></>),
             text: (
-                <>
-                    Edito vídeos para YouTube e social com foco em narrativa visual, retenção e entrega pronta para publicar. <br />
-                    O objetivo é fazer o conteúdo parecer profissional sem perder o estilo do canal.
-                </>
+                <>Edição, motion, conteúdo e design - do material bruto à entrega final.</>
             ),
-            skills: editorSkills,
+            skills: [],
             stackGroups: [
-                ["Edição", "Premiere Pro, DaVinci Resolve, ritmo narrativo"],
-                ["Motion", "After Effects, grafismos, identidade visual"],
-                ["Som", "Sound design, trilha, efeitos e mix básica"],
-                ["Entrega", "YouTube, social, formatos e revisão final"],
+                ["EDIÇÃO", "Long-form · Short-form · montagem · ritmo · storytelling"],
+                ["MOTION", "Motion graphics · rotoscopia · composição"],
+                ["CONTEÚDO", "Pesquisa · roteiro · YouTube · retenção · formatos"],
+                ["DESIGN", "Thumbnails · identidade visual · peças digitais"],
             ],
         },
     },
@@ -192,19 +204,16 @@ const modeContent = {
             ],
         },
         editor: {
-            title: (<>Editing with <em>retention</em>, rhythm and finish</>),
+            title: (<>What I <strong>do</strong></>),
             text: (
-                <>
-                    I edit YouTube and social videos with structure, retention, visual rhythm and ready-to-publish delivery. <br />
-                    The goal is to keep the channel style intact while improving pacing, clarity and perceived production value.
-                </>
+                <>Editing, motion, content and design - from raw material to final delivery.</>
             ),
-            skills: editorSkills,
+            skills: [],
             stackGroups: [
-                ["Editing", "Premiere Pro, DaVinci Resolve, narrative rhythm"],
-                ["Motion", "After Effects, graphics, visual identity"],
-                ["Sound", "Sound design, music, effects and basic mix"],
-                ["Delivery", "YouTube, social, formats and final review"],
+                ["EDITING", "Long-form · Short-form · cuts · pacing · storytelling"],
+                ["MOTION", "Motion graphics · rotoscoping · composition"],
+                ["CONTENT", "Research · scripting · YouTube · retention · formats"],
+                ["DESIGN", "Thumbnails · visual identity · digital assets"],
             ],
         },
     },
@@ -231,21 +240,41 @@ export default function Sobre() {
 
             </div>
             <div className="about-right" id="skills">
-                <div className="skills-grid" id="skillsGrid">
-                    {c.skills.map((skill, i) => (
-                        <div key={i} className="skill-pill">
-                            <span className="skill-pill-icon">{skill.icon}</span>
-                            <span className="skill-pill-name">{skill.name}</span>
+                {mode === "dev" ? (
+                    <div className="skills-grid" id="skillsGrid">
+                        {c.skills.map((skill, i) => (
+                            <div key={i} className="skill-pill">
+                                <span className="skill-pill-icon">{skill.icon}</span>
+                                <span className="skill-pill-name">{skill.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="editor-tools-group">
+                        <p className="editor-tools-label">{lang === "en" ? "TOOLS" : "FERRAMENTAS"}</p>
+                        <div className="editor-tools-icons">
+                            <div className="editor-tool"><PremiereLogo /> Premiere Pro</div>
+                            <div className="editor-tool"><AfterEffectsLogo /> After Effects</div>
+                            <div className="editor-tool"><DaVinciLogo /> DaVinci</div>
+                            <div className="editor-tool"><PhotoshopLogo /> Photoshop</div>
+                            <div className="editor-tool"><CapCutLogo /> CapCut</div>
+                            <div className="editor-tool"><ElevenLabsLogo /> ElevenLabs</div>
                         </div>
-                    ))}
-                </div>
-                <div className="stack-groups" aria-label={lang === "en" ? "Organized stack" : "Stack organizada"}>
-                    {c.stackGroups.map(([label, value]) => (
-                        <div className="stack-group" key={label}>
-                            <strong>{label}</strong>
-                            <span>{value}</span>
-                        </div>
-                    ))}
+                    </div>
+                )}
+                
+                <div className="editor-competencias-group">
+                    {mode === "editor" && (
+                        <p className="editor-tools-label">{lang === "en" ? "SKILLS" : "COMPETÊNCIAS"}</p>
+                    )}
+                    <div className="stack-groups" aria-label={lang === "en" ? "Organized stack" : "Stack organizada"}>
+                        {c.stackGroups.map(([label, value]) => (
+                            <div className="stack-group" key={label}>
+                                <strong>{label}</strong>
+                                <span>{value}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
