@@ -20,7 +20,7 @@ const content = {
         editor: {
             role: "Editor de Vídeo & Produtor Audiovisual",
             cta: "",
-            desc: <>Conteúdo com ritmo, narrativa e acabamento - para YouTube, marcas e plataformas digitais.</>,
+            desc: <>Conteúdo com ritmo, narrativa e acabamento para YouTube, marcas e plataformas digitais.</>,
         },
     },
     en: {
@@ -35,7 +35,7 @@ const content = {
         editor: {
             role: "Video Editor & Audiovisual Producer",
             cta: "",
-            desc: <>Content with pacing, narrative and polish - for YouTube, brands and digital platforms.</>,
+            desc: <>Content with pacing, narrative and polish for YouTube, brands and digital platforms.</>,
         },
     },
 };

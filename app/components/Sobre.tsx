@@ -144,7 +144,7 @@ const modeContent = {
         editor: {
             title: (<>O que eu <strong>faço</strong></>),
             text: (
-                <>Edição, motion, conteúdo e design - do material bruto à entrega final.</>
+                <>Edição, motion, conteúdo e design do material bruto à entrega final.</>
             ),
             skills: [],
             stackGroups: [
@@ -177,7 +177,7 @@ const modeContent = {
         editor: {
             title: (<>What I <strong>do</strong></>),
             text: (
-                <>Editing, motion, content and design - from raw material to final delivery.</>
+                <>Editing, motion, content and design from raw material to final delivery.</>
             ),
             skills: [],
             stackGroups: [

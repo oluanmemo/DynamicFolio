@@ -38,8 +38,8 @@ export default function Navbar() {
         : undefined;
     const labels =
         lang === "en"
-            ? { home: "Home", about: "About", projects: "Projects", riffmaker: "RiffMaker", backHome: "Home" }
-            : { home: "Inicio", about: "Sobre", projects: "Projetos", riffmaker: "RiffMaker", backHome: "Inicio" };
+            ? { home: "Home", about: "About", projects: "Projects", riffmaker: "RiffMaker", backHome: "Back" }
+            : { home: "Inicio", about: "Sobre", projects: "Projetos", riffmaker: "RiffMaker", backHome: "Voltar" };
 
     const primarySectionId = isHomeRoute ? "hero" : "sobre";
     const primaryLabel = isHomeRoute ? labels.home : labels.about;
