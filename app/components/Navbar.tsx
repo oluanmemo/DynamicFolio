@@ -7,6 +7,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { localizePath, stripLocalePrefix } from "../lib/locale";
 import LanguageSwitch from "./LanguageSwitch";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -38,8 +39,8 @@ export default function Navbar() {
         : undefined;
     const labels =
         lang === "en"
-            ? { home: "Home", about: "About", projects: "Projects", riffmaker: "RiffMaker", backHome: "Back" }
-            : { home: "Inicio", about: "Sobre", projects: "Projetos", riffmaker: "RiffMaker", backHome: "Voltar" };
+            ? { home: "Home", about: "About", projects: "Projects", riffmaker: "RiffMaker", backHome: isEditingRoute ? "Home" : "Back" }
+            : { home: "Inicio", about: "Sobre", projects: "Projetos", riffmaker: "RiffMaker", backHome: isEditingRoute ? "Inicio" : "Voltar" };
 
     const primarySectionId = isHomeRoute ? "hero" : "sobre";
     const primaryLabel = isHomeRoute ? labels.home : labels.about;
@@ -51,7 +52,7 @@ export default function Navbar() {
         const target = document.getElementById(sectionId);
         if (!target) return;
 
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
 
         const nextHash = `#${sectionId}`;
         if (window.location.hash !== nextHash) {
@@ -84,7 +85,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav id="topnav" className={`${scrolled ? "scrolled" : ""}${showHomeButton ? " nav-return-route" : ""}`} style={editingReturnStyle}>
+            <nav id="topnav" className={`${scrolled ? "scrolled" : ""}${showHomeButton ? " nav-return-route" : ""}${isEditingRoute ? ` ${styles.editingNav}` : ""}`} style={editingReturnStyle}>
                 <div className="nav-left">
                     <ul className="nav-links">
                         {isEditingRoute ? (
@@ -95,7 +96,6 @@ export default function Navbar() {
                                         <span>{labels.backHome}</span>
                                     </Link>
                                 </li>
-                                <li><Link href="#hero" onClick={handleSectionClick("hero")}>{lang === "en" ? "HOME" : "INÍCIO"}</Link></li>
                                 <li><Link href="#cases" onClick={handleSectionClick("cases")}>CASES</Link></li>
                                 <li><Link href="#trabalhos" onClick={handleSectionClick("trabalhos")}>{lang === "en" ? "WORK" : "TRABALHOS"}</Link></li>
                                 <li><Link href="#contato" onClick={handleSectionClick("contato")}>{lang === "en" ? "CONTACT" : "CONTATO"}</Link></li>
@@ -119,10 +119,10 @@ export default function Navbar() {
                             </>
                         )}
                     </ul>
-                    <Link href="/riffmaker" className="nav-cta">
+                    {!isEditingRoute && <Link href="/riffmaker" className="nav-cta">
                         <Image src="/riff-maker/icon.png" alt="" width={24} height={24} className="nav-cta-icon" />
                         {labels.riffmaker}
-                    </Link>
+                    </Link>}
                 </div>
 
                 {showHomeButton ? (
@@ -148,6 +148,10 @@ export default function Navbar() {
                 </Link>
 
                 <div className="nav-right">
+                    {isEditingRoute && <Link href="/riffmaker" className={`nav-cta ${styles.editingRiff}`}>
+                        <Image src="/riff-maker/icon.png" alt="" width={24} height={24} className="nav-cta-icon" />
+                        {labels.riffmaker}
+                    </Link>}
                     <LanguageSwitch />
                 </div>
             </nav>

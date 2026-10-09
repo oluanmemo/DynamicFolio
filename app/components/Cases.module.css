@@ -4,7 +4,7 @@
 }
 
 .container {
-  max-width: 920px;
+  max-width: 1120px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -24,6 +24,7 @@
 
 .caseHeader {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
@@ -70,6 +71,7 @@
 }
 
 .intro, .text {
+  max-width: 76ch;
   font-family: var(--font-dm-sans);
   font-size: 1rem;
   line-height: 1.6;
@@ -80,7 +82,7 @@
 /* ── CASE 01: Split layout (9:16 Video + Proof & Interactive Channels) ── */
 .case1Split {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 240px minmax(0, 1fr);
   gap: 1.5rem;
   align-items: start;
   margin: 0.5rem 0;
@@ -134,9 +136,9 @@
 
 .videoCaption {
   font-family: var(--font-dm-sans);
-  font-size: 0.8rem;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 0.7rem;
@@ -175,8 +177,8 @@
 
 .proofMiniDesc {
   font-family: var(--font-dm-sans);
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.68);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -230,7 +232,7 @@
 
 .channelActiveNiche {
   font-family: var(--font-dm-mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: #ff7777;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -249,7 +251,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.85);
   font-family: var(--font-dm-sans);
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   padding: 3px 8px;
   border-radius: 6px;
 }
@@ -259,7 +261,7 @@
   border: 1px solid rgba(168, 85, 247, 0.35);
   color: #c084fc;
   font-family: var(--font-dm-mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
   padding: 3px 8px;
   border-radius: 6px;
@@ -272,7 +274,7 @@
   gap: 6px;
   margin-top: 2px;
   font-family: var(--font-dm-sans);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #ff7777;
   text-decoration: none;
@@ -318,8 +320,9 @@
 /* Horizontal Channel Selector Strip */
 .channelStripLabel {
   font-family: var(--font-dm-mono);
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-top: 2px;
@@ -369,7 +372,7 @@
   color: rgba(168, 85, 247, 0.9);
   padding: 0.2rem 0.65rem;
   border-radius: 99px;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-family: var(--font-dm-sans);
 }
 
@@ -436,8 +439,8 @@
 
 .videoPlayer {
   width: 100%;
-  max-height: 480px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
   background: #000;
 }
@@ -570,23 +573,51 @@
 
 .note {
   font-family: var(--font-dm-sans);
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
   font-style: italic;
   margin-top: 0.25rem;
 }
 
 .breakdown {
+  list-style: none;
+  counter-reset: production-step;
   font-family: var(--font-dm-sans);
   font-size: 0.92rem;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
-  padding-left: 1.2rem;
+  padding: 0;
   margin: 0;
 }
 
 .breakdown li {
-  margin-bottom: 0.35rem;
+  counter-increment: production-step;
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.12);
+}
+
+.breakdown li:last-child {
+  border-bottom: 0;
+}
+
+.breakdown li::before {
+  content: counter(production-step, decimal-leading-zero);
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  background: rgba(168, 85, 247, 0.08);
+  color: #c084fc;
+  font-family: var(--font-dm-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 
 .behanceGhostBtn {

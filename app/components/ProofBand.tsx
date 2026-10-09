@@ -11,15 +11,13 @@ export default function ProofBand() {
   if (mode !== 'editor') return null;
 
   const data = lang === 'pt' ? [
-      { value: '+2 anos', label: 'produção recorrente' },
-      { value: '~6 vídeos/semana', label: 'para operação internacional' },
-      { value: '200K+ views', label: 'em vídeos editados' },
-      { value: '3 vídeos institucionais', label: 'produzidos no Grupo Multi' }
+      { value: '+2', unit: 'anos', label: 'produção recorrente' },
+      { value: '200K+', unit: 'views', label: 'em vídeos editados' },
+      { value: '3', unit: 'vídeos institucionais', label: 'produzidos no Grupo Multi' }
   ] : [
-      { value: '+2 years', label: 'recurring production' },
-      { value: '~6 videos/week', label: 'for international operation' },
-      { value: '200K+ views', label: 'on edited videos' },
-      { value: '3 institutional videos', label: 'produced at Grupo Multi' }
+      { value: '+2', unit: 'years', label: 'recurring production' },
+      { value: '200K+', unit: 'views', label: 'on edited videos' },
+      { value: '3', unit: 'institutional videos', label: 'produced at Grupo Multi' }
   ];
 
   return (
@@ -28,6 +26,7 @@ export default function ProofBand() {
         {data.map((item, index) => (
           <div key={index} className={styles.metric}>
             <div className={styles.value}>{item.value}</div>
+            <div className={styles.unit}>{item.unit}</div>
             <div className={styles.label}>{item.label}</div>
           </div>
         ))}

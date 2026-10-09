@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { AudioLines, Clapperboard, Film, Scissors, Youtube } from "lucide-react";
+import styles from "./Hero.module.css";
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
 import { trackEvent } from "../lib/analytics";
@@ -11,7 +13,6 @@ const content = {
     pt: {
         eyebrow: "Oi! Eu sou",
         scroll: "scroll",
-        microProofs: ["+2 anos de produção recorrente", "Brasil + Internacional", "Premiere · After Effects · DaVinci"],
         dev: {
             role: "Desenvolvedor Front-End",
             cta: "Tirar meu projeto do papel",
@@ -20,13 +21,12 @@ const content = {
         editor: {
             role: "Editor de Vídeo & Produtor Audiovisual",
             cta: "",
-            desc: <>Conteúdo com ritmo, narrativa e acabamento para YouTube, marcas e plataformas digitais.</>,
+            desc: <>Conteúdo com ritmo, narrativa e acabamento - para YouTube, marcas e plataformas digitais.</>,
         },
     },
     en: {
         eyebrow: "Hey! I'm",
         scroll: "scroll",
-        microProofs: ["+2 years recurring production", "Brazil + International", "Premiere · After Effects · DaVinci"],
         dev: {
             role: "Front-End Developer",
             cta: "Bring my project to life",
@@ -35,7 +35,7 @@ const content = {
         editor: {
             role: "Video Editor & Audiovisual Producer",
             cta: "",
-            desc: <>Content with pacing, narrative and polish for YouTube, brands and digital platforms.</>,
+            desc: <>Content with pacing, narrative and polish - for YouTube, brands and digital platforms.</>,
         },
     },
 };
@@ -107,11 +107,22 @@ export default function Hero({ overrides }: HeroProps) {
     const scrollLabel = overrides?.scrollLabel ?? content[lang].scroll;
 
     return (
-        <section className="hero" id="hero">
+        <section className={`hero${mode === "editor" ? ` ${styles.editingHero}` : ""}`} id="hero">
             <div className="hero-grid"></div>
             <div className="hero-glow"></div>
-            <div className="hero-ring"></div>
-            <div className="hero-ring hero-ring-2"></div>
+            {mode === "editor" ? (
+                <div className={styles.audiovisualBackdrop} aria-hidden="true">
+                    <span className={styles.clapperboard}><Clapperboard strokeWidth={1.25} /></span>
+                    <span className={styles.film}><Film strokeWidth={1.25} /></span>
+                    <span className={styles.audio}><AudioLines strokeWidth={1.25} /></span>
+                    <span className={styles.scissors}><Scissors strokeWidth={1.25} /></span>
+                </div>
+            ) : (
+                <>
+                    <div className="hero-ring"></div>
+                    <div className="hero-ring hero-ring-2"></div>
+                </>
+            )}
             <HeroWorkPreview mode={mode} lang={lang} />
 
             <div className="hero-copy">
@@ -135,9 +146,9 @@ export default function Hero({ overrides }: HeroProps) {
                 {mode === "editor" ? (
                     <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
                         <Link
-                            href="#cases"
+                            href="#trabalhos"
                             className="btn-primary"
-                            onClick={() => trackEvent("contact_cta_click", { source: "hero", destination: "cases", lang, mode })}
+                            onClick={() => trackEvent("contact_cta_click", { source: "hero", destination: "trabalhos", lang, mode })}
                         >
                             {lang === "en" ? "View work" : "Ver trabalhos"}
                         </Link>
@@ -182,15 +193,21 @@ export default function Hero({ overrides }: HeroProps) {
                         {c.cta}
                     </Link>
                 )}
-                {mode === "editor" && (
-                    <div className="hero-microproofs" aria-label={lang === "en" ? "Video editing proof" : "Provas de edição"}>
-                        {content[lang].microProofs.map((item) => (
-                            <span key={item}>{item}</span>
-                        ))}
-                    </div>
-                )}
                 <div className="social-icons">
-                    {mode !== "editor" && (
+                    {mode === "editor" ? (
+                        <Link
+                            href="https://www.youtube.com/@madebyluan"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="social-icon"
+                            title={lang === "pt" ? "MadeByLuan · Projetos e bastidores" : "MadeByLuan · Projects and behind the scenes"}
+                            aria-label={lang === "pt" ? "YouTube · MadeByLuan · Projetos e bastidores" : "YouTube · MadeByLuan · Projects and behind the scenes"}
+                            onClick={() => trackEvent("social_click", { destination: "youtube", source: "hero", lang, mode })}
+                        >
+                            <Youtube size={18} aria-hidden="true" />
+                        </Link>
+                    ) : (
+                        <>
                         <Link
                             href="https://github.com/oluanmemo"
                             target="_blank"
@@ -211,7 +228,6 @@ export default function Hero({ overrides }: HeroProps) {
                                 <path d="M12 1.5C6.201 1.5 1.5 6.201 1.5 12c0 4.64 3.01 8.577 7.188 9.965.526.098.72-.228.72-.507 0-.25-.01-1.08-.014-1.958-2.923.636-3.54-1.24-3.54-1.24-.478-1.214-1.168-1.537-1.168-1.537-.955-.654.072-.64.072-.64 1.056.075 1.611 1.085 1.611 1.085.938 1.607 2.46 1.143 3.06.874.094-.68.367-1.143.667-1.406-2.334-.266-4.786-1.167-4.786-5.194 0-1.147.41-2.086 1.082-2.822-.109-.266-.469-1.337.102-2.787 0 0 .883-.282 2.893 1.078a10.06 10.06 0 0 1 5.268 0c2.01-1.36 2.892-1.078 2.892-1.078.571 1.45.211 2.521.103 2.787.673.736 1.081 1.675 1.081 2.822 0 4.037-2.456 4.925-4.797 5.186.377.325.713.964.713 1.944 0 1.404-.012 2.536-.012 2.882 0 .281.19.61.726.506A10.504 10.504 0 0 0 22.5 12c0-5.799-4.701-10.5-10.5-10.5Z" />
                             </svg>
                         </Link>
-                    )}
                     <Link
                         href="https://www.linkedin.com/in/oluanmedrado/"
                         target="_blank"
@@ -251,6 +267,8 @@ export default function Hero({ overrides }: HeroProps) {
                             <path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7" />
                         </svg>
                     </a>
+                        </>
+                    )}
                 </div>
             </div>
 

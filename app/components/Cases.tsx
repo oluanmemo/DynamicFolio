@@ -149,6 +149,7 @@ export default function Cases() {
                 <video
                   src="/reel-en.mp4"
                   poster="/proofs/reel-nanogram.webp"
+                  preload="none"
                   controls
                   playsInline
                   muted
@@ -286,7 +287,7 @@ export default function Cases() {
 
           <div className={styles.case1FooterActions}>
             <a href="#trabalhos" className={styles.jumpToWorksBtn}>
-              {lang === 'pt' ? 'Assistir edições selecionadas' : 'Watch selected edits'}
+              {lang === 'pt' ? 'Ver mais trabalhos' : 'View more work'}
             </a>
           </div>
         </article>
@@ -396,6 +397,7 @@ export default function Cases() {
             <video
               src="/Multilaser.mp4"
               poster="/proofs/emultitech.webp"
+              preload="none"
               controls
               playsInline
               muted
@@ -415,11 +417,11 @@ export default function Cases() {
             ))}
           </div>
 
-          <ol className={styles.breakdown}>
-            <li>{lang === 'pt' ? '01 Mockup de smartphone criado e animado no After Effects' : '01 Smartphone mockup created and animated in After Effects'}</li>
-            <li>{lang === 'pt' ? '02 Captura da interface real do produto' : '02 Real product interface capture'}</li>
-            <li>{lang === 'pt' ? '03 Roteiro com apoio de IA e narração via ElevenLabs' : '03 Script supported by AI and voiceover via ElevenLabs'}</li>
-            <li>{lang === 'pt' ? '04 Motion, trilha e montagem final' : '04 Motion, score and final assembly'}</li>
+          <ol className={styles.breakdown} role="list">
+            <li>{lang === 'pt' ? 'Mockup de smartphone criado e animado no After Effects' : 'Smartphone mockup created and animated in After Effects'}</li>
+            <li>{lang === 'pt' ? 'Captura da interface real do produto' : 'Real product interface capture'}</li>
+            <li>{lang === 'pt' ? 'Roteiro com apoio de IA e narração via ElevenLabs' : 'Script supported by AI and voiceover via ElevenLabs'}</li>
+            <li>{lang === 'pt' ? 'Motion, trilha e montagem final' : 'Motion, score and final assembly'}</li>
           </ol>
 
           <a

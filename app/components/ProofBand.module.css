@@ -11,8 +11,8 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
   text-align: center;
 }
 
@@ -20,20 +20,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 0 1.25rem;
+}
+
+.metric + .metric {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .value {
   font-family: var(--font-bebas);
-  font-size: clamp(36px, 5vw, 56px);
+  font-size: clamp(44px, 4.5vw, 60px);
   line-height: 1.1;
   color: #fff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.unit {
+  font-family: var(--font-dm-mono), monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  min-height: 2.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.035em;
 }
 
 .label {
   font-family: var(--font-dm-sans);
-  font-size: 0.9rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -41,8 +57,8 @@
 
 @media (max-width: 960px) {
   .container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem 2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem 0;
   }
 }
 
@@ -50,7 +66,9 @@
   .proofBand {
     padding: 2.5rem 1rem;
   }
-  .label {
-    font-size: 0.8rem;
-  }
+  .metric { padding: 0 0.75rem; }
+  .unit { font-size: 0.7rem; }
+  .label { font-size: 0.65rem; }
+  .container { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 0; }
+  .metric:last-child { grid-column: 1 / -1; border-left: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.75rem; }
 }

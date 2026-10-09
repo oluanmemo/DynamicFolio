@@ -476,7 +476,7 @@ export default function Contato() {
                     )}
 
                     <div className="contact-email-options" aria-label={lang === "en" ? "Email fallback options" : "Opções alternativas de e-mail"}>
-                        <div className="contact-email-actions">
+                        <div className="contact-email-actions" style={mode === "editor" ? { flexWrap: "wrap" } : undefined}>
                             <button
                                 type="button"
                                 className="contact-copy-btn"
@@ -485,7 +485,7 @@ export default function Contato() {
                             >
                                 {copied ? f.copiedEmail : f.copyEmail}
                             </button>
-                            <span className="contact-dot-divider">·</span>
+                            {mode !== "editor" && <span className="contact-dot-divider">·</span>}
                             <a
                                 href="https://www.linkedin.com/in/oluanmedrado/"
                                 className="contact-linkedin-link"
@@ -495,6 +495,20 @@ export default function Contato() {
                             >
                                 LinkedIn
                             </a>
+                            {mode === "editor" && (
+                                <>
+                                    <a
+                                        href="https://www.youtube.com/@madebyluan"
+                                        className="contact-linkedin-link"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        title={lang === "pt" ? "MadeByLuan · Projetos e bastidores" : "MadeByLuan · Projects and behind the scenes"}
+                                        onClick={() => trackEvent("social_click", { destination: "youtube", source: "contact_section", lang, mode })}
+                                    >
+                                        YouTube · MadeByLuan
+                                    </a>
+                                </>
+                            )}
                         </div>
                         <p className="contact-email-fallback">
                             <span>{CONTACT_EMAIL}</span>

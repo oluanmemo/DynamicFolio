@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Youtube } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
 import { trackEvent } from "../lib/analytics";
@@ -37,6 +38,18 @@ export default function Footer() {
                     </p>
                 </div>
                 <div className="footer-socials">
+                    {mode === "editor" && (
+                        <Link
+                            href="https://www.youtube.com/@madebyluan"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={lang === "pt" ? "YouTube · MadeByLuan · Projetos e bastidores" : "YouTube · MadeByLuan · Projects and behind the scenes"}
+                            title={lang === "pt" ? "MadeByLuan · Projetos e bastidores" : "MadeByLuan · Projects and behind the scenes"}
+                            onClick={() => trackEvent("social_click", { destination: "youtube", source: "footer", lang, mode })}
+                        >
+                            <Youtube size={16} aria-hidden="true" />
+                        </Link>
+                    )}
                     {mode !== "editor" && (
                         <Link
                             href="https://github.com/oluanmemo"

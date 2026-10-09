@@ -1,0 +1,55 @@
+.audiovisualBackdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  color: #c084fc;
+}
+
+.audiovisualBackdrop span {
+  position: absolute;
+  width: clamp(36px, 5vw, 64px);
+  height: clamp(36px, 5vw, 64px);
+  opacity: 0.22;
+  animation: floatIcon 9s ease-in-out infinite;
+}
+
+.audiovisualBackdrop svg {
+  width: 100%;
+  height: 100%;
+}
+
+.clapperboard { top: 20%; left: 13%; --tilt: -14deg; }
+.film { top: 16%; right: 16%; --tilt: 12deg; animation-delay: -3s !important; }
+.audio { bottom: 15%; left: 24%; --tilt: -8deg; animation-delay: -5s !important; }
+.scissors { bottom: 14%; right: 15%; --tilt: 18deg; animation-delay: -2s !important; }
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0) rotate(var(--tilt)); }
+  50% { transform: translateY(-12px) rotate(var(--tilt)); }
+}
+
+@media (max-width: 640px) {
+  .clapperboard { top: 18%; left: 7%; }
+  .film { top: 15%; right: 8%; }
+  .audio { bottom: 12%; left: 12%; }
+  .scissors { bottom: 15%; right: 9%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editingHero :global(.hero-eyebrow),
+  .editingHero :global(.hero-name),
+  .editingHero :global(.hero-role),
+  .editingHero :global(.hero-desc),
+  .editingHero :global(.hero-actions),
+  .editingHero :global(.hero-preview-card),
+  .editingHero :global(.mode-fade),
+  .editingHero :global(.scroll-indicator) {
+    opacity: 1 !important;
+  }
+
+  .audiovisualBackdrop span {
+    animation: none;
+    transform: rotate(var(--tilt));
+  }
+}

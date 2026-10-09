@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import ProofBand from "./ProofBand";
 import Cases from "./Cases";
+import SelectedEdits from "./SelectedEdits";
 import Sobre from "./Sobre";
 import BehanceGrid from "./BehanceGrid";
 import Contato from "./Contato";
@@ -18,8 +19,9 @@ export default function EditingPortfolio() {
                 <Hero />
                 <ProofBand />
                 <Cases />
+                <SelectedEdits />
                 <Sobre />
-                <div id="trabalhos" style={{ padding: "0 0 6rem 0" }}>
+                <div id="outros-trabalhos" style={{ padding: "0 0 6rem 0" }}>
                     <BehanceGrid />
                 </div>
                 <Contato />
