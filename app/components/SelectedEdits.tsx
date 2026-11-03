@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { ArrowUpRight, Play, X } from "lucide-react";
+import { Play, X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { selectedEdits, type SelectedEdit } from "../lib/selectedEdits";
 import { trackEvent } from "../lib/analytics";
@@ -78,11 +78,7 @@ function Edit({ project, index, active, onSelect }: {
           <p className={styles.category}>{project.category[lang]}</p>
           <h3 id={`edit-${project.id}`}>{title}</h3>
           <p className={styles.description}>{project.description[lang]}</p>
-          {project.status === "available" ? (
-            <a href={project.originalUrl} target="_blank" rel="noopener noreferrer" className={styles.external} aria-label={`${project.provider === "youtube" ? (lang === "pt" ? "Abrir no YouTube" : "Open on YouTube") : (lang === "pt" ? "Abrir vídeo" : "Open video")}: ${title}`}>
-              {project.provider === "youtube" ? (lang === "pt" ? "Abrir no YouTube" : "Open on YouTube") : (lang === "pt" ? "Abrir vídeo" : "Open video")}<ArrowUpRight size={15} aria-hidden="true" />
-            </a>
-          ) : (
+          {project.status !== "available" && (
             <p className={styles.pendingNote}>{lang === "pt" ? "Em breve nesta seleção." : "Coming soon to this selection."}</p>
           )}
         </div>

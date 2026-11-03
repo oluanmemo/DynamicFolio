@@ -2,6 +2,8 @@
 
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
+import { PremiereLogo, AfterEffectsLogo, DaVinciLogo, PhotoshopLogo, CapCutLogo, ElevenLabsLogo } from "./EditingToolLogos";
+import styles from "./Sobre.module.css";
 
 /* ── Brand logos as inline SVGs ───────────────────────────── */
 const ReactLogo = () => (
@@ -40,70 +42,6 @@ const NodeLogo = () => (
     <svg width="18" height="18" viewBox="0 0 100 115" aria-hidden="true">
         <path d="M50 4L96 30v55L50 111L4 85V30L50 4z" fill="#5FA04E"/>
         <text x="50" y="74" fontFamily="system-ui,sans-serif" fontWeight="900" fontSize="54" fill="white" textAnchor="middle">N</text>
-    </svg>
-);
-
-const PremiereLogo = () => (
-    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-        <rect width="18" height="18" rx="3" fill="#0D0B1E"/>
-        <text x="2" y="13.5" fontFamily="system-ui,sans-serif" fontWeight="800" fontSize="9.5" fill="#9999FF">Pr</text>
-    </svg>
-);
-
-const AfterEffectsLogo = () => (
-    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-        <rect width="18" height="18" rx="3" fill="#00005B"/>
-        <text x="1.8" y="13.5" fontFamily="system-ui,sans-serif" fontWeight="800" fontSize="9.5" fill="#9999FF">Ae</text>
-    </svg>
-);
-
-const DaVinciLogo = () => (
-    /* 3 teardrops em triângulo + anel arco-íris, logo real do DaVinci Resolve */
-    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-        <defs>
-            <linearGradient id="dvRing" x1="0" y1="1" x2="1" y2="0">
-                <stop offset="0%"   stopColor="#FF3030"/>
-                <stop offset="18%"  stopColor="#FF9900"/>
-                <stop offset="36%"  stopColor="#EEFF00"/>
-                <stop offset="54%"  stopColor="#00FF88"/>
-                <stop offset="72%"  stopColor="#0088FF"/>
-                <stop offset="88%"  stopColor="#7744FF"/>
-                <stop offset="100%" stopColor="#FF3088"/>
-            </linearGradient>
-        </defs>
-        {/* Fundo círculo escuro */}
-        <circle cx="9" cy="9" r="9" fill="#252E3A"/>
-        {/* Anel arco-íris */}
-        <circle cx="9" cy="9" r="7.8" fill="none" stroke="url(#dvRing)" strokeWidth="2"/>
-        {/* Teardrop topo, cyan (tip aponta para centro) */}
-        <path d="M9,8 C10.5,7.5 11.5,6 11.5,4 A2.5,2.5 0 0,0 6.5,4 C6.5,6 7.5,7.5 9,8 Z" fill="#4DC8E8"/>
-        {/* Teardrop inferior-direito, rosa (120° CW) */}
-        <path d="M9,8 C10.5,7.5 11.5,6 11.5,4 A2.5,2.5 0 0,0 6.5,4 C6.5,6 7.5,7.5 9,8 Z" fill="#E86070" transform="rotate(120,9,9)"/>
-        {/* Teardrop inferior-esquerdo, verde-limão (240° CW) */}
-        <path d="M9,8 C10.5,7.5 11.5,6 11.5,4 A2.5,2.5 0 0,0 6.5,4 C6.5,6 7.5,7.5 9,8 Z" fill="#A8CC20" transform="rotate(240,9,9)"/>
-    </svg>
-);
-
-const ElevenLabsLogo = () => (
-    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-        <rect width="18" height="18" rx="3" fill="#111111"/>
-        <rect x="4" y="4" width="3" height="10" rx="1.5" fill="white"/>
-        <rect x="11" y="4" width="3" height="10" rx="1.5" fill="white"/>
-    </svg>
-);
-
-const PhotoshopLogo = () => (
-    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-        <rect width="18" height="18" rx="3" fill="#001E36"/>
-        <text x="2" y="13.5" fontFamily="system-ui,sans-serif" fontWeight="800" fontSize="9.5" fill="#31A8FF">Ps</text>
-    </svg>
-);
-
-const CapCutLogo = () => (
-    <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-        <rect width="18" height="18" rx="4" fill="#000000"/>
-        <path d="M4 9 L9 4 L14 9 L9 14 Z" fill="none" stroke="#FFF" strokeWidth="2.2" strokeLinejoin="round"/>
-        <path d="M7 9 L9 7 L11 9 L9 11 Z" fill="#FFF"/>
     </svg>
 );
 
@@ -195,6 +133,44 @@ export default function Sobre() {
     const { lang } = useLanguage();
     const c = modeContent[lang][mode];
 
+    if (mode === "editor") {
+        const tools = [
+            { name: "Premiere Pro", icon: <PremiereLogo /> },
+            { name: "After Effects", icon: <AfterEffectsLogo /> },
+            { name: "DaVinci Resolve", icon: <DaVinciLogo /> },
+            { name: "Photoshop", icon: <PhotoshopLogo /> },
+            { name: "CapCut", icon: <CapCutLogo /> },
+            { name: "ElevenLabs", icon: <ElevenLabsLogo /> },
+        ];
+
+        return (
+            <section id="sobre" className={styles.editorAbout} aria-labelledby="editing-about-title">
+                <header className={styles.intro}>
+                    <p className={styles.eyebrow}>{modeContent[lang].aboutLabel}</p>
+                    <h2 id="editing-about-title">{c.title}</h2>
+                    <p className={styles.description}>{c.text}</p>
+                </header>
+                <div className={styles.competencies}>
+                    <p className={styles.eyebrow}>{lang === "pt" ? "Competências" : "Skills"}</p>
+                    <div className={styles.disciplines}>
+                        {c.stackGroups.map(([label, value]) => (
+                            <div className={styles.discipline} key={label}>
+                                <h3>{label}</h3>
+                                <p>{value.replaceAll(" · ", ", ")}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className={styles.tools}>
+                    <p className={styles.eyebrow}>{lang === "pt" ? "Ferramentas" : "Tools"}</p>
+                    <ul className={styles.toolList}>
+                        {tools.map(tool => <li key={tool.name}>{tool.icon}<span>{tool.name}</span></li>)}
+                    </ul>
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section className="about" id="sobre">
             <div className="about-left">
@@ -211,33 +187,15 @@ export default function Sobre() {
 
             </div>
             <div className="about-right" id="skills">
-                {mode === "dev" ? (
-                    <div className="skills-grid" id="skillsGrid">
-                        {c.skills.map((skill, i) => (
-                            <div key={i} className="skill-pill">
-                                <span className="skill-pill-icon">{skill.icon}</span>
-                                <span className="skill-pill-name">{skill.name}</span>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="editor-tools-group">
-                        <p className="editor-tools-label">{lang === "en" ? "TOOLS" : "FERRAMENTAS"}</p>
-                        <div className="editor-tools-icons">
-                            <div className="editor-tool"><PremiereLogo /> Premiere Pro</div>
-                            <div className="editor-tool"><AfterEffectsLogo /> After Effects</div>
-                            <div className="editor-tool"><DaVinciLogo /> DaVinci</div>
-                            <div className="editor-tool"><PhotoshopLogo /> Photoshop</div>
-                            <div className="editor-tool"><CapCutLogo /> CapCut</div>
-                            <div className="editor-tool"><ElevenLabsLogo /> ElevenLabs</div>
+                <div className="skills-grid" id="skillsGrid">
+                    {c.skills.map((skill, i) => (
+                        <div key={i} className="skill-pill">
+                            <span className="skill-pill-icon">{skill.icon}</span>
+                            <span className="skill-pill-name">{skill.name}</span>
                         </div>
-                    </div>
-                )}
-                
+                    ))}
+                </div>
                 <div className="editor-competencias-group">
-                    {mode === "editor" && (
-                        <p className="editor-tools-label">{lang === "en" ? "SKILLS" : "COMPETÊNCIAS"}</p>
-                    )}
                     <div className="stack-groups" aria-label={lang === "en" ? "Organized stack" : "Stack organizada"}>
                         {c.stackGroups.map(([label, value]) => (
                             <div className="stack-group" key={label}>

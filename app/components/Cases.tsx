@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useMode } from '../context/ModeContext';
 import Image from 'next/image';
 import styles from './Cases.module.css';
+import { PremiereLogo, AfterEffectsLogo, ElevenLabsLogo, GPTLogo } from './EditingToolLogos';
 
 interface InternationalChannel {
   id: string;
@@ -405,9 +406,14 @@ export default function Cases() {
               : 'Produced 3 institutional videos for internal systems and product presentation at Grupo Multi, combining editing, motion, interface capture and AI tools.'}
           </p>
 
-          <div className={styles.roles}>
-            {['Premiere Pro', 'After Effects', 'ElevenLabs', 'GPT'].map(tool => (
-              <span key={tool} className={styles.roleTag}>{tool}</span>
+          <div className={styles.toolLogos} aria-label={lang === 'pt' ? 'Ferramentas utilizadas' : 'Tools used'}>
+            {[
+              { name: 'Premiere Pro', icon: <PremiereLogo /> },
+              { name: 'After Effects', icon: <AfterEffectsLogo /> },
+              { name: 'ElevenLabs', icon: <ElevenLabsLogo /> },
+              { name: 'GPT', icon: <GPTLogo /> },
+            ].map(tool => (
+              <span key={tool.name} className={styles.toolLogo}>{tool.icon}<span>{tool.name}</span></span>
             ))}
           </div>
 

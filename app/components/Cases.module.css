@@ -356,6 +356,21 @@
   gap: 0.45rem;
 }
 
+.toolLogos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.toolLogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 36px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+}
+.toolLogo svg, .toolLogo img { width: 24px; height: 24px; flex-shrink: 0; }
+
 .roleTag {
   background-color: rgba(168, 85, 247, 0.08);
   border: 1px solid rgba(168, 85, 247, 0.3);
