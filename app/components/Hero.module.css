@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 9 / 5;
-  margin: -45px 0 -72px;
+  margin: -30px 0 -60px;
   isolation: isolate;
 }
 
@@ -69,6 +69,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .devHero :global(.hero-eyebrow),
+  .devHero :global(.hero-name),
+  .devHero :global(.hero-role),
+  .devHero :global(.hero-desc),
+  .devHero :global(.hero-actions),
+  .devHero :global(.mode-fade),
+  .devHero :global(.scroll-indicator),
   .editingHero :global(.hero-eyebrow),
   .editingHero :global(.hero-name),
   .editingHero :global(.hero-role),

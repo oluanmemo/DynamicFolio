@@ -124,9 +124,6 @@ export default function Cases() {
         <article className={styles.caseCard}>
           <div className={styles.caseHeader}>
             <div className={styles.caseNumber}>CASE 01</div>
-            <span className={styles.caseBadge}>
-              {lang === 'pt' ? 'Operação Internacional' : 'International Operation'}
-            </span>
           </div>
 
           <h2 className={styles.title}>
@@ -237,9 +234,6 @@ export default function Cases() {
               </div>
 
               {/* Horizontal Channel Selector Strip */}
-              <div className={styles.channelStripLabel}>
-                {lang === 'pt' ? 'Clique ou passe o mouse nos canais atendidos:' : 'Click or hover to inspect client channels:'}
-              </div>
               <div className={styles.channelLogoRow}>
                 {internationalChannels.map((channel, idx) => (
                   <button

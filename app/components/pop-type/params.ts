@@ -18,11 +18,11 @@ export interface ColourSet {
   shadow: string;
 }
 export const PALETTE: readonly ColourSet[] = [
-  { face: "#f2f0eb", shadow: "#ed2038" },
-  { face: "#c084fc", shadow: "#6b21a8" },
-  { face: "#ed2038", shadow: "#6b1635" },
   { face: "#f2f0eb", shadow: "#9333ea" },
-  { face: "#d8b4fe", shadow: "#ed2038" },
+  { face: "#c084fc", shadow: "#6b21a8" },
+  { face: "#e9d5ff", shadow: "#7e22ce" },
+  { face: "#f2f0eb", shadow: "#9333ea" },
+  { face: "#d8b4fe", shadow: "#7e22ce" },
   { face: "#f2f0eb", shadow: "#6b21a8" },
 ];
 
@@ -40,7 +40,9 @@ export const N = WORD.length;
 export const BASELINE = 259;
 export const CAP = 138;
 
-export const OVERLAP = 10;
+// The full name needs breathing room between letters and a clear word break.
+export const OVERLAP = -4;
+const NAME_GAP = 32;
 
 export interface GlyphMetrics {
   left: number;
@@ -58,13 +60,16 @@ export interface Box {
 
 export function layoutWord(metrics: readonly GlyphMetrics[]): { boxes: Box[]; px: number } {
   const capRatio = -metrics[0].top;
-  const px = capRatio > 0 ? CAP / capRatio : CAP;
+  const naturalPx = capRatio > 0 ? CAP / capRatio : CAP;
+  const inkWidth = metrics.reduce((total, m) => total + m.right - m.left, 0);
+  const maxPx = (SCENE_W - 100 + OVERLAP * (metrics.length - 1) - NAME_GAP) / inkWidth;
+  const px = Math.min(naturalPx, maxPx);
   const widths = metrics.map((m) => (m.right - m.left) * px);
-  const span = widths.reduce((a, w) => a + w, 0) - OVERLAP * (metrics.length - 1);
+  const span = widths.reduce((a, w) => a + w, 0) - OVERLAP * (metrics.length - 1) + NAME_GAP;
   let x = SCENE_W / 2 - span / 2;
   const boxes = metrics.map((m, k) => {
     const box = { x0: x, x1: x + widths[k], top: BASELINE + m.top * px, bottom: BASELINE + m.bottom * px };
-    x += widths[k] - OVERLAP;
+    x += widths[k] - OVERLAP + (k === 3 ? NAME_GAP : 0);
     return box;
   });
   return { boxes, px };
@@ -143,7 +148,7 @@ export function poseBox(rest: Box, p: Pose): Box {
   return { x0: cx - w / 2, x1: cx + w / 2, top: bottom - h, bottom };
 }
 
-export const SHADOW = { x: -10, y: 8 } as const;
+export const SHADOW = { x: -4, y: 4 } as const;
 export const SHADOW_LAG_MS = 40;
 export const SHADOW_WOBBLE = { amp: 3, decay: 80, period: 157 } as const;
 export const SHADOW_LIFT = 0.9;

@@ -108,7 +108,7 @@ export default function Hero({ overrides }: HeroProps) {
     const scrollLabel = overrides?.scrollLabel ?? content[lang].scroll;
 
     return (
-        <section className={`hero${mode === "editor" ? ` ${styles.editingHero}` : ""}`} id="hero">
+        <section className={`hero ${mode === "editor" ? styles.editingHero : styles.devHero}`} id="hero">
             <div className="hero-grid"></div>
             <div className="hero-glow"></div>
             {mode === "editor" ? (
