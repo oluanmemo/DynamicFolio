@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 import { useLanguage } from "../context/LanguageContext";
@@ -99,7 +100,7 @@ export default function Navbar() {
 
                 {showHomeButton ? (
                     <Link href={localizePath("/", lang)} className={`nav-home-btn-mobile ${styles.backButton}`} aria-label={lang === "en" ? "Back to home" : "Voltar para o início"} title={lang === "en" ? "Back to home" : "Voltar para o início"}>
-                        <span aria-hidden>{"←"}</span>
+                        <ArrowLeft size={16} strokeWidth={1.8} aria-hidden="true" />
                     </Link>
                 ) : (
                     <button

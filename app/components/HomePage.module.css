@@ -119,6 +119,9 @@
   transition: opacity 180ms ease, transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
   flex-shrink: 0;
 }
+.navIcon { flex-shrink: 0; opacity: 0.8; }
+.navLinkDev .navIcon { color: var(--dev); }
+.navLinkEditing .navIcon { color: var(--editing); }
 
 .navLinkDev .navDot { background: var(--dev); }
 .navLinkEditing .navDot { background: var(--editing); }
@@ -231,6 +234,7 @@
 .mobileMenu button {
   min-height: 72px;
   display: flex;
+  gap: 14px;
   align-items: center;
   border: 0;
   border-bottom: 1px solid var(--line);
@@ -386,9 +390,11 @@
 .heroActions a:hover {
   transform: translateY(-3px);
 }
-.heroActions a:hover svg {
+.heroActions a:hover .actionArrow {
   transform: translateX(3px);
 }
+.actionLabel { display: inline-flex; align-items: center; gap: 9px; }
+.actionLabel svg { flex-shrink: 0; }
 .devButton { color: var(--dev); }
 .devButton:hover {
   background: rgba(98, 221, 131, 0.08);

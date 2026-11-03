@@ -3,9 +3,9 @@
   flex-shrink: 0;
   width: 40px;
   height: 40px;
-  font-size: 20px;
   line-height: 1;
 }
+.backButton svg { width: 16px; height: 16px; }
 
 .editingNav :global(.nav-links) {
   gap: clamp(16px, 2vw, 32px);

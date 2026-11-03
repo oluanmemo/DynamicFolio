@@ -5,25 +5,7 @@ import { useMode } from "../context/ModeContext";
 import { trackEvent } from "../lib/analytics";
 import { usePathname } from "next/navigation";
 import { stripLocalePrefix } from "../lib/locale";
-
-function DevIcon() {
-    return (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-            <path d="m8 9-4 3 4 3" />
-            <path d="m16 9 4 3-4 3" />
-            <path d="m14 5-4 14" />
-        </svg>
-    );
-}
-
-function EditorIcon() {
-    return (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="14" rx="2" />
-            <path d="m10 9 5 3-5 3z" fill="currentColor" stroke="none" />
-        </svg>
-    );
-}
+import LaneIcon from "./LaneIcon";
 
 export default function ModeSwitch() {
     const pathname = usePathname();
@@ -104,7 +86,7 @@ export default function ModeSwitch() {
                 onClick={() => handleModeChange("dev")}
             >
                 <span className="switch-icon-wrap">
-                    <span className="switch-icon"><DevIcon /></span>
+                    <span className="switch-icon"><LaneIcon lane="dev" size={18} /></span>
                 </span>
                 <span className="switch-copy">
                     <span className="switch-label">Dev</span>
@@ -119,7 +101,7 @@ export default function ModeSwitch() {
                 onClick={() => handleModeChange("editor")}
             >
                 <span className="switch-icon-wrap">
-                    <span className="switch-icon"><EditorIcon /></span>
+                    <span className="switch-icon"><LaneIcon lane="editing" size={18} /></span>
                 </span>
                 <span className="switch-copy">
                     <span className="switch-label">Editor</span>

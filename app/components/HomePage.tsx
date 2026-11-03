@@ -6,6 +6,7 @@ import { ArrowRight, ArrowUpRight, Github, Linkedin, Mail, Menu, MessageCircle, 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ChangeEvent, FormEvent, PointerEvent as ReactPointerEvent } from "react";
 import LanguageSwitch from "./LanguageSwitch";
+import LaneIcon from "./LaneIcon";
 import { useLanguage } from "../context/LanguageContext";
 import { localizePath } from "../lib/locale";
 import { trackEvent } from "../lib/analytics";
@@ -292,14 +293,14 @@ export default function HomePage() {
             href={devHref}
             className={`${styles.navLink} ${styles.navLinkDev} ${activeSection === "dev" ? styles.navLinkActive : ""}`}
           >
-            <span className={styles.navDot} aria-hidden="true" />
+            <LaneIcon lane="dev" size={14} className={styles.navIcon} />
             {c.nav.dev}
           </a>
           <a
             href={editingHref}
             className={`${styles.navLink} ${styles.navLinkEditing} ${activeSection === "editing" ? styles.navLinkActive : ""}`}
           >
-            <span className={styles.navDot} aria-hidden="true" />
+            <LaneIcon lane="editing" size={14} className={styles.navIcon} />
             {c.nav.editing}
           </a>
           <a
@@ -336,8 +337,8 @@ export default function HomePage() {
 
       <div id="home-mobile-menu" className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`} aria-hidden={!menuOpen}>
         <nav aria-label={lang === "en" ? "Mobile navigation" : "Navegação mobile"}>
-          <a href={devHref} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.dev}</a>
-          <a href={editingHref} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.editing}</a>
+          <a href={devHref} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}><LaneIcon lane="dev" size={20} />{c.nav.dev}</a>
+          <a href={editingHref} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}><LaneIcon lane="editing" size={20} />{c.nav.editing}</a>
           <a href={`${editingHref}#sobre`} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.about}</a>
           <button type="button" onClick={() => openContact("home_mobile_nav")} tabIndex={menuOpen ? 0 : -1}>{c.nav.contact} ↗</button>
         </nav>
@@ -360,7 +361,7 @@ export default function HomePage() {
                 onFocus={() => setHeroHover("dev")}
                 onBlur={() => setHeroHover(null)}
               >
-                {c.devCta}<ArrowRight size={18} />
+                <span className={styles.actionLabel}><LaneIcon lane="dev" />{c.devCta}</span><ArrowRight size={18} className={styles.actionArrow} />
               </Link>
               <Link
                 href={editingHref}
@@ -371,7 +372,7 @@ export default function HomePage() {
                 onFocus={() => setHeroHover("editing")}
                 onBlur={() => setHeroHover(null)}
               >
-                {c.editingCta}<ArrowRight size={18} />
+                <span className={styles.actionLabel}><LaneIcon lane="editing" />{c.editingCta}</span><ArrowRight size={18} className={styles.actionArrow} />
               </Link>
             </div>
           </div>

@@ -92,7 +92,7 @@
   font-size: 13px;
   line-height: 1.5;
 }
-.toolList svg { width: 24px; height: 24px; flex-shrink: 0; }
+.toolList svg, .toolList img { width: 24px; height: 24px; flex-shrink: 0; }
 
 @media (max-width: 900px) {
   .editorAbout { grid-template-columns: 1fr; gap: 36px; }
