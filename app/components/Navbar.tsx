@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Mail } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { localizePath, stripLocalePrefix } from "../lib/locale";
 import LanguageSwitch from "./LanguageSwitch";
+import { trackEvent } from "../lib/analytics";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
@@ -29,7 +30,7 @@ export default function Navbar() {
             right: "clamp(18px, 3vw, 48px)",
             width: "auto",
             minHeight: 56,
-            padding: "0 18px",
+            padding: "0 clamp(10px, 1.5vw, 18px)",
             border: "1px solid rgba(255, 255, 255, 0.075)",
             borderRadius: 999,
             background: "rgba(8, 5, 14, 0.64)",
@@ -115,12 +116,25 @@ export default function Navbar() {
                     </button>
                 )}
 
-                <Link href="#hero" className="nav-logo" onClick={handleSectionClick("hero")}>
+                <Link href="#hero" className="nav-logo" aria-label={`oluanmedrado${logoSuffix}`} onClick={handleSectionClick("hero")}>
                     oluanmedrado
                     <span>{logoSuffix}</span>
                 </Link>
 
                 <div className="nav-right">
+                    {isEditingRoute && <Link
+                        href="#contato"
+                        className={styles.contactButton}
+                        aria-label={lang === "en" ? "Get in touch" : "Entrar em contato"}
+                        title={lang === "en" ? "Get in touch" : "Entrar em contato"}
+                        onClick={(event) => {
+                            handleSectionClick("contato")(event);
+                            trackEvent("contact_cta_click", { source: "navbar", destination: "contact", lang, mode: "editor" });
+                        }}
+                    >
+                        <Mail size={15} aria-hidden="true" />
+                        <span className={styles.contactLabel}>{lang === "en" ? "Get in touch" : "Entrar em contato"}</span>
+                    </Link>}
                     {isEditingRoute && <Link href="/riffmaker" className={`nav-cta ${styles.editingRiff}`}>
                         <Image src="/riff-maker/icon.png" alt="" width={24} height={24} className="nav-cta-icon" />
                         {labels.riffmaker}

@@ -149,25 +149,7 @@ export default function Hero({ overrides }: HeroProps) {
             </p>
 
             <div className="hero-actions">
-                {mode === "editor" ? (
-                    <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
-                        <Link
-                            href="#trabalhos"
-                            className="btn-primary"
-                            onClick={() => trackEvent("contact_cta_click", { source: "hero", destination: "trabalhos", lang, mode })}
-                        >
-                            {lang === "en" ? "View work" : "Ver trabalhos"}
-                        </Link>
-                        <Link
-                            href="#contato"
-                            className="btn-primary"
-                            style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.15)", color: "var(--white)" }}
-                            onClick={() => trackEvent("contact_cta_click", { source: "hero", destination: "contact", lang, mode })}
-                        >
-                            {lang === "en" ? "Get in touch" : "Entrar em contato"}
-                        </Link>
-                    </div>
-                ) : (
+                {mode !== "editor" && (
                     <Link
                         href="#contato"
                         className="btn-primary"

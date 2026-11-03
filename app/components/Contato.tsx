@@ -308,7 +308,7 @@ export default function Contato() {
     )}`;
 
     return (
-        <section className="contact" id="contato">
+        <section className="contact" id="contato" style={mode === "editor" ? { scrollMarginTop: 100 } : undefined}>
             <div className="contact-inner">
                 <div className="contact-copy">
                     <h2 key={`contact-title-${mode}`} className="contact-big-title mode-fade" id="contactTitle">
@@ -320,11 +320,13 @@ export default function Contato() {
                         {c.sub}
                     </p>
 
-                    <div className="contact-trust" aria-label={lang === "en" ? "Contact expectations" : "Expectativas de contato"}>
-                        {f.trust.map((item) => (
-                            <span key={item}>{item}</span>
-                        ))}
-                    </div>
+                    {mode !== "editor" && (
+                        <div className="contact-trust" aria-label={lang === "en" ? "Contact expectations" : "Expectativas de contato"}>
+                            {f.trust.map((item) => (
+                                <span key={item}>{item}</span>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 <div className="contact-panel">
@@ -475,45 +477,33 @@ export default function Contato() {
                         </form>
                     )}
 
-                    <div className="contact-email-options" aria-label={lang === "en" ? "Email fallback options" : "Opções alternativas de e-mail"}>
-                        <div className="contact-email-actions" style={mode === "editor" ? { flexWrap: "wrap" } : undefined}>
-                            <button
-                                type="button"
-                                className="contact-copy-btn"
-                                aria-label={f.copyAria}
-                                onClick={handleCopyEmail}
-                            >
-                                {copied ? f.copiedEmail : f.copyEmail}
-                            </button>
-                            {mode !== "editor" && <span className="contact-dot-divider">·</span>}
-                            <a
-                                href="https://www.linkedin.com/in/oluanmedrado/"
-                                className="contact-linkedin-link"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => trackEvent("social_click", { destination: "linkedin", source: "contact_section", lang, mode })}
-                            >
-                                LinkedIn
-                            </a>
-                            {mode === "editor" && (
-                                <>
-                                    <a
-                                        href="https://www.youtube.com/@madebyluan"
-                                        className="contact-linkedin-link"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        title={lang === "pt" ? "MadeByLuan · Projetos e bastidores" : "MadeByLuan · Projects and behind the scenes"}
-                                        onClick={() => trackEvent("social_click", { destination: "youtube", source: "contact_section", lang, mode })}
-                                    >
-                                        YouTube · MadeByLuan
-                                    </a>
-                                </>
-                            )}
+                    {mode !== "editor" && (
+                        <div className="contact-email-options" aria-label={lang === "en" ? "Email fallback options" : "Opções alternativas de e-mail"}>
+                            <div className="contact-email-actions">
+                                <button
+                                    type="button"
+                                    className="contact-copy-btn"
+                                    aria-label={f.copyAria}
+                                    onClick={handleCopyEmail}
+                                >
+                                    {copied ? f.copiedEmail : f.copyEmail}
+                                </button>
+                                <span className="contact-dot-divider">·</span>
+                                <a
+                                    href="https://www.linkedin.com/in/oluanmedrado/"
+                                    className="contact-linkedin-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => trackEvent("social_click", { destination: "linkedin", source: "contact_section", lang, mode })}
+                                >
+                                    LinkedIn
+                                </a>
+                            </div>
+                            <p className="contact-email-fallback">
+                                <span>{CONTACT_EMAIL}</span>
+                            </p>
                         </div>
-                        <p className="contact-email-fallback">
-                            <span>{CONTACT_EMAIL}</span>
-                        </p>
-                    </div>
+                    )}
                 </div>
             </div>
         </section>
