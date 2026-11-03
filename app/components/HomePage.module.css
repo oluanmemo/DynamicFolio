@@ -1145,6 +1145,7 @@
   .menuButton { display: grid; }
   .hero { padding-top: 118px; }
   .heroInner { grid-template-columns: 1fr 0.68fr; }
+  .heroActions { grid-template-columns: 1fr; }
   .hero h1 { font-size: clamp(4.4rem, 10.5vw, 7.5rem); }
 }
 
