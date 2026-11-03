@@ -340,7 +340,7 @@
   font-family: var(--font-bebas), sans-serif;
   font-size: clamp(4.7rem, 9.4vw, 9.5rem);
   font-weight: 400;
-  line-height: 0.78;
+  line-height: 0.94;
   letter-spacing: -0.025em;
   text-transform: uppercase;
 }
@@ -645,6 +645,16 @@
   font-size: 8px;
   letter-spacing: 0.11em;
   text-transform: uppercase;
+  background: var(--bg);
+  transition: background 450ms ease, border-color 450ms ease;
+}
+.home[data-hero-hover="dev"] .footer {
+  background: #020805;
+  border-top-color: rgba(98, 221, 131, 0.24);
+}
+.home[data-hero-hover="editing"] .footer {
+  background: #05040d;
+  border-top-color: rgba(189, 108, 255, 0.24);
 }
 .footer div { display: flex; gap: 7px; }
 .footer a { width: 44px; height: 44px; display: grid; place-items: center; color: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 50%; transition: color 170ms ease, border-color 170ms ease; }

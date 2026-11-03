@@ -5,12 +5,11 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Github, Linkedin, Mail, Menu, MessageCircle, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ChangeEvent, FormEvent, PointerEvent as ReactPointerEvent } from "react";
-import DevShowcase from "./DevShowcase";
-import EditingShowcase from "./EditingShowcase";
 import LanguageSwitch from "./LanguageSwitch";
 import { useLanguage } from "../context/LanguageContext";
 import { localizePath } from "../lib/locale";
 import { trackEvent } from "../lib/analytics";
+import { TyperHeroTitle } from "./typer/TyperHeroTitle";
 import styles from "./HomePage.module.css";
 
 const WHATSAPP_NUMBER = "5511945764672";
@@ -272,7 +271,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className={styles.home}>
+    <main className={styles.home} data-hero-hover={heroHover || "none"}>
       <header className={styles.topbar}>
         <Link href={localizePath("/", lang)} className={styles.brand} aria-label="Luan Medrado — Home">
           <Image
@@ -290,21 +289,21 @@ export default function HomePage() {
 
         <nav className={styles.desktopNav} aria-label={lang === "en" ? "Main navigation" : "Navegação principal"}>
           <a
-            href="#dev"
+            href={devHref}
             className={`${styles.navLink} ${styles.navLinkDev} ${activeSection === "dev" ? styles.navLinkActive : ""}`}
           >
             <span className={styles.navDot} aria-hidden="true" />
             {c.nav.dev}
           </a>
           <a
-            href="#editing"
+            href={editingHref}
             className={`${styles.navLink} ${styles.navLinkEditing} ${activeSection === "editing" ? styles.navLinkActive : ""}`}
           >
             <span className={styles.navDot} aria-hidden="true" />
             {c.nav.editing}
           </a>
           <a
-            href="#sobre"
+            href={`${editingHref}#sobre`}
             className={`${styles.navLink} ${styles.navLinkAbout} ${activeSection === "sobre" ? styles.navLinkActive : ""}`}
           >
             <span className={styles.navDot} aria-hidden="true" />
@@ -337,9 +336,9 @@ export default function HomePage() {
 
       <div id="home-mobile-menu" className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`} aria-hidden={!menuOpen}>
         <nav aria-label={lang === "en" ? "Mobile navigation" : "Navegação mobile"}>
-          <a href="#dev" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.dev}</a>
-          <a href="#editing" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.editing}</a>
-          <a href="#sobre" onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.about}</a>
+          <a href={devHref} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.dev}</a>
+          <a href={editingHref} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.editing}</a>
+          <a href={`${editingHref}#sobre`} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1}>{c.nav.about}</a>
           <button type="button" onClick={() => openContact("home_mobile_nav")} tabIndex={menuOpen ? 0 : -1}>{c.nav.contact} ↗</button>
         </nav>
       </div>
@@ -348,8 +347,8 @@ export default function HomePage() {
         <div className={styles.heroGlow} aria-hidden="true" />
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
-            <div className={styles.availability}><span />{c.available}</div>
-            <h1><span>{c.heroTop}</span><em>{c.heroAccent}</em></h1>
+
+            <TyperHeroTitle line1={c.heroTop} line2={c.heroAccent} />
             <p className={styles.heroBody}>{c.heroBody}</p>
             <div className={styles.heroActions}>
               <Link
@@ -386,74 +385,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`${styles.proofSection} ${styles.devSection}`} id="dev" data-home-reveal>
-        <div className={styles.sectionHeader}>
-          <div className={styles.sectionTopBar}>
-            <p className={styles.sectionEyebrow}>{c.devEyebrow}</p>
-            <Link href={devHref} className={styles.sectionTopLink} onClick={() => navigateTo("dev")}>
-              <span>{c.devAll}</span>
-              <ArrowUpRight size={13} />
-            </Link>
-          </div>
-          <h2>{c.devTitle}</h2>
-        </div>
-        <DevShowcase lang={lang} />
-        <div className={styles.showcaseFooter}>
-          <span>{lang === "pt" ? "Quer ver outros projetos de desenvolvimento?" : "Want to explore more dev projects?"}</span>
-          <Link href={devHref} className={styles.showcaseAllLink} onClick={() => navigateTo("dev")}>
-            <span>{c.devAll}</span>
-            <ArrowRight size={15} />
-          </Link>
-        </div>
-      </section>
 
-      <section className={`${styles.proofSection} ${styles.editingSection}`} id="editing" data-home-reveal>
-        <div className={styles.sectionHeader}>
-          <div className={styles.sectionTopBar}>
-            <p className={styles.sectionEyebrow}>{c.editingEyebrow}</p>
-          </div>
-          <h2>{c.editingTitle}</h2>
-        </div>
-        <EditingShowcase lang={lang} />
-        <div className={`${styles.showcaseFooter} ${styles.showcaseFooterEnd}`}>
-          <Link href={editingHref} className={styles.showcaseAllLink} onClick={() => navigateTo("editing")}>
-            <span>{c.editingAll}</span>
-            <ArrowUpRight size={15} />
-          </Link>
-        </div>
-      </section>
-
-      <section className={styles.about} id="sobre" data-home-reveal>
-        <p className={styles.aboutIndex}>03 / {c.aboutEyebrow}</p>
-        <div className={styles.aboutGrid}>
-          <h2>{c.aboutTitle}</h2>
-          <div className={styles.aboutCopy}>
-            <p>{c.aboutBody}</p>
-            <p>{c.aboutDetail}</p>
-            <Link
-              href="https://www.behance.net/gallery/210403079/Logo-Loja-de-Suplementos-J-F"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent("proof_link_click", { lane: "about", proof: "jf-logo", destination: "behance", lang })}
-            >
-              {c.logoCase}<ArrowUpRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.contact} id="contato" data-home-reveal>
-        <div className={styles.contactHeading}>
-          <p>{c.contactEyebrow}</p>
-          <h2>{c.contactTitle}</h2>
-          <span>{c.contactBody}</span>
-        </div>
-        <div className={styles.contactHub}>
-          <Link href={devHref} onClick={() => navigateTo("dev")}><span>01</span><strong>{c.contactDev}</strong><ArrowUpRight /></Link>
-          <Link href={editingHref} onClick={() => navigateTo("editing")}><span>02</span><strong>{c.contactEditing}</strong><ArrowUpRight /></Link>
-          <button type="button" onClick={() => openContact("home_contact_hub")}><span>03</span><strong>{c.contactGeneral}</strong><ArrowUpRight /></button>
-        </div>
-      </section>
 
       <footer className={styles.footer}>
         <span>{c.footer}</span>

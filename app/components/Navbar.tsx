@@ -40,7 +40,7 @@ export default function Navbar() {
     const labels =
         lang === "en"
             ? { home: "Home", about: "About", projects: "Projects", riffmaker: "RiffMaker", backHome: isEditingRoute ? "Home" : "Back" }
-            : { home: "Inicio", about: "Sobre", projects: "Projetos", riffmaker: "RiffMaker", backHome: isEditingRoute ? "Inicio" : "Voltar" };
+            : { home: "Início", about: "Sobre", projects: "Projetos", riffmaker: "RiffMaker", backHome: isEditingRoute ? "Início" : "Voltar" };
 
     const primarySectionId = isHomeRoute ? "hero" : "sobre";
     const primaryLabel = isHomeRoute ? labels.home : labels.about;

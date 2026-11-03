@@ -8,6 +8,7 @@ import styles from "./Hero.module.css";
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
 import { trackEvent } from "../lib/analytics";
+import PopTypeCard from "./pop-type/card";
 
 const content = {
     pt: {
@@ -128,9 +129,14 @@ export default function Hero({ overrides }: HeroProps) {
             <div className="hero-copy">
             <p className="hero-eyebrow">{content[lang].eyebrow}</p>
 
-            <h1 className="hero-name" aria-label="Luan Medrado">
+            {mode === "editor" ? (
+                <h1 className={styles.popName} aria-label="Luan Medrado">
+                    <span className={styles.popFallback}>Luan Medrado</span>
+                    <PopTypeCard />
+                </h1>
+            ) : <h1 className="hero-name" aria-label="Luan Medrado">
                 <span className="glitch" data-text="LUAN" aria-hidden="true">LUAN</span>&nbsp;<span className="glitch" data-text="MEDRADO" aria-hidden="true">MEDRADO</span>
-            </h1>
+            </h1>}
 
             <div className="hero-role">
                 <span className="line"></span>
