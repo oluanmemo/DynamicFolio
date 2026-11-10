@@ -11,33 +11,6 @@
   gap: clamp(16px, 2vw, 32px);
 }
 
-.contactButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 36px;
-  padding: 0 14px;
-  border: 1px solid rgba(192, 132, 252, 0.32);
-  border-radius: 999px;
-  background: rgba(168, 85, 247, 0.08);
-  color: #e9d5ff;
-  font-family: var(--font-syne), sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  text-decoration: none;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: background 180ms ease, border-color 180ms ease;
-}
-.contactButton:hover { background: rgba(168, 85, 247, 0.18); border-color: #c084fc; }
-.contactButton:focus-visible { outline: 2px solid #c084fc; outline-offset: 3px; }
-.contactButton svg { flex-shrink: 0; }
-
-@media (max-width: 980px) {
-  .contactButton { display: none; }
-}
-
 @media (max-width: 1280px) {
   .editingNav .editingRiff { display: none; }
 }
@@ -57,5 +30,4 @@
 @media (max-width: 360px) {
   .editingNav:global(#topnav) { grid-template-columns: 32px minmax(0, 1fr) auto; }
   .backButton:global(.nav-home-btn-mobile) { width: 32px; height: 32px; }
-  .contactButton { width: 32px; margin-right: 4px; }
 }

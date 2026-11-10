@@ -54,7 +54,7 @@ export default function FreelanceBadge({ variant = "floating" }: FreelanceBadgeP
             const rect = hero.getBoundingClientRect();
             const heroPassed = rect.bottom <= Math.min(120, window.innerHeight * 0.18);
 
-            if (!heroPassed) {
+            if (!heroPassed && !isEditingPortfolioRoute) {
                 setIsFloatingHidden(true);
                 return;
             }
@@ -105,8 +105,9 @@ export default function FreelanceBadge({ variant = "floating" }: FreelanceBadgeP
         return null;
     }
 
-    const text =
-        lang === "en"
+    const text = isEditingPortfolioRoute
+        ? (lang === "en" ? "Get in touch" : "Entrar em contato")
+        : lang === "en"
             ? isHome
                 ? "Contact me"
                 : mode === "editor"
@@ -130,7 +131,7 @@ export default function FreelanceBadge({ variant = "floating" }: FreelanceBadgeP
                 if (!contato) return;
 
                 event.preventDefault();
-                contato.scrollIntoView({ behavior: "smooth", block: "start" });
+                contato.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
             }}
         >
             <span className="freelance-dot"></span>

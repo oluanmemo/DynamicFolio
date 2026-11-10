@@ -4230,3 +4230,11 @@ body.editor-mode [data-editing-reveal][data-revealed="true"] {
     transition: none;
   }
 }
+
+body.editor-mode .freelance-badge--floating {
+  background: rgba(24, 12, 38, 0.88);
+  border-color: rgba(192, 132, 252, 0.4);
+  color: #f3e8ff;
+}
+body.editor-mode .freelance-badge--floating .freelance-dot::before { background: rgba(192, 132, 252, 0.25); }
+body.editor-mode .freelance-badge--floating .freelance-dot::after { background: #c084fc; box-shadow: 0 0 8px rgba(192, 132, 252, 0.5); }

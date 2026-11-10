@@ -8,7 +8,6 @@ import { useEffect, useState, useCallback } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { localizePath, stripLocalePrefix } from "../lib/locale";
 import LanguageSwitch from "./LanguageSwitch";
-import { trackEvent } from "../lib/analytics";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
@@ -122,18 +121,6 @@ export default function Navbar() {
                 </Link>
 
                 <div className="nav-right">
-                    {isEditingRoute && <Link
-                        href="#contato"
-                        className={styles.contactButton}
-                        aria-label={lang === "en" ? "Get in touch" : "Entrar em contato"}
-                        title={lang === "en" ? "Get in touch" : "Entrar em contato"}
-                        onClick={(event) => {
-                            handleSectionClick("contato")(event);
-                            trackEvent("contact_cta_click", { source: "navbar", destination: "contact", lang, mode: "editor" });
-                        }}
-                    >
-                        <span className={styles.contactLabel}>{lang === "en" ? "Get in touch" : "Entrar em contato"}</span>
-                    </Link>}
                     {isEditingRoute && <Link href="/riffmaker" className={`nav-cta ${styles.editingRiff}`}>
                         <Image src="/riff-maker/icon.png" alt="" width={24} height={24} className="nav-cta-icon" />
                         {labels.riffmaker}
