@@ -30,14 +30,6 @@
   gap: 1rem;
 }
 
-.caseNumber {
-  font-family: var(--font-dm-mono);
-  color: #a855f7;
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-}
-
 .caseBadge {
   display: inline-flex;
   align-items: center;
@@ -490,7 +482,18 @@
   z-index: 1;
 }
 
+.vanLifeTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vanLifeTitle {
+  font-weight: 800;
+}
+
 .vanLifeAvatarWrap {
+  flex-shrink: 0;
   width: 64px;
   height: 64px;
   border-radius: 16px;

@@ -123,10 +123,6 @@ export default function Cases() {
       <div className={styles.container}>
         {/* CASE 01 */}
         <article className={styles.caseCard}>
-          <div className={styles.caseHeader}>
-            <div className={styles.caseNumber}>CASE 01</div>
-          </div>
-
           <h2 className={styles.title}>
             {lang === 'pt' ? 'Edição para canais internacionais' : 'Editing for International Channels'}
           </h2>
@@ -290,13 +286,23 @@ export default function Cases() {
         {/* CASE 02 */}
         <article className={styles.caseCard} id="case-vanlife">
           <div className={styles.caseHeader}>
-            <div className={styles.caseNumber}>CASE 02</div>
             <span className={styles.caseBadge}>
               {lang === 'pt' ? 'Canal Próprio / Content Producer' : 'Owned Channel / Content Producer'}
             </span>
           </div>
 
-          <h2 className={styles.title}>Van Life Insider</h2>
+          <div className={styles.vanLifeTitleRow}>
+            <div className={styles.vanLifeAvatarWrap}>
+              <Image
+                src="/VanLifeInsider.jpg"
+                alt="Van Life Insider"
+                width={64}
+                height={64}
+                className={styles.vanLifeAvatar}
+              />
+            </div>
+            <h2 className={`${styles.title} ${styles.vanLifeTitle}`}>Van Life Insider</h2>
+          </div>
           <h3 className={styles.subtitle}>
             {lang === 'pt' ? 'Um canal construído de ponta a ponta' : 'A channel built end-to-end'}
           </h3>
@@ -310,15 +316,6 @@ export default function Cases() {
                 fill 
                 sizes="800px" 
                 className={styles.vanLifeBackdropImg} 
-              />
-            </div>
-            <div className={styles.vanLifeAvatarWrap}>
-              <Image 
-                src="/VanLifeInsider.jpg" 
-                alt="Van Life Insider" 
-                width={64} 
-                height={64} 
-                className={styles.vanLifeAvatar} 
               />
             </div>
             <div className={styles.vanLifeViewsLabel}>
@@ -373,7 +370,6 @@ export default function Cases() {
         {/* CASE 03 */}
         <article className={styles.caseCard}>
           <div className={styles.caseHeader}>
-            <div className={styles.caseNumber}>CASE 03</div>
             <span className={styles.caseBadge}>
               {lang === 'pt' ? 'Corporativo · Produto Digital' : 'Corporate · Digital Product'}
             </span>
