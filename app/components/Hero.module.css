@@ -118,3 +118,10 @@
 @media (prefers-reduced-motion: reduce) {
   .editingHero :global(.scroll-indicator) .scrollArrow { animation: none; }
 }
+
+.editingHero :global(.scroll-indicator) {
+  position: static;
+  transform: none;
+  margin-top: 28px;
+  flex-shrink: 0;
+}
