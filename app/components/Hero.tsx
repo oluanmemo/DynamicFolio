@@ -8,6 +8,7 @@ import styles from "./Hero.module.css";
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
 import { trackEvent } from "../lib/analytics";
+import ProofBand from "./ProofBand";
 import PopTypeCard from "./pop-type/card";
 
 const content = {
@@ -147,6 +148,8 @@ export default function Hero({ overrides }: HeroProps) {
             <p className="hero-desc">
                 <span key={`desc-${mode}`} className="mode-fade hero-desc-text" id="heroDesc">{desc}</span>
             </p>
+
+            {mode === "editor" && <ProofBand />}
 
             <div className="hero-actions">
                 {mode !== "editor" && (

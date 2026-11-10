@@ -1,7 +1,6 @@
 import ScrollObserver from "./ScrollObserver";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
-import ProofBand from "./ProofBand";
 import Cases from "./Cases";
 import SelectedEdits from "./SelectedEdits";
 import Sobre from "./Sobre";
@@ -17,7 +16,6 @@ export default function EditingPortfolio() {
             <Navbar />
             <div className={styles.content}>
                 <Hero />
-                <ProofBand />
                 <Cases />
                 <SelectedEdits />
                 <Sobre />

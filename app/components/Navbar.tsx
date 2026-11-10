@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Mail } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 import { useLanguage } from "../context/LanguageContext";
@@ -132,7 +132,6 @@ export default function Navbar() {
                             trackEvent("contact_cta_click", { source: "navbar", destination: "contact", lang, mode: "editor" });
                         }}
                     >
-                        <Mail size={15} aria-hidden="true" />
                         <span className={styles.contactLabel}>{lang === "en" ? "Get in touch" : "Entrar em contato"}</span>
                     </Link>}
                     {isEditingRoute && <Link href="/riffmaker" className={`nav-cta ${styles.editingRiff}`}>

@@ -1,36 +1,26 @@
-'use client';
+"use client";
 
-import CountUp from './CountUp';
-import { useLanguage } from '../context/LanguageContext';
-import { useMode } from '../context/ModeContext';
-import styles from './ProofBand.module.css';
+import { TrendingUp } from "lucide-react";
+import CountUp from "./CountUp";
+import { useLanguage } from "../context/LanguageContext";
+import styles from "./ProofBand.module.css";
 
 export default function ProofBand() {
   const { lang } = useLanguage();
-  const { mode } = useMode();
-
-  if (mode !== 'editor') return null;
-
-  const data = lang === 'pt' ? [
-      { value: '+2', target: 2, prefix: '+', label: ['Anos de produção', 'recorrente'] },
-      { value: '200K+', target: 200, suffix: 'K+', label: ['Views em vídeos', 'editados'] },
-      { value: '3', target: 3, label: ['Vídeos institucionais', 'no Grupo Multi'] }
-  ] : [
-      { value: '+2', target: 2, prefix: '+', label: ['Years of recurring', 'production'] },
-      { value: '200K+', target: 200, suffix: 'K+', label: ['Views on edited', 'videos'] },
-      { value: '3', target: 3, label: ['Institutional videos', 'at Grupo Multi'] }
-  ];
 
   return (
-    <section id="prova" className={styles.proofBand}>
-      <div className={styles.container}>
-        {data.map((item) => (
-          <div data-editing-reveal key={item.value} className={styles.metric}>
-            <CountUp className={styles.value} target={item.target} prefix={item.prefix} suffix={item.suffix} />
-            <p className={styles.label}>{item.label.map(line => <span key={line}>{line}</span>)}</p>
-          </div>
-        ))}
+    <div id="prova" className={styles.proof}>
+      <div className={styles.badge}>
+        <span className={styles.icon} aria-hidden="true"><TrendingUp size={24} strokeWidth={1.5} /></span>
+        <div className={styles.badgeCopy}>
+          <CountUp className={styles.value} target={200} suffix="K+" />
+          <span className={styles.label}>{lang === "pt" ? "views em vídeos editados" : "views on edited videos"}</span>
+        </div>
       </div>
-    </section>
+      <div className={styles.details}>
+        <div><CountUp className={styles.smallValue} target={2} prefix="+" /> {lang === "pt" ? "anos de produção recorrente" : "years of recurring production"}</div>
+        <div><CountUp className={styles.smallValue} target={3} /> {lang === "pt" ? "vídeos institucionais no Grupo Multi" : "institutional videos at Grupo Multi"}</div>
+      </div>
+    </div>
   );
 }

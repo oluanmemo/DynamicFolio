@@ -1,72 +1,49 @@
-.proofBand {
-  width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background-color: rgba(168, 85, 247, 0.03);
-  padding: 40px 24px;
-  margin: 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
-  text-align: center;
-}
-
-.metric {
+.proof {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 0 24px;
+  gap: 14px;
+  margin-top: 28px;
+  width: 100%;
 }
-
-.metric + .metric {
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 26px;
+  border: 1px solid rgba(192, 132, 252, 0.5);
+  border-radius: 18px;
+  background: linear-gradient(120deg, rgba(168, 85, 247, 0.22), rgba(88, 28, 135, 0.12));
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.16), inset 0 1px 0 rgba(233, 213, 255, 0.1);
 }
-
+.icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  color: #d8b4fe;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.14);
+}
+.badgeCopy { text-align: left; }
 .value {
+  color: #f3e8ff;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 36px;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
+  line-height: 1.1;
   min-width: 5ch;
-  font-family: var(--font-bebas);
-  font-size: clamp(44px, 4.5vw, 60px);
-  line-height: 1;
-  color: #fff;
-  margin-bottom: 0;
+  text-shadow: 0 0 20px rgba(192, 132, 252, 0.35);
 }
-
-.label {
-  margin: 0;
-  font-family: var(--font-dm-sans);
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.label span { display: block; }
-
-@media (max-width: 960px) {
-  .container {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2.5rem 0;
-  }
-}
-
+.label { color: #d8b4fe; font-size: 12px; line-height: 1.6; }
+.details { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; font-size: 11px; line-height: 1.6; color: rgba(255, 255, 255, 0.55); }
+.details > div { display: flex; align-items: baseline; gap: 4px; }
+.smallValue { display: inline-block; color: #d8b4fe; font-weight: 700; font-variant-numeric: tabular-nums; }
 @media (max-width: 640px) {
-  .proofBand {
-    padding: 12px 24px;
-  }
-  .container { grid-template-columns: 1fr; gap: 0; text-align: center; }
-  .metric {
-    gap: 8px;
-    padding: 22px 0;
-  }
-  .metric + .metric {
-    border-left: 0;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
+  .proof { margin-top: 24px; }
+  .badge { padding: 14px 20px; gap: 12px; }
+  .value { font-size: 32px; }
+  .details { flex-direction: column; align-items: center; gap: 4px; }
 }
