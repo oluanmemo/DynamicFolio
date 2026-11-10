@@ -24,7 +24,7 @@ export default function ProofBand() {
     <section id="prova" className={styles.proofBand}>
       <div className={styles.container}>
         {data.map((item) => (
-          <div key={item.value} className={styles.metric}>
+          <div data-editing-reveal key={item.value} className={styles.metric}>
             <div className={styles.value}>{item.value}</div>
             <p className={styles.label}>{item.label.map(line => <span key={line}>{line}</span>)}</p>
           </div>

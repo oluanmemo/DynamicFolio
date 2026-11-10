@@ -31,7 +31,7 @@ function Edit({ project, index, active, onSelect }: {
   };
 
   return (
-    <article className={project.featured ? styles.featured : styles.edit} aria-labelledby={`edit-${project.id}`} onKeyDown={event => { if (active && event.key === "Escape") close(); }}>
+    <article data-editing-reveal className={project.featured ? styles.featured : styles.edit} aria-labelledby={`edit-${project.id}`} onKeyDown={event => { if (active && event.key === "Escape") close(); }}>
       <div className={`${styles.media} ${project.status === "pending" || project.format === "horizontal" ? styles.horizontal : styles.vertical}`}>
         {project.status === "pending" ? (
           <div className={styles.pending}>
@@ -93,7 +93,7 @@ export default function SelectedEdits() {
   return (
     <section id="trabalhos" className={styles.section} aria-labelledby="selected-edits-title">
       <div className={styles.container}>
-        <header className={styles.header}>
+        <header data-editing-reveal className={styles.header}>
           <p className={styles.eyebrow}>04 / {lang === "pt" ? "Edições selecionadas" : "Selected edits"}</p>
           <h2 id="selected-edits-title">{lang === "pt" ? "Edição em diferentes formatos." : "Editing across formats."}</h2>
           <p>{lang === "pt" ? "Games, eventos e conteúdo autoral. Diferentes linguagens, uma seleção para dar play." : "Games, events and independent content. Different styles, a selection to press play."}</p>

@@ -122,7 +122,7 @@ export default function Cases() {
     <section id="cases" className={styles.casesSection}>
       <div className={styles.container}>
         {/* CASE 01 */}
-        <article className={styles.caseCard}>
+        <article data-editing-reveal className={styles.caseCard}>
           <h2 className={styles.title}>
             {lang === 'pt' ? 'Edição para canais internacionais' : 'Editing for International Channels'}
           </h2>
@@ -162,25 +162,25 @@ export default function Cases() {
             <div className={styles.proofCol}>
               {/* 2x2 Metric Grid */}
               <div className={styles.proofGrid}>
-                <div className={styles.proofMiniCard}>
+                <div data-editing-reveal className={styles.proofMiniCard}>
                   <span className={styles.proofMiniVal}>6+ canais</span>
                   <span className={styles.proofMiniDesc}>
                     {lang === 'pt' ? 'Canais atendidos' : 'Client channels'}
                   </span>
                 </div>
-                <div className={styles.proofMiniCard}>
+                <div data-editing-reveal className={styles.proofMiniCard}>
                   <span className={styles.proofMiniVal}>~6 vídeos/sem</span>
                   <span className={styles.proofMiniDesc}>
                     {lang === 'pt' ? 'Fluxo recorrente' : 'Recurring pipeline'}
                   </span>
                 </div>
-                <div className={styles.proofMiniCard}>
+                <div data-editing-reveal className={styles.proofMiniCard}>
                   <span className={styles.proofMiniVal}>EN / ES / FR</span>
                   <span className={styles.proofMiniDesc}>
                     {lang === 'pt' ? 'Conteúdo multi-idioma' : 'Multi-language content'}
                   </span>
                 </div>
-                <div className={styles.proofMiniCard}>
+                <div data-editing-reveal className={styles.proofMiniCard}>
                   <span className={styles.proofMiniVal}>200K+ views</span>
                   <span className={styles.proofMiniDesc}>
                     {lang === 'pt' ? 'Em vídeos editados' : 'On edited videos'}
@@ -284,7 +284,7 @@ export default function Cases() {
         </article>
 
         {/* CASE 02 */}
-        <article className={styles.caseCard} id="case-vanlife">
+        <article data-editing-reveal className={styles.caseCard} id="case-vanlife">
           <div className={styles.caseHeader}>
             <span className={styles.caseBadge}>
               {lang === 'pt' ? 'Canal Próprio / Content Producer' : 'Owned Channel / Content Producer'}
@@ -308,7 +308,7 @@ export default function Cases() {
           </h3>
 
           {/* Media Box for Van Life */}
-          <div className={styles.vanLifeHero}>
+          <div data-editing-reveal className={styles.vanLifeHero}>
             <div className={styles.vanLifeBackdrop}>
               <Image 
                 src="/VanLifeInsider.jpg" 
@@ -368,7 +368,7 @@ export default function Cases() {
         </article>
 
         {/* CASE 03 */}
-        <article className={styles.caseCard}>
+        <article data-editing-reveal className={styles.caseCard}>
           <div className={styles.caseHeader}>
             <span className={styles.caseBadge}>
               {lang === 'pt' ? 'Corporativo · Produto Digital' : 'Corporate · Digital Product'}
@@ -381,7 +381,7 @@ export default function Cases() {
           </h3>
 
           {/* Smartphone Mockup / Product Video */}
-          <div className={styles.mediaContainer}>
+          <div data-editing-reveal className={styles.mediaContainer}>
             <div className={styles.videoTopBadge}>
               {lang === 'pt' ? 'Vídeo institucional · 1:02 · Motion + UI demo' : 'Institutional video · 1:02 · Motion + UI demo'}
             </div>

@@ -92,3 +92,29 @@
     transform: rotate(var(--tilt));
   }
 }
+
+.editingHero :global(.scroll-indicator) > span:first-child {
+  color: #d8b4fe;
+  opacity: 1;
+  text-shadow: 0 0 12px rgba(192, 132, 252, 0.65);
+}
+
+.editingHero :global(.scroll-indicator) .scrollArrow {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 44px;
+  color: #c084fc;
+  opacity: 1;
+  filter: drop-shadow(0 0 7px rgba(168, 85, 247, 0.8));
+  animation: scrollArrowFloat 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollArrowFloat {
+  0%, 100% { transform: translateY(-3px); filter: drop-shadow(0 0 5px rgba(168, 85, 247, 0.5)); }
+  50% { transform: translateY(5px); filter: drop-shadow(0 0 11px rgba(192, 132, 252, 0.95)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editingHero :global(.scroll-indicator) .scrollArrow { animation: none; }
+}

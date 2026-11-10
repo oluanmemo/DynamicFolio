@@ -3,7 +3,30 @@
 import { useEffect } from "react";
 import { trackEvent } from "../lib/analytics";
 
-export default function ScrollObserver() {
+export default function ScrollObserver({ revealEditing = false }: { revealEditing?: boolean }) {
+    useEffect(() => {
+        if (!revealEditing || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        const blocks = document.querySelectorAll<HTMLElement>("[data-editing-reveal]");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.setAttribute("data-revealed", "true");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0, rootMargin: "0px 0px -32px 0px" });
+
+        blocks.forEach(block => {
+            block.setAttribute("data-reveal-ready", "true");
+            observer.observe(block);
+        });
+        return () => {
+            observer.disconnect();
+            blocks.forEach(block => block.removeAttribute("data-reveal-ready"));
+        };
+    }, [revealEditing]);
+
     useEffect(() => {
         let hasTrackedPageEnd = false;
 

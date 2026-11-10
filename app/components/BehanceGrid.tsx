@@ -67,7 +67,7 @@ export default function BehanceGrid() {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
+      <div data-editing-reveal className={styles.header}>
         <div>
           <p className={styles.label}>{copy.selectedWorks}</p>
           <h2 className={styles.title}>{copy.title}</h2>
@@ -90,6 +90,7 @@ export default function BehanceGrid() {
       <div className={styles.grid}>
         {behanceProjects.map((project) => (
           <a
+            data-editing-reveal
             key={project.title}
             className={styles.item}
             style={{ background: project.background }}

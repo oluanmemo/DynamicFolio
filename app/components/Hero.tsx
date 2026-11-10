@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { AudioLines, Clapperboard, Film, Scissors, Youtube } from "lucide-react";
+import { ArrowDown, AudioLines, Clapperboard, Film, Scissors, Youtube } from "lucide-react";
 import styles from "./Hero.module.css";
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
@@ -264,7 +264,9 @@ export default function Hero({ overrides }: HeroProps) {
 
             <div className="scroll-indicator">
                 <span>{scrollLabel}</span>
-                <div className="scroll-line"></div>
+                {mode === "editor" ? (
+                    <span className={styles.scrollArrow} aria-hidden="true"><ArrowDown size={28} strokeWidth={1.8} /></span>
+                ) : <div className="scroll-line"></div>}
             </div>
         </section>
     );

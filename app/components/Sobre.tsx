@@ -145,12 +145,12 @@ export default function Sobre() {
 
         return (
             <section id="sobre" className={styles.editorAbout} aria-labelledby="editing-about-title">
-                <header className={styles.intro}>
+                <header data-editing-reveal className={styles.intro}>
                     <p className={styles.eyebrow}>{modeContent[lang].aboutLabel}</p>
                     <h2 id="editing-about-title">{c.title}</h2>
                     <p className={styles.description}>{c.text}</p>
                 </header>
-                <div className={styles.competencies}>
+                <div data-editing-reveal className={styles.competencies}>
                     <p className={styles.eyebrow}>{lang === "pt" ? "Competências" : "Skills"}</p>
                     <div className={styles.disciplines}>
                         {c.stackGroups.map(([label, value]) => (
@@ -161,7 +161,7 @@ export default function Sobre() {
                         ))}
                     </div>
                 </div>
-                <div className={styles.tools}>
+                <div data-editing-reveal className={styles.tools}>
                     <p className={styles.eyebrow}>{lang === "pt" ? "Ferramentas" : "Tools"}</p>
                     <ul className={styles.toolList}>
                         {tools.map(tool => <li key={tool.name}>{tool.icon}<span>{tool.name}</span></li>)}

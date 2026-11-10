@@ -13,7 +13,7 @@ import styles from "./PortfolioPage.module.css";
 export default function EditingPortfolio() {
     return (
         <main className={styles.main}>
-            <ScrollObserver />
+            <ScrollObserver revealEditing />
             <Navbar />
             <div className={styles.content}>
                 <Hero />
