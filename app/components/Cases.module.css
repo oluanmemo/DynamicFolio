@@ -279,36 +279,6 @@
   transform: translateX(2px);
 }
 
-.case1FooterActions {
-  display: flex;
-  align-items: center;
-  margin-top: 0.25rem;
-}
-
-.jumpToWorksBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  border-radius: 999px;
-  background: rgba(168, 85, 247, 0.08);
-  border: 1px solid rgba(168, 85, 247, 0.28);
-  color: #c084fc;
-  font-family: var(--font-dm-sans);
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.jumpToWorksBtn:hover {
-  background: rgba(168, 85, 247, 0.16);
-  border-color: rgba(168, 85, 247, 0.55);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.2);
-}
-
 /* Horizontal Channel Selector Strip */
 .channelLogoRow {
   display: flex;
@@ -494,8 +464,8 @@
 
 .vanLifeAvatarWrap {
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
+  width: clamp(80px, 8vw, 96px);
+  height: clamp(80px, 8vw, 96px);
   border-radius: 16px;
   overflow: hidden;
   border: 2px solid rgba(168, 85, 247, 0.5);
@@ -510,6 +480,8 @@
 }
 
 .vanLifeViewsBig {
+  font-variant-numeric: tabular-nums;
+  min-width: 4ch;
   font-family: var(--font-syne);
   font-size: clamp(36px, 6vw, 64px);
   font-weight: 800;
@@ -682,6 +654,8 @@
   }
   
   .vanLifeViewsBig {
+  font-variant-numeric: tabular-nums;
+  min-width: 4ch;
     font-size: 40px;
   }
 }
@@ -720,9 +694,6 @@
 .internationalCase .roleTag { background: none; border: 0; border-radius: 0; padding: 0; color: #c4b5d8; font-size: 0.85rem; }
 .internationalCase .workflow { background: none; border: 0; padding: 0; font-size: 0.85rem; line-height: 1.9; color: rgba(255, 255, 255, 0.5); }
 .internationalCase .workflow strong { display: block; font-weight: 500; color: rgba(255, 255, 255, 0.8); }
-.internationalCase .result { font-family: var(--font-dm-sans); font-size: 0.95rem; font-weight: 500; line-height: 1.6; color: #d8b4fe; }
-.internationalCase .result::before { content: none; }
-.internationalCase .jumpToWorksBtn { background: none; box-shadow: none; }
 @media (max-width: 900px) {
   .internationalCase .proofGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 0; }
   .internationalCase .proofMiniCard:nth-child(3) { padding-left: 0; border-left: 0; }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import CountUp from './CountUp';
 import { useLanguage } from '../context/LanguageContext';
 import { useMode } from '../context/ModeContext';
 import Image from 'next/image';
@@ -274,17 +275,6 @@ export default function Cases() {
               : 'incoming script + voice-over \u2192 visual research & selection \u2192 assembly \u2192 B-roll/inserts \u2192 score and sound design \u2192 review \u2192 export and timestamped delivery.'}
           </p>
 
-          <div className={styles.result}>
-            {lang === 'pt' 
-              ? 'Centenas de vídeos editados para uma operação recorrente de conteúdo internacional.'
-              : 'Hundreds of videos edited for a recurring international content operation.'}
-          </div>
-
-          <div className={styles.case1FooterActions}>
-            <a href="#trabalhos" className={styles.jumpToWorksBtn}>
-              {lang === 'pt' ? 'Ver mais trabalhos' : 'View more work'}
-            </a>
-          </div>
         </article>
 
         {/* CASE 02 */}
@@ -300,8 +290,8 @@ export default function Cases() {
               <Image
                 src="/VanLifeInsider.jpg"
                 alt="Van Life Insider"
-                width={64}
-                height={64}
+                width={96}
+                height={96}
                 className={styles.vanLifeAvatar}
               />
             </div>
@@ -325,7 +315,7 @@ export default function Cases() {
             <div className={styles.vanLifeViewsLabel}>
               {lang === 'pt' ? 'Destaque de Performance Orgânica' : 'Organic Performance Highlight'}
             </div>
-            <div className={styles.vanLifeViewsBig}>45.000+</div>
+            <CountUp className={styles.vanLifeViewsBig} target={45} suffix="K+" />
             <div className={styles.vanLifeViewsLabel}>
               {lang === 'pt' ? 'Visualizações em um único vídeo long-form' : 'Views on a single long-form video'}
             </div>
