@@ -1,5 +1,6 @@
 "use client";
 
+import { Scissors, WandSparkles, Clapperboard, PenTool } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
 import { PremiereLogo, AfterEffectsLogo, DaVinciLogo, PhotoshopLogo, CapCutLogo, ElevenLabsLogo } from "./EditingToolLogos";
@@ -45,6 +46,8 @@ const NodeLogo = () => (
     </svg>
 );
 
+const disciplineIcons = [Scissors, WandSparkles, Clapperboard, PenTool];
+
 const devSkills = [
     { icon: <ReactLogo />, name: "React / Next.js" },
     { icon: <TypeScriptLogo />, name: "TypeScript" },
@@ -80,7 +83,7 @@ const modeContent = {
             ],
         },
         editor: {
-            title: (<>O que eu <strong>faço</strong></>),
+            title: "O que eu faço?",
             text: (
                 <>Edição, motion, conteúdo e design - do material bruto à entrega final.</>
             ),
@@ -113,7 +116,7 @@ const modeContent = {
             ],
         },
         editor: {
-            title: (<>What I <strong>do</strong></>),
+            title: "What do I do?",
             text: (
                 <>Editing, motion, content and design - from raw material to final delivery.</>
             ),
@@ -153,12 +156,15 @@ export default function Sobre() {
                 <div data-editing-reveal className={styles.competencies}>
                     <p className={styles.eyebrow}>{lang === "pt" ? "Competências" : "Skills"}</p>
                     <div className={styles.disciplines}>
-                        {c.stackGroups.map(([label, value]) => (
+                        {c.stackGroups.map(([label, value], index) => {
+                            const Icon = disciplineIcons[index];
+                            return (
                             <div className={styles.discipline} key={label}>
-                                <h3>{label}</h3>
+                                <h3><Icon size={19} strokeWidth={1.5} aria-hidden="true" />{label}</h3>
                                 <p>{value.replaceAll(" · ", ", ")}</p>
                             </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
                 <div data-editing-reveal className={styles.tools}>
