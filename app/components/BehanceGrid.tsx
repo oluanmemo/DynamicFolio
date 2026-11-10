@@ -53,13 +53,11 @@ export default function BehanceGrid() {
   const copy =
     lang === "en"
       ? {
-        selectedWorks: "Complementary works",
         title: "Other work",
         cta: "View on Behance",
         openLabel: "Open",
       }
       : {
-        selectedWorks: "Trabalhos complementares",
         title: "Outros trabalhos",
         cta: "Ver no Behance",
         openLabel: "Abrir",
@@ -69,7 +67,6 @@ export default function BehanceGrid() {
     <div className={styles.wrapper}>
       <div data-editing-reveal className={styles.header}>
         <div>
-          <p className={styles.label}>{copy.selectedWorks}</p>
           <h2 className={styles.title}>{copy.title}</h2>
           <div className={styles.accentLine}></div>
         </div>
