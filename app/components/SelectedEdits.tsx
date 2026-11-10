@@ -15,9 +15,8 @@ const SelectedEditPlayer = dynamic(() => import("./SelectedEditPlayer"), {
   loading: () => <div className={styles.playerStatus} role="status"><span className={styles.loader} aria-hidden="true" /></div>,
 });
 
-function Edit({ project, index, active, onSelect }: {
+function Edit({ project, active, onSelect }: {
   project: SelectedEdit;
-  index: number;
   active: boolean;
   onSelect: (id: string | null) => void;
 }) {
@@ -73,7 +72,6 @@ function Edit({ project, index, active, onSelect }: {
       </div>
 
       <div className={styles.caption}>
-        <span className={styles.index} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
         <div>
           <p className={styles.category}>{project.category[lang]}</p>
           <h3 id={`edit-${project.id}`}>{title}</h3>
@@ -94,14 +92,13 @@ export default function SelectedEdits() {
     <section id="trabalhos" className={styles.section} aria-labelledby="selected-edits-title">
       <div className={styles.container}>
         <header data-editing-reveal className={styles.header}>
-          <p className={styles.eyebrow}>04 / {lang === "pt" ? "Edições selecionadas" : "Selected edits"}</p>
           <h2 id="selected-edits-title">{lang === "pt" ? "Edição em diferentes formatos." : "Editing across formats."}</h2>
           <p>{lang === "pt" ? "Games, eventos e conteúdo autoral. Diferentes linguagens, uma seleção para dar play." : "Games, events and independent content. Different styles, a selection to press play."}</p>
         </header>
         <div className={styles.layout}>
-          {selectedEdits.filter(project => project.featured).map(project => <Edit key={project.id} project={project} index={selectedEdits.indexOf(project)} active={activeId === project.id} onSelect={setActiveId} />)}
+          {selectedEdits.filter(project => project.featured).map(project => <Edit key={project.id} project={project} active={activeId === project.id} onSelect={setActiveId} />)}
           <div className={styles.shorts}>
-            {selectedEdits.filter(project => !project.featured).map(project => <Edit key={project.id} project={project} index={selectedEdits.indexOf(project)} active={activeId === project.id} onSelect={setActiveId} />)}
+            {selectedEdits.filter(project => !project.featured).map(project => <Edit key={project.id} project={project} active={activeId === project.id} onSelect={setActiveId} />)}
           </div>
         </div>
       </div>
