@@ -297,9 +297,6 @@ export default function Cases() {
             </div>
             <h2 className={`${styles.title} ${styles.vanLifeTitle}`}>Van Life Insider</h2>
           </div>
-          <h3 className={styles.subtitle}>
-            {lang === 'pt' ? 'Um canal construído de ponta a ponta' : 'A channel built end-to-end'}
-          </h3>
 
           {/* Media Box for Van Life */}
           <div data-editing-reveal className={styles.vanLifeHero}>
