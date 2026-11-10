@@ -122,7 +122,7 @@ export default function Cases() {
     <section id="cases" className={styles.casesSection}>
       <div className={styles.container}>
         {/* CASE 01 */}
-        <article data-editing-reveal className={styles.caseCard}>
+        <article data-editing-reveal className={`${styles.caseCard} ${styles.internationalCase}`} id="case-international">
           <h2 className={styles.title}>
             {lang === 'pt' ? 'Edição para canais internacionais' : 'Editing for International Channels'}
           </h2>
@@ -132,34 +132,6 @@ export default function Cases() {
               : 'Recurring YouTube content operation across multiple niches and languages.'}
           </h3>
 
-          {/* 9:16 Short-form Video + Proof & Interactive Channels */}
-          <div className={styles.case1Split}>
-            {/* Left: 9:16 Video Player with contextual badge */}
-            <div className={styles.videoCol}>
-              <div className={styles.videoWrapper}>
-                <div className={styles.videoBadgeOverlay}>
-                  SHORT-FORM TEST · EN · SELF-INITIATED
-                </div>
-                <video
-                  src="/reel-en.mp4"
-                  poster="/proofs/reel-nanogram.webp"
-                  preload="none"
-                  controls
-                  playsInline
-                  muted
-                  loop
-                  className={styles.verticalVideo}
-                />
-              </div>
-              <p className={styles.videoCaption}>
-                {lang === 'pt'
-                  ? 'Teste criado de forma independente para prospecção internacional. Pesquisa, roteiro e voice-over com IA, seleção visual, memes, motion, sound design e edição em inglês.'
-                  : 'Self-initiated short-form test built for international outreach. Research, AI script and voice-over, visual asset selection, memes, motion, sound design and English pacing.'}
-              </p>
-            </div>
-
-            {/* Right: Quick Proof Metrics + Interactive Channel Details */}
-            <div className={styles.proofCol}>
               {/* 2x2 Metric Grid */}
               <div className={styles.proofGrid}>
                 <div data-editing-reveal className={styles.proofMiniCard}>
@@ -188,6 +160,32 @@ export default function Cases() {
                 </div>
               </div>
 
+
+          {/* 9:16 Short-form Video + Proof & Interactive Channels */}
+          <div className={styles.case1Split}>
+            {/* Left: 9:16 Video Player with contextual badge */}
+            <div className={styles.videoCol}>
+                <div className={styles.videoBadgeOverlay}>
+                  SHORT-FORM TEST · EN · SELF-INITIATED
+                </div>
+              <div className={styles.videoWrapper}>
+
+                <video
+                  src="/reel-en.mp4"
+                  poster="/proofs/reel-nanogram.webp"
+                  preload="none"
+                  controls
+                  playsInline
+                  muted
+                  loop
+                  className={styles.verticalVideo}
+                />
+              </div>
+
+            </div>
+
+            {/* Right: Quick Proof Metrics + Interactive Channel Details */}
+            <div className={styles.proofCol}>
               {/* Interactive Channel Details Box */}
               <div className={styles.channelActiveBox}>
                 <div className={styles.channelActiveHeader}>
@@ -240,6 +238,7 @@ export default function Cases() {
                     onClick={() => setActiveChannelIdx(idx)}
                     onMouseEnter={() => setActiveChannelIdx(idx)}
                     aria-label={`Ver detalhes de ${channel.name}`}
+                    aria-pressed={idx === activeChannelIdx}
                   >
                     <Image 
                       src={channel.logo} 
@@ -251,6 +250,11 @@ export default function Cases() {
                   </button>
                 ))}
               </div>
+              <p className={styles.videoCaption}>
+                {lang === 'pt'
+                  ? 'Teste criado de forma independente para prospecção internacional. Pesquisa, roteiro e voice-over com IA, seleção visual, memes, motion, sound design e edição em inglês.'
+                  : 'Self-initiated short-form test built for international outreach. Research, AI script and voice-over, visual asset selection, memes, motion, sound design and English pacing.'}
+              </p>
             </div>
           </div>
 
