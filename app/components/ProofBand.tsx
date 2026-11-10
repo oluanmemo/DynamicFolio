@@ -11,7 +11,7 @@ export default function ProofBand() {
   return (
     <div id="prova" className={styles.proof}>
       <div className={styles.badge}>
-        <span className={styles.icon} aria-hidden="true"><TrendingUp size={24} strokeWidth={1.5} /></span>
+        <span className={styles.icon} aria-hidden="true"><TrendingUp size={16} strokeWidth={1.5} /></span>
         <div className={styles.badgeCopy}>
           <CountUp className={styles.value} target={200} suffix="K+" />
           <span className={styles.label}>{lang === "pt" ? "views em vídeos editados" : "views on edited videos"}</span>
