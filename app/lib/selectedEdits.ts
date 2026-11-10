@@ -18,19 +18,6 @@ export type SelectedEdit = EditDetails & (
 
 export const selectedEdits: SelectedEdit[] = [
   {
-    id: "teuzz",
-    featured: true,
-    status: "available",
-    provider: "local",
-    format: "horizontal",
-    src: "/videos/teuzz-edit.optimized.mp4",
-    originalUrl: "/videos/teuzz-edit.optimized.mp4",
-    thumbnail: "/proofs/teuzz-edit.webp",
-    title: { pt: "Teuzz — Teste de edição", en: "Teuzz — Editing test" },
-    category: { pt: "Gameplay · Creator · Teste de edição", en: "Gameplay · Creator · Editing test" },
-    description: { pt: "Um teste de edição de gameplay de Fortnite.", en: "A Fortnite gameplay editing test." },
-  },
-  {
     id: "rock-in-rio",
     featured: false,
     status: "available",
@@ -42,6 +29,19 @@ export const selectedEdits: SelectedEdit[] = [
     title: { pt: "Rock in Rio — Aftermovie", en: "Rock in Rio — Aftermovie" },
     category: { pt: "Evento · Aftermovie · Short-form", en: "Event · Aftermovie · Short-form" },
     description: { pt: "Um olhar autoral e descontraído sobre o festival.", en: "An independent, lighthearted take on the festival." },
+  },
+  {
+    id: "teuzz",
+    featured: true,
+    status: "available",
+    provider: "local",
+    format: "horizontal",
+    src: "/videos/teuzz-edit.optimized.mp4",
+    originalUrl: "/videos/teuzz-edit.optimized.mp4",
+    thumbnail: "/proofs/teuzz-edit.webp",
+    title: { pt: "Teuzz — Teste de edição", en: "Teuzz — Editing test" },
+    category: { pt: "Gameplay · Creator · Teste de edição", en: "Gameplay · Creator · Editing test" },
+    description: { pt: "Um teste de edição de gameplay de Fortnite.", en: "A Fortnite gameplay editing test." },
   },
   {
     id: "madebyluan",

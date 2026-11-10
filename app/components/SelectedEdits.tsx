@@ -61,7 +61,7 @@ function Edit({ project, active, onSelect }: {
             }}
           >
             {!thumbnailFailed ? (
-              <Image src={project.thumbnail} alt="" fill unoptimized={project.provider === "youtube"} loading="lazy" sizes={project.featured ? "(max-width: 1100px) 90vw, 625px" : "(max-width: 600px) 320px, (max-width: 1100px) 300px, 240px"} className={styles.poster} onError={() => setThumbnailFailed(true)} />
+              <Image src={project.thumbnail} alt="" fill unoptimized={project.provider === "youtube"} loading="lazy" sizes={project.featured ? "(max-width: 900px) 90vw, 550px" : "(max-width: 900px) 320px, 270px"} className={styles.poster} onError={() => setThumbnailFailed(true)} />
             ) : (
               <span className={styles.missingPoster}>{lang === "pt" ? "Prévia indisponível" : "Preview unavailable"}</span>
             )}
@@ -96,10 +96,7 @@ export default function SelectedEdits() {
           <p>{lang === "pt" ? "Games, eventos e conteúdo autoral. Diferentes linguagens, uma seleção para dar play." : "Games, events and independent content. Different styles, a selection to press play."}</p>
         </header>
         <div className={styles.layout}>
-          {selectedEdits.filter(project => project.featured).map(project => <Edit key={project.id} project={project} active={activeId === project.id} onSelect={setActiveId} />)}
-          <div className={styles.shorts}>
-            {selectedEdits.filter(project => !project.featured).map(project => <Edit key={project.id} project={project} active={activeId === project.id} onSelect={setActiveId} />)}
-          </div>
+          {selectedEdits.map(project => <Edit key={project.id} project={project} active={activeId === project.id} onSelect={setActiveId} />)}
         </div>
       </div>
     </section>
