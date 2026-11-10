@@ -125,3 +125,8 @@
   margin-top: 28px;
   flex-shrink: 0;
 }
+
+.editingHero:global(#hero) {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
