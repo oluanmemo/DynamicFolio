@@ -19,7 +19,7 @@ export interface ColourSet {
 }
 export const PALETTE: readonly ColourSet[] = [
   { face: "#f2f0eb", shadow: "#9333ea" },
-  { face: "#c084fc", shadow: "#6b21a8" },
+  { face: "#6b21a8", shadow: "#ffffff" },
   { face: "#e9d5ff", shadow: "#7e22ce" },
   { face: "#f2f0eb", shadow: "#9333ea" },
   { face: "#d8b4fe", shadow: "#7e22ce" },
