@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Send } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
 import { trackEvent, getPortfolioRef } from "../lib/analytics";
@@ -470,6 +471,7 @@ export default function Contato() {
                                 ) : (
                                     <>
                                         {f.submit}
+                                        <Send size={18} strokeWidth={1.7} aria-hidden="true" />
                                     </>
                                 )}
                             </button>
