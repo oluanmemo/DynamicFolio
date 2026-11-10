@@ -1,5 +1,6 @@
 "use client";
 
+import { Send } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useMode } from "../context/ModeContext";
 import { usePathname } from "next/navigation";
@@ -134,7 +135,7 @@ export default function FreelanceBadge({ variant = "floating" }: FreelanceBadgeP
                 contato.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
             }}
         >
-            <span className="freelance-dot"></span>
+            {isEditingPortfolioRoute ? <Send size={16} strokeWidth={1.7} aria-hidden="true" /> : <span className="freelance-dot"></span>}
             <span className="freelance-text">{text}</span>
         </a>
     );
