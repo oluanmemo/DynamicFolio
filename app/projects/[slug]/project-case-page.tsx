@@ -47,6 +47,7 @@ export async function ProjectCasePage({ params, lang = "pt" }: Props & { lang?: 
     if (!project) notFound();
 
     const statusLabel = {
+        concept: { pt: "Exercício de prospecção", en: "Prospecting exercise", color: "#e3bf58" },
         live: { pt: "Em produção", en: "Live", color: "#22c55e" },
         internal: { pt: "Projeto interno", en: "Internal", color: "#f59e0b" },
         soon: { pt: "Em breve", en: "Coming soon", color: "#60a5fa" },

@@ -4242,3 +4242,17 @@ body.editor-mode #topnav .nav-logo span,
 body.dev-mode #topnav .nav-logo span {
   color: var(--accent);
 }
+
+/* Expand project cards without shifting neighbouring content. */
+#devProjects .featured-card,
+#devProjects .multi-card { transition: opacity 700ms ease, transform 700ms ease, scale 280ms ease, border-color 280ms ease, box-shadow 280ms ease; }
+@media (hover: hover) and (pointer: fine) {
+  #devProjects .featured-card.visible:hover,
+  #devProjects .multi-card.visible:hover { scale: 1.018; z-index: 2; border-color: rgba(134, 210, 166, 0.45); box-shadow: 0 18px 60px rgba(0,0,0,0.3), 0 0 28px rgba(46,139,87,0.1); }
+}
+#devProjects .featured-card:focus-within,
+#devProjects .multi-card:focus-within { border-color: rgba(134, 210, 166, 0.6); }
+@media (prefers-reduced-motion: reduce) {
+  #devProjects .featured-card.visible:hover,
+  #devProjects .multi-card.visible:hover { scale: 1; }
+}

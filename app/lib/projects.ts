@@ -4,7 +4,7 @@ export interface Project {
     category: "dev" | "editing";
     tags: string[];
     year: string;
-    status: "live" | "internal" | "soon";
+    status: "live" | "internal" | "soon" | "concept";
     externalUrl?: string;
     description: { pt: string; en: string };
     longDescription: { pt: string; en: string };
@@ -21,13 +21,85 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+{
+    "slug": "fantasiou",
+    "title": "Fantasiou",
+    "category": "dev",
+    "tags": [
+        "Next.js",
+        "TypeScript",
+        "Produto",
+        "UI/UX"
+    ],
+    "year": "2026",
+    "status": "live",
+    "externalUrl": "https://fantasiou.com.br",
+    "coverImage": "/proofs/fantasiou-home.webp",
+    "images": ["/proofs/fantasiou-home.webp", "/proofs/fantasiou-builder.webp"],
+    "description": {
+        "pt": "Catálogo brasileiro para montar fantasias peça por peça, começando pelo que já existe no guarda-roupa.",
+        "en": "A Brazilian catalog for building costumes piece by piece, starting with what is already in your wardrobe."
+    },
+    "longDescription": {
+        "pt": "Fantasiou transforma a dúvida “vou de quem?” em uma jornada prática. A pessoa encontra um personagem, identifica as peças que tornam o visual reconhecível, marca o que já tem e adapta ou completa o restante. A identidade editorial e a curadoria conectam descoberta, inspiração e montagem.",
+        "en": "Fantasiou turns “who should I dress as?” into a practical journey: discover a character, identify recognizable pieces, mark what you own and adapt or complete the rest. Editorial identity and curation connect discovery, inspiration and assembly."
+    },
+    "context": {
+        "pt": "Um produto brasileiro que organiza referências de personagens e fantasias em orientações concretas de montagem.",
+        "en": "A Brazilian product that organizes character and costume inspiration into practical assembly guidance."
+    },
+    "problem": {
+        "pt": "Uma imagem inspira, mas não explica como montar o visual. O desafio é conectar a referência às peças essenciais, às alternativas e ao que a pessoa já possui.",
+        "en": "An image inspires but does not explain how to build the look. The challenge is connecting inspiration to essential pieces, alternatives and what someone already owns."
+    },
+    "role": {
+        "pt": "Construção da experiência digital de descoberta e montagem, conectando interface, conteúdo editorial e implementação web.",
+        "en": "Building the digital discovery and assembly experience, connecting interface, editorial content and web implementation."
+    },
+    "solution": {
+        "pt": [
+            "Separar descoberta de personagens da montagem prática da fantasia.",
+            "Usar checklist com itens essenciais e complementares, com progresso salvo no navegador.",
+            "Oferecer alternativas DIY e substituições antes de direcionar para compras.",
+            "Manter curadoria editorial e identificar links que podem gerar comissão."
+        ],
+        "en": [
+            "Separate character discovery from practical costume assembly.",
+            "Use essential and complementary item checklists, with progress saved in the browser.",
+            "Provide DIY and substitution options before directing visitors to purchases.",
+            "Keep editorial curation and disclose links that may generate commission."
+        ]
+    },
+    "highlights": {
+        "pt": [
+            "Descoberta por personagem ou peças do guarda-roupa",
+            "Checklist interativo e progresso local",
+            "Alternativas DIY e curadoria de ofertas",
+            "Identidade editorial brasileira"
+        ],
+        "en": [
+            "Discover by character or wardrobe pieces",
+            "Interactive checklist and local progress",
+            "DIY alternatives and curated offers",
+            "Brazilian editorial identity"
+        ]
+    },
+    "result": {
+        "pt": "Produto publicado e navegável em fantasiou.com.br, com descoberta de referências e montagem por checklist.",
+        "en": "A live, navigable product at fantasiou.com.br, connecting inspiration discovery with checklist-based assembly."
+    },
+    "caseCtaLabel": {
+        "pt": "Visitar Fantasiou",
+        "en": "Visit Fantasiou"
+    }
+},
     {
         slug: "vaccari-padaria",
         title: "Panificadora Vaccari",
         category: "dev",
         tags: ["Next.js", "TypeScript", "UI/UX", "Art Direction"],
         year: "2026",
-        status: "live",
+        status: "concept",
         externalUrl: "https://vaccari-padaria.vercel.app/",
         description: {
             pt: "Case autoral de prospecção para uma padaria tradicional, com direção visual editorial, interação responsiva e publicação em Next.js.",

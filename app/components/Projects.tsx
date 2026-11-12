@@ -138,72 +138,20 @@ function DevProjects({ copy, lang }: { copy: DevCopy; lang: "pt" | "en" }) {
                 </div>
             </div>
 
-            <div className="featured-card" style={{ marginBottom: "32px", background: "linear-gradient(135deg, rgba(169,122,75,0.1), #100e0b 60%)" }}>
+            <div className="featured-card" id="fantasiou-project" style={{ background: "linear-gradient(135deg, rgba(107,63,160,0.18), #100d14 65%)" }}>
                 <div className="featured-content">
-                    <div className="featured-badge">{lang === "en" ? "Published website preview" : "Prévia de site publicada"}</div>
-                    <h3 className="featured-title">Marcenaria Godoy</h3>
-                    <p className="project-impact">{lang === "en" ? "A digital showcase for custom furniture, with real projects and a focus on craftsmanship." : "Uma vitrine digital para móveis sob medida, com projetos reais e foco no acabamento."}</p>
-                    <p className="featured-desc">{lang === "en" ? "Residential and commercial projects, environments, production process and direct contact for quotes." : "Projetos residenciais e comerciais, ambientes, processo de produção e contato direto para orçamentos."}</p>
-                    <div className="tag-list"><span className="tag">Web Design</span><span className="tag">UI/UX</span><span className="tag">Responsive</span></div>
+                    <div className="featured-badge">{lang === "pt" ? "Produto autoral · Publicado" : "Independent product · Live"}</div>
+                    <h3 className="featured-title">Fantasiou</h3>
+                    <p className="project-impact">{lang === "pt" ? "Antes de comprar uma fantasia, abra o armário." : "Before buying a costume, open your wardrobe."}</p>
+                    <p className="featured-desc">{lang === "pt" ? "Da referência ao checklist: um catálogo brasileiro para montar fantasias peça por peça, aproveitar o que você já tem e resolver só o que falta." : "From inspiration to checklist: a Brazilian catalog for building costumes piece by piece, reusing what you own and finding only what is missing."}</p>
+                    <div className="tag-list"><span className="tag">Next.js</span><span className="tag">TypeScript</span><span className="tag">Produto</span><span className="tag">UI/UX</span></div>
                     <div className="featured-actions">
-                        <a href="https://marcenaria-godoy.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-red" onClick={() => trackEvent("project_click", { project: "Marcenaria Godoy", category: "dev", lang, destination: "live" })}>{lang === "en" ? "Visit website" : "Visitar site"} <span>↗</span></a>
+                        <Link href={localizePath("/projects/fantasiou", lang)} className="btn-red">{lang === "pt" ? "Conhecer o case" : "Explore the case"} <span>→</span></Link>
+                        <a href="https://fantasiou.com.br" target="_blank" rel="noopener noreferrer" className="btn-secondary">{lang === "pt" ? "Visitar Fantasiou" : "Visit Fantasiou"} <span>↗</span></a>
                     </div>
                 </div>
                 <div style={{ position: "relative", flex: "1 1 48%", minHeight: "420px", overflow: "hidden" }}>
-                    <Image src="/proofs/godoy-home.webp" alt={lang === "en" ? "Marcenaria Godoy website preview" : "Prévia do site da Marcenaria Godoy"} fill sizes="(min-width: 900px) 48vw, 100vw" style={{ objectFit: "cover", objectPosition: "top center" }} />
-                </div>
-            </div>
-
-            <div className="featured-card" style={{ marginBottom: "32px", background: "linear-gradient(135deg, rgba(217,173,50,0.08), #120f0a 45%, #0c0a08 100%)" }}>
-                <div className="featured-content">
-                    <div className="featured-badge" style={{ color: "#e3bf58", background: "rgba(217,173,50,0.1)", borderColor: "rgba(217,173,50,0.25)" }}>
-                        <span className="ping-dot"></span>
-                        {lang === "en" ? "Published concept case" : "Case autoral publicado"}
-                    </div>
-                    <h3 className="featured-title">Panificadora Vaccari</h3>
-                    <p className="project-impact">
-                        {lang === "en"
-                            ? "Editorial visual direction for a traditional bakery, taken from concept to a live Next.js build."
-                            : "Direção visual editorial para uma padaria tradicional, do conceito à publicação em Next.js."}
-                    </p>
-                    <p className="featured-desc">
-                        {lang === "en"
-                            ? "A self-initiated prospecting case — not the company's official website."
-                            : "Case autoral de prospecção — não é o site oficial da empresa."}
-                    </p>
-                    <div className="tag-list">
-                        <span className="tag">Next.js</span>
-                        <span className="tag">UI/UX</span>
-                        <span className="tag">Art Direction</span>
-                        <span className="tag">Responsive</span>
-                    </div>
-                    <div className="featured-actions">
-                        <Link
-                            href={vaccariHref}
-                            className="btn-red"
-                            onClick={() => trackEvent("project_click", { project: "Panificadora Vaccari", category: "dev", lang, destination: "case" })}
-                        >
-                            {lang === "en" ? "View case" : "Ver case"} <span>→</span>
-                        </Link>
-                        <Link
-                            href="https://vaccari-padaria.vercel.app/"
-                            className="btn-secondary"
-                            target="_blank"
-                            rel="noreferrer"
-                            onClick={() => trackEvent("project_click", { project: "Panificadora Vaccari", category: "dev", lang, destination: "live" })}
-                        >
-                            {lang === "en" ? "Published site" : "Site publicado"} <span>↗</span>
-                        </Link>
-                    </div>
-                </div>
-                <div style={{ position: "relative", flex: "1 1 48%", minHeight: "420px", overflow: "hidden" }}>
-                    <Image
-                        src="/proofs/vaccari-home.webp"
-                        alt={lang === "en" ? "Published Vaccari bakery concept case" : "Case autoral publicado da Panificadora Vaccari"}
-                        fill
-                        sizes="(min-width: 900px) 48vw, 100vw"
-                        style={{ objectFit: "cover", objectPosition: "top center" }}
-                    />
+                    <Image src="/proofs/fantasiou-home.webp" alt={lang === "pt" ? "Página inicial do Fantasiou, com descoberta de personagens e montagem de fantasias" : "Fantasiou home with character discovery and costume building"} fill sizes="(min-width: 900px) 48vw, 100vw" style={{ objectFit: "cover", objectPosition: "top center" }} />
                 </div>
             </div>
 
@@ -330,6 +278,79 @@ function DevProjects({ copy, lang }: { copy: DevCopy; lang: "pt" | "en" }) {
                     </div>
                 </div>
             </div>
+            <div className="section-header" style={{ marginTop: "64px" }}>
+                <div><p className="section-label">{lang === "pt" ? "Explorações de design e desenvolvimento" : "Design and development explorations"}</p><h2 className="section-title">{lang === "pt" ? "Exercícios de prospecção" : "Prospecting exercises"}</h2></div>
+            </div>
+            <div className="featured-card" style={{ marginBottom: "32px", background: "linear-gradient(135deg, rgba(169,122,75,0.1), #100e0b 60%)" }}>
+                <div className="featured-content">
+                    <div className="featured-badge">{lang === "en" ? "Prospecting exercise" : "Exercício de prospecção"}</div>
+                    <h3 className="featured-title">Marcenaria Godoy</h3>
+                    <p className="project-impact">{lang === "en" ? "A digital showcase for custom furniture, with real projects and a focus on craftsmanship." : "Uma vitrine digital para móveis sob medida, com projetos reais e foco no acabamento."}</p>
+                    <p className="featured-desc">{lang === "en" ? "A self-initiated prospecting exercise, not the company’s official website." : "Exercício autoral de prospecção, não é o site oficial da empresa."}</p>
+                    <div className="tag-list"><span className="tag">Web Design</span><span className="tag">UI/UX</span><span className="tag">Responsive</span></div>
+                    <div className="featured-actions">
+                        <a href="https://marcenaria-godoy.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-red" onClick={() => trackEvent("project_click", { project: "Marcenaria Godoy", category: "dev", lang, destination: "live" })}>{lang === "en" ? "Visit website" : "Visitar site"} <span>↗</span></a>
+                    </div>
+                </div>
+                <div style={{ position: "relative", flex: "1 1 48%", minHeight: "420px", overflow: "hidden" }}>
+                    <Image src="/proofs/godoy-home.webp" alt={lang === "en" ? "Marcenaria Godoy website preview" : "Prévia do site da Marcenaria Godoy"} fill sizes="(min-width: 900px) 48vw, 100vw" style={{ objectFit: "cover", objectPosition: "top center" }} />
+                </div>
+            </div>
+
+            <div className="featured-card" style={{ marginBottom: "32px", background: "linear-gradient(135deg, rgba(217,173,50,0.08), #120f0a 45%, #0c0a08 100%)" }}>
+                <div className="featured-content">
+                    <div className="featured-badge" style={{ color: "#e3bf58", background: "rgba(217,173,50,0.1)", borderColor: "rgba(217,173,50,0.25)" }}>
+                        <span className="ping-dot"></span>
+                        {lang === "en" ? "Prospecting exercise" : "Exercício de prospecção"}
+                    </div>
+                    <h3 className="featured-title">Panificadora Vaccari</h3>
+                    <p className="project-impact">
+                        {lang === "en"
+                            ? "Editorial visual direction for a traditional bakery, taken from concept to a live Next.js build."
+                            : "Direção visual editorial para uma padaria tradicional, do conceito à publicação em Next.js."}
+                    </p>
+                    <p className="featured-desc">
+                        {lang === "en"
+                            ? "A self-initiated prospecting case — not the company's official website."
+                            : "Exercício autoral de prospecção — não é o site oficial da empresa."}
+                    </p>
+                    <div className="tag-list">
+                        <span className="tag">Next.js</span>
+                        <span className="tag">UI/UX</span>
+                        <span className="tag">Art Direction</span>
+                        <span className="tag">Responsive</span>
+                    </div>
+                    <div className="featured-actions">
+                        <Link
+                            href={vaccariHref}
+                            className="btn-red"
+                            onClick={() => trackEvent("project_click", { project: "Panificadora Vaccari", category: "dev", lang, destination: "case" })}
+                        >
+                            {lang === "en" ? "View case" : "Ver case"} <span>→</span>
+                        </Link>
+                        <Link
+                            href="https://vaccari-padaria.vercel.app/"
+                            className="btn-secondary"
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={() => trackEvent("project_click", { project: "Panificadora Vaccari", category: "dev", lang, destination: "live" })}
+                        >
+                            {lang === "en" ? "View concept" : "Ver exercício"} <span>↗</span>
+                        </Link>
+                    </div>
+                </div>
+                <div style={{ position: "relative", flex: "1 1 48%", minHeight: "420px", overflow: "hidden" }}>
+                    <Image
+                        src="/proofs/vaccari-home.webp"
+                        alt={lang === "en" ? "Published Vaccari bakery concept case" : "Case autoral publicado da Panificadora Vaccari"}
+                        fill
+                        sizes="(min-width: 900px) 48vw, 100vw"
+                        style={{ objectFit: "cover", objectPosition: "top center" }}
+                    />
+                </div>
+            </div>
+
+
         </div>
     );
 }
