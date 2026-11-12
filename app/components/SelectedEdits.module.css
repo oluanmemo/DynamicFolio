@@ -94,3 +94,14 @@
   .poster, .play { transition: none; }
   .loader { animation: none; }
 }
+
+:global(body.editor-mode) .layout > article[data-reveal-ready="true"] {
+  translate: none;
+  scale: none;
+  transition: opacity 650ms ease;
+}
+:global(body.editor-mode) .layout > article:nth-child(2)[data-reveal-ready="true"] { transition-delay: 160ms; }
+:global(body.editor-mode) .layout > article:nth-child(3)[data-reveal-ready="true"] { transition-delay: 320ms; }
+@media (prefers-reduced-motion: reduce) {
+  :global(body.editor-mode) .layout > article[data-reveal-ready="true"] { transition: none; }
+}

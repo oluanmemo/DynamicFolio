@@ -95,7 +95,7 @@ export default function SelectedEdits() {
           <h2 id="selected-edits-title">{lang === "pt" ? "Edição em diferentes formatos." : "Editing across formats."}</h2>
           <p>{lang === "pt" ? "Games, eventos e conteúdo autoral. Diferentes linguagens, uma seleção para dar play." : "Games, events and independent content. Different styles, a selection to press play."}</p>
         </header>
-        <div className={styles.layout}>
+        <div data-editing-reveal-group className={styles.layout}>
           {selectedEdits.map(project => <Edit key={project.id} project={project} active={activeId === project.id} onSelect={setActiveId} />)}
         </div>
       </div>

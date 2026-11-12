@@ -11,7 +11,11 @@ export default function ScrollObserver({ revealEditing = false }: { revealEditin
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.setAttribute("data-revealed", "true");
+                    if (entry.target.hasAttribute("data-editing-reveal-group")) {
+                        entry.target.querySelectorAll("[data-editing-reveal]").forEach(block => block.setAttribute("data-revealed", "true"));
+                    } else {
+                        entry.target.setAttribute("data-revealed", "true");
+                    }
                     observer.unobserve(entry.target);
                 }
             });
@@ -19,7 +23,8 @@ export default function ScrollObserver({ revealEditing = false }: { revealEditin
 
         blocks.forEach(block => {
             block.setAttribute("data-reveal-ready", "true");
-            observer.observe(block);
+            const group = window.matchMedia("(min-width: 901px)").matches ? block.closest("[data-editing-reveal-group]") : null;
+            observer.observe(group ?? block);
         });
         return () => {
             observer.disconnect();
