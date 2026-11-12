@@ -15,9 +15,9 @@ export default function PortfolioPage() {
             <Navbar />
             <div className={styles.content}>
                 <Hero />
-                <Sobre />
                 <Projects />
                 <VidaLar />
+                <Sobre />
                 <Contato />
                 <Footer />
             </div>
