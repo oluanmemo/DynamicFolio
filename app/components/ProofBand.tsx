@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { TrendingUp } from "lucide-react";
 import CountUp from "./CountUp";
 import { useLanguage } from "../context/LanguageContext";
@@ -20,7 +19,6 @@ export default function ProofBand() {
       </div>
       <div className={styles.details}>
         <div><CountUp className={styles.smallValue} target={2} prefix="+" /> {lang === "pt" ? "anos de produção recorrente" : "years of recurring production"}</div>
-        <div><CountUp className={styles.smallValue} target={3} /> {lang === "pt" ? "vídeos institucionais no" : "institutional videos at"}<Image src="/grupo-multi.svg" alt="Grupo Multi" title="Grupo Multi" width={24} height={18} /></div>
       </div>
     </div>
   );
