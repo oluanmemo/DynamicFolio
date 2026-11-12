@@ -4237,3 +4237,8 @@ body.editor-mode .freelance-badge--floating {
   color: #f3e8ff;
 }
 body.editor-mode .freelance-badge--floating > svg { flex-shrink: 0; color: #d8b4fe; }
+
+body.editor-mode #topnav .nav-logo span,
+body.dev-mode #topnav .nav-logo span {
+  color: var(--accent);
+}
