@@ -42,3 +42,5 @@
   .proof { margin-top: 24px; }
   .details { flex-direction: column; align-items: center; gap: 4px; }
 }
+
+.details img { align-self: center; margin-left: 3px; }

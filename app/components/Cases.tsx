@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Youtube, CalendarDays, Eye } from 'lucide-react';
 import CountUp from './CountUp';
 import { useLanguage } from '../context/LanguageContext';
 import { useMode } from '../context/ModeContext';
@@ -136,25 +137,29 @@ export default function Cases() {
               {/* 2x2 Metric Grid */}
               <div className={styles.proofGrid}>
                 <div data-editing-reveal className={styles.proofMiniCard}>
-                  <span className={styles.proofMiniVal}>6+ canais</span>
+                  <span className={styles.proofMiniVal}><Youtube size={19} aria-hidden="true" />6+ canais</span>
                   <span className={styles.proofMiniDesc}>
                     {lang === 'pt' ? 'Canais atendidos' : 'Client channels'}
                   </span>
                 </div>
                 <div data-editing-reveal className={styles.proofMiniCard}>
-                  <span className={styles.proofMiniVal}>~6 vídeos/sem</span>
+                  <span className={styles.proofMiniVal}><CalendarDays size={19} aria-hidden="true" />~6 vídeos/sem</span>
                   <span className={styles.proofMiniDesc}>
                     {lang === 'pt' ? 'Fluxo recorrente' : 'Recurring pipeline'}
                   </span>
                 </div>
                 <div data-editing-reveal className={styles.proofMiniCard}>
-                  <span className={styles.proofMiniVal}>EN / ES / FR</span>
+                  <span className={styles.languageFlags}>
+                    <Image src="/flags/en.svg" alt={lang === 'pt' ? 'Inglês' : 'English'} title={lang === 'pt' ? 'Inglês' : 'English'} width={30} height={21} />
+                    <Image src="/flags/es.svg" alt={lang === 'pt' ? 'Espanhol' : 'Spanish'} title={lang === 'pt' ? 'Espanhol' : 'Spanish'} width={30} height={21} />
+                    <Image src="/flags/fr.svg" alt={lang === 'pt' ? 'Francês' : 'French'} title={lang === 'pt' ? 'Francês' : 'French'} width={30} height={21} />
+                  </span>
                   <span className={styles.proofMiniDesc}>
                     {lang === 'pt' ? 'Conteúdo multi-idioma' : 'Multi-language content'}
                   </span>
                 </div>
                 <div data-editing-reveal className={styles.proofMiniCard}>
-                  <span className={styles.proofMiniVal}>200K+ views</span>
+                  <span className={styles.proofMiniVal}><Eye size={19} aria-hidden="true" />200K+ views</span>
                   <span className={styles.proofMiniDesc}>
                     {lang === 'pt' ? 'Em vídeos editados' : 'On edited videos'}
                   </span>
@@ -189,7 +194,7 @@ export default function Cases() {
             <div className={styles.proofCol}>
               {/* Interactive Channel Details Box */}
               <div className={styles.channelActiveBox}>
-                <div className={styles.channelActiveHeader}>
+                <a href={activeChannel.href} target="_blank" rel="noopener noreferrer" className={styles.channelActiveHeader} aria-label={`${activeChannel.name} — YouTube`}>
                   <div className={styles.channelActiveAvatar}>
                     <Image 
                       src={activeChannel.logo} 
@@ -205,7 +210,7 @@ export default function Cases() {
                       {lang === 'en' ? activeChannel.nicheEn : activeChannel.niche}
                     </span>
                   </div>
-                </div>
+                </a>
 
                 <div className={styles.channelActiveStats}>
                   <span className={styles.channelStatTag}>
@@ -219,14 +224,7 @@ export default function Cases() {
                   </span>
                 </div>
 
-                <a
-                  href={activeChannel.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.channelDirectLink}
-                >
-                  {lang === 'pt' ? 'Ver canal no YouTube' : 'View channel on YouTube'}
-                </a>
+
               </div>
 
               {/* Horizontal Channel Selector Strip */}
@@ -366,7 +364,7 @@ export default function Cases() {
             </span>
           </div>
 
-          <h2 className={styles.title}>Grupo Multi · E-Multitech</h2>
+          <h2 className={`${styles.title} ${styles.multiTitle}`}><Image src="/grupo-multi.svg" alt="Grupo Multi" width={57} height={44} /> <span>E-Multitech</span></h2>
           <h3 className={styles.subtitle}>
             {lang === 'pt' ? 'Comunicação audiovisual para produto digital' : 'Audiovisual communication for a digital product'}
           </h3>

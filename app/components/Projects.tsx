@@ -138,6 +138,22 @@ function DevProjects({ copy, lang }: { copy: DevCopy; lang: "pt" | "en" }) {
                 </div>
             </div>
 
+            <div className="featured-card" style={{ marginBottom: "32px", background: "linear-gradient(135deg, rgba(169,122,75,0.1), #100e0b 60%)" }}>
+                <div className="featured-content">
+                    <div className="featured-badge">{lang === "en" ? "Published website preview" : "Prévia de site publicada"}</div>
+                    <h3 className="featured-title">Marcenaria Godoy</h3>
+                    <p className="project-impact">{lang === "en" ? "A digital showcase for custom furniture, with real projects and a focus on craftsmanship." : "Uma vitrine digital para móveis sob medida, com projetos reais e foco no acabamento."}</p>
+                    <p className="featured-desc">{lang === "en" ? "Residential and commercial projects, environments, production process and direct contact for quotes." : "Projetos residenciais e comerciais, ambientes, processo de produção e contato direto para orçamentos."}</p>
+                    <div className="tag-list"><span className="tag">Web Design</span><span className="tag">UI/UX</span><span className="tag">Responsive</span></div>
+                    <div className="featured-actions">
+                        <a href="https://marcenaria-godoy.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-red" onClick={() => trackEvent("project_click", { project: "Marcenaria Godoy", category: "dev", lang, destination: "live" })}>{lang === "en" ? "Visit website" : "Visitar site"} <span>↗</span></a>
+                    </div>
+                </div>
+                <div style={{ position: "relative", flex: "1 1 48%", minHeight: "420px", overflow: "hidden" }}>
+                    <Image src="/proofs/godoy-home.webp" alt={lang === "en" ? "Marcenaria Godoy website preview" : "Prévia do site da Marcenaria Godoy"} fill sizes="(min-width: 900px) 48vw, 100vw" style={{ objectFit: "cover", objectPosition: "top center" }} />
+                </div>
+            </div>
+
             <div className="featured-card" style={{ marginBottom: "32px", background: "linear-gradient(135deg, rgba(217,173,50,0.08), #120f0a 45%, #0c0a08 100%)" }}>
                 <div className="featured-content">
                     <div className="featured-badge" style={{ color: "#e3bf58", background: "rgba(217,173,50,0.1)", borderColor: "rgba(217,173,50,0.25)" }}>

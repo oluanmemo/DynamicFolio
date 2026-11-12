@@ -705,3 +705,13 @@
   .internationalCase .proofMiniCard { padding-inline: 0.75rem; }
   .internationalCase .proofCol { gap: 1.25rem; }
 }
+
+.internationalCase .proofMiniVal { display: flex; align-items: center; gap: 8px; }
+.proofMiniVal svg { color: #c084fc; flex-shrink: 0; stroke-width: 1.5; }
+.languageFlags { display: flex; align-items: center; gap: 9px; min-height: 28px; }
+.languageFlags img { border-radius: 3px; box-shadow: 0 0 0 1px rgba(255,255,255,0.12); }
+a.channelActiveHeader { width: fit-content; text-decoration: none; border-radius: 8px; }
+a.channelActiveHeader:hover .channelActiveName { color: #d8b4fe; }
+a.channelActiveHeader:focus-visible { outline: 2px solid #c084fc; outline-offset: 6px; }
+.multiTitle { display: flex; align-items: center; gap: 16px; }
+.multiTitle img { flex-shrink: 0; }
