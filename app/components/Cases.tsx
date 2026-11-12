@@ -364,7 +364,7 @@ export default function Cases() {
             </span>
           </div>
 
-          <h2 className={`${styles.title} ${styles.multiTitle}`}><Image src="/grupo-multi.svg" alt="Grupo Multi" width={57} height={44} /> <span>E-Multitech</span></h2>
+          <h2 className={`${styles.title} ${styles.multiTitle}`}><Image src="/grupo-multi.svg" alt="Grupo Multi" width={57} height={44} /> <span>Multilaser</span></h2>
           <h3 className={styles.subtitle}>
             {lang === 'pt' ? 'Comunicação audiovisual para produto digital' : 'Audiovisual communication for a digital product'}
           </h3>
